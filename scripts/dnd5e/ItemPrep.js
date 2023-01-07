@@ -28,7 +28,7 @@ export default class ItemPrep {
 	 * @param {object}         system
 	 * @memberof ItemPrep
 	 */
-	constructor(sheet, data) {
+	constructor(sheet, system) {
 		this.sheet = sheet;
 		this.system = system;
 		this.system.features = this.features;
