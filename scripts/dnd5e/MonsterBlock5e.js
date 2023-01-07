@@ -166,7 +166,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		const skillCycles = form.querySelectorAll("[data-skill-id]");
 		for (let skill of skillCycles) {
-			let key = `data.skills.${skill.dataset.skillId}.value`;
+			let key = `system.skills.${skill.dataset.skillId}.value`;
 			let value = skill.dataset.skillValue;
 
 			formData.append(key, value);
@@ -560,7 +560,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				label: game.i18n.localize(`DND5E.Movement${moveNameCaps}`).toLowerCase(),
 				value: speed > 0 ? speed : move != "walk" ? "" : "0",
 				unit: data.system.attributes.movement.units + game.i18n.localize("MOBLOKS5E.SpeedUnitAbbrEnd"),
-				key: `data.attributes.movement.${move}`
+				key: `system.attributes.movement.${move}`
 			});
 		}
 
