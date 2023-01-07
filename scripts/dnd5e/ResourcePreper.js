@@ -96,7 +96,7 @@ export default class ResourcePreper {
 		let r = t.match(/(.+)\.(.+)\.(.+)/);
 		let max = `data.${r[1]}.${r[2]}.max`;
 		
-		this.res.target = "data." + t;
+		this.res.target = "system." + t;
 		this.res.current = getProperty(this.sheet.actor.system, this.res.target);
 		this.res.limit = getProperty(this.sheet.actor.system, max);
 		this.res.refresh = game.i18n.localize("MOBLOKS5E.ResourceRefresh"); // It just says "Day" becaause thats typically the deal, and I don't see any other option.
@@ -107,11 +107,11 @@ export default class ResourcePreper {
 	 * @memberof ResourcePreper
 	 */
 	prepCharges() {
-		this.res.target = "data.uses.value";
+		this.res.target = "system.uses.value";
 		this.res.entity = this.item.system.consume.target || this.item.id;
 		this.res.current = this.item.system.uses.value;
 		this.res.limit = this.item.type == "spell" ? false : this.item.system.uses.max;
-		this.res.limTarget = "data.uses.max";
+		this.res.limTarget = "system.uses.max";
 		this.res.refresh = CONFIG.DND5E.limitedUsePeriods[this.item.system.uses.per];
 	}
 	/**
@@ -127,7 +127,7 @@ export default class ResourcePreper {
 		
 		this.res.limit = false;
 		this.res.current = ammo.data.quantity;
-		this.res.target = "data.quantity";
+		this.res.target = "system.quantity";
 		this.res.name = ammo.name;
 	}
 	/**
@@ -139,6 +139,6 @@ export default class ResourcePreper {
 		this.res.entity = this.item._id;
 		this.res.limit = false;
 		this.res.current = this.item.system.quantity;
-		this.res.target = "data.quantity";
+		this.res.target = "system.quantity";
 	}
 }

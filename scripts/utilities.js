@@ -1,4 +1,4 @@
-import { InputAdapter } from "../input-expressions/handler.js"
+import { InputAdapter } from "./handler.js"
 export class debug {
 	
 	/**

@@ -402,7 +402,7 @@ export default class CastingPreper extends ItemPreper {
 		return game.i18n.format("MOBLOKS5E.CasterNameLevel", {
 			name: this.sheet.actor.name,
 			level: Templates.editable({
-				key: "data.details.spellLevel",
+				key: "system.details.spellLevel",
 				value: this.casterLevel,
 				className: "caster-level",
 				dtype: "Number",
@@ -430,7 +430,7 @@ export default class CastingPreper extends ItemPreper {
 		return game.i18n.format(string, {
 			name: this.sheet.actor.name,           // Innate casters print thier name in this block
 			ability: Templates.selectField({ 
-				key: "data.attributes.spellcasting", 
+				key: "system.attributes.spellcasting", 
 				value: this.castingAbility, 
 				label: this.abilityTitle, 
 				listClass: "actor-size",
