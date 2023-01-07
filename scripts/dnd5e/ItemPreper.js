@@ -19,7 +19,7 @@ export default class ItemPreper {
 		this.sheet = sheet;
 
 		/** @type {object} The item data for this item */
-		this.data = item;
+		this.system = item;
 
 		/** @type {object} The whole data for the template	 */
 		this.templateData = templateData;
@@ -29,10 +29,10 @@ export default class ItemPreper {
 	}
 
 	prepResources() {
-		this.data.hasresource = ResourcePreper.hasResource(this.item);
-		if (!this.data.hasresource) return;
+		this.system.hasresource = ResourcePreper.hasResource(this.item);
+		if (!this.system.hasresource) return;
 
-		this.data.resource = new ResourcePreper(this.data, this.item, this.sheet).getResource();
+		this.system.resource = new ResourcePreper(this.system, this.item, this.sheet).getResource();
 	}
 
 	/** @abstract */

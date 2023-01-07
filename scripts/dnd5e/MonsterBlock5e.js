@@ -1157,7 +1157,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 
 	static isMultiAttack(item) {	// Checks if the item is the multiattack action.
-		let name = item.data.name.toLowerCase().replace(/\s+/g, "");	// Convert the name of the item to all lower case, and remove whitespace.
+		let name = item.system.name.toLowerCase().replace(/\s+/g, "");	// Convert the name of the item to all lower case, and remove whitespace.
 		return getTranslationArray("MOBLOKS5E.MultiattackLocators").some(loc => name.includes(loc));
 	}
 	
