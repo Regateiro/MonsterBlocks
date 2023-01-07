@@ -1162,28 +1162,28 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 	
 	static isLegendaryResistance(item) {
-		return item.data?.consume?.target === "resources.legres.value";
+		return item.system?.consume?.target === "resources.legres.value";
 	}
 	
 	// Item purpose checks
 	static isLegendaryAction(item) {
-		return item.data?.activation?.type === "legendary";
+		return item.system?.activation?.type === "legendary";
 	}
 	
 	static isLairAction(item) {
-		return item.data?.activation?.type === "lair";
+		return item.system?.activation?.type === "lair";
 	}
 
 	static isAction(item) {
-		return item.data?.activation?.type && item.data?.activation.type != "none";
+		return item.system?.activation?.type && item.system?.activation.type != "none";
 	}
 
 	static isBonusAction(item) {
-		return item.data?.activation?.type === "bonus";
+		return item.system?.activation?.type === "bonus";
 	}
 	
 	static isReaction(item) {
-		return item.data?.activation?.type === "reaction";
+		return item.system?.activation?.type === "reaction";
 	}
 		
 
