@@ -9,9 +9,14 @@
 			"email": "zeel02@gmail.com",
 			"url": "https://github.com/zeel01",
 			"discord": "zeel#4200"
+		},
+		{
+			"name": "regateiro",
+			"email": "diogo.regateiro@gmail.com",
+			"url": "https://github.com/Regateiro"
 		}
 	],
-	"version": "3.3.1",
+	"version": "3.3.1-reg1",
 	"minimumCoreVersion": "9",
 	"compatibleCoreVersion": "10",
 	"system": ["dnd5e"],
@@ -51,17 +56,17 @@
 			"manifest": "https://raw.githubusercontent.com/League-of-Foundry-Developers/mathjs-lib/master/module.json"
 		}
 	],
-	"manifest": "https://github.com/zeel01/MonsterBlocks/releases/latest/download/module.json",
-	"url": "https://github.com/zeel01/MonsterBlocks",
-	"download": "https://github.com/zeel01/MonsterBlocks/releases/latest/download/monsterblock.zip",
-	"readme": "https://github.com/zeel01/MonsterBlocks/blob/master/readme.md",
-	"bugs": "https://github.com/zeel01/MonsterBlocks/issues",
+	"manifest": "https://github.com/Regateiro/MonsterBlocks/releases/latest/download/module.json",
+	"url": "https://github.com/Regateiro/MonsterBlocks",
+	"download": "https://github.com/Regateiro/MonsterBlocks/releases/latest/download/monsterblock.zip",
+	"readme": "https://github.com/Regateiro/MonsterBlocks/blob/master/readme.md",
+	"bugs": "https://github.com/Regateiro/MonsterBlocks/issues",
 	"allowBugReporter": true,
-	"changelog": "https://github.com/zeel01/MonsterBlocks/releases",
+	"changelog": "https://github.com/Regateiro/MonsterBlocks/releases",
 	"media": [
 		{
 			"type": "cover",
-			"url": "https://raw.githubusercontent.com/zeel01/MonsterBlocks/master/examples/ancientRedDragon_5.png"
+			"url": "https://raw.githubusercontent.com/Regateiro/MonsterBlocks/master/examples/ancientRedDragon_5.png"
 		},
 		{
 			"type": "icon",
