@@ -9,6 +9,8 @@ function createRelease(cb) {
 		"monsterblock.js",
 		"monsterblock.css",
 		"actor-sheet.html",
+		"scripts/**",
+		"templates/**",
 		"lang/*",
 		"input-expressions/handler.js"
 	], { base: ".", allowEmpty: true })
