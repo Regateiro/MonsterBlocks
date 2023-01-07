@@ -311,15 +311,15 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	prepareSavingThrowsMenu(attrMenu) {
 		let menu = this.addMenu("saves", game.i18n.localize("MOBLOKS5E.SavingThrowS"), attrMenu);
 
-		Object.entries(this.actor.data.data.abilities).forEach(([ab, ability]) => {
+		Object.entries(this.actor.system.abilities).forEach(([ab, ability]) => {
 			let flag = Boolean(ability.proficient);
 			menu.add(new MenuItem("save-toggle", {
 				name: CONFIG.DND5E.abilities[ab], 
 				flag, d: ab,
-				target: `data.abilities.${ab}.proficient`,
+				target: `system.abilities.${ab}.proficient`,
 				icon: flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>'
 			}, (m) => {
-				m.flag = Boolean(this.actor.data.data.abilities[ab]?.proficient);
+				m.flag = Boolean(this.actor.system.abilities[ab]?.proficient);
 				m.icon = m.flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>';
 			}));
 		});
