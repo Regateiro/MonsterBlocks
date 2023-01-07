@@ -1050,6 +1050,8 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				[key]: value
 			}]).then(()=> { super._onChangeInput(event); });
 			return;
+		} else {
+			setProperty(entity, key, value)
 		}
 
 		super._onChangeInput(event);
