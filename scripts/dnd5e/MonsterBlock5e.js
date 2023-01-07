@@ -195,7 +195,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		return flattenObject(
 			mergeObject(
-				formData.object(), 
+				formData.object, 
 				updateData
 			)
 		);
