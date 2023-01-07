@@ -169,7 +169,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			let key = `system.skills.${skill.dataset.skillId}.value`;
 			let value = skill.dataset.skillValue;
 
-			formData.append(key, value);
+			setProperty(formData.object, key, value);
 			dtypes[key] = "Number";
 		}
 
