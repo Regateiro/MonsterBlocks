@@ -19,7 +19,7 @@ export default class AttackPreper extends ItemPreper {
 		this.data.tohit = this.item.labels.toHit;
 		this.data.description = this.getDescription();
 		this.data.continuousDescription = 
-			Helpers.isContinuousDescription(this.data.data.description.value);
+			Helpers.isContinuousDescription(this.system.description.value);
 
 		if (debug.enabled) console.debug(this);
 	}
@@ -40,7 +40,7 @@ export default class AttackPreper extends ItemPreper {
 	 * @memberof AttackPreper
 	 */
 	getDescription() {
-		let attackData = this.item.data.data;
+		let attackData = this.item.system;
 		
 		return {
 			attackType: this.getAttackType(this.item),
@@ -191,13 +191,13 @@ export default class AttackPreper extends ItemPreper {
 	}
 
 	/**
-	 * Determin which type of attack this is.
+	 * Determine which type of attack this is.
 	 *
 	 * @return {string} 
 	 * @memberof AttackPreper
 	 */
 	getAttackType() {
-		return CONFIG.DND5E.itemActionTypes[this.item?.data?.data?.actionType] || "";
+		return CONFIG.DND5E.itemActionTypes[this.item?.system?.actionType] || "";
 	}
 
 	/**
@@ -207,7 +207,7 @@ export default class AttackPreper extends ItemPreper {
 	 * @memberof AttackPreper
 	 */
 	isRangedAttack() {
-		return ["rwak", "rsak"].includes(this.item.data.data?.actionType);
+		return ["rwak", "rsak"].includes(this.item.system?.actionType);
 	}
 
 	/**
@@ -218,7 +218,7 @@ export default class AttackPreper extends ItemPreper {
 	 * @memberof MonsterBlock5e
 	 */
 	getAttackFormula(index=0) {
-		const atkd = this.item.data.data;
+		const atkd = this.item.system;
 
 		if (index == "v") return atkd?.damage?.versatile  // Versitile formula is index 'v'
 		
@@ -260,6 +260,6 @@ export default class AttackPreper extends ItemPreper {
 	 * @memberof AttackPreper
 	 */
 	dealsDamage() {
-		return Boolean(this.item.data.data?.damage?.parts?.length);
+		return Boolean(this.item.system?.damage?.parts?.length);
 	}
 }
