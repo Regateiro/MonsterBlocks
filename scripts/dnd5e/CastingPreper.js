@@ -117,19 +117,19 @@ export default class CastingPreper extends ItemPreper {
 	 * @memberof CastingPreper
 	 */
 	prepare() {		
-		this.data.castingType = this.constructor.isSpellcasting(this.item) ?
+		this.system.castingType = this.constructor.isSpellcasting(this.item) ?
 			(this.constructor.isPactMagic(this.item) ? this.cts.pact : this.cts.standard) : this.cts.innate;
 
-		this.data.hasAtWill = this.sheet.hasAtWillSpells();
+		this.system.hasAtWill = this.sheet.hasAtWillSpells();
 		
 		/** @type {string} The type of casting feature */
-		this.ct = this.data.castingType;
-		this.data.spellbook = this.reformatSpellbook();
+		this.ct = this.system.castingType;
+		this.system.spellbook = this.reformatSpellbook();
 
 		[this.abilityTitle, this.castingAbility] = this.getCastingAbility();
 		this.tohit = this.getSpellAttackBonus();
 
-		this.data.description =  this.castingFeatureDescriptionData;
+		this.system.description =  this.castingFeatureDescriptionData;
 
 		if (debug.enabled) console.debug(this);
 	}
@@ -491,7 +491,7 @@ export default class CastingPreper extends ItemPreper {
 	 * @memberof CastingPreper
 	 */
 	get atWillSpellListText() {
-		if (!this.data.hasAtWill) return "";
+		if (!this.system.hasAtWill) return "";
 
 		return game.i18n.format("MOBLOKS5E.CasterAtWill", {
 			spells: Templates.itemList({
@@ -552,7 +552,7 @@ export default class CastingPreper extends ItemPreper {
 			[this.cts.standard]: (l) => l.order > 0.5
 		}
 
-		const spelllevel = this.data.spellbook.find(types[this.ct]);
+		const spelllevel = this.system.spellbook.find(types[this.ct]);
 
 		if (spelllevel !== undefined) {
 			let spell = spelllevel.spells.find((s) => 

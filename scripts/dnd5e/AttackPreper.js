@@ -16,10 +16,10 @@ export default class AttackPreper extends ItemPreper {
 	 * @memberof AttackPreper
 	 */
 	prepare() {
-		this.data.tohit = this.item.labels.toHit;
-		this.data.description = this.getDescription();
-		this.data.continuousDescription = 
-			Helpers.isContinuousDescription(this.data.system.description.value);
+		this.system.tohit = this.item.labels.toHit;
+		this.system.description = this.getDescription();
+		this.system.continuousDescription = 
+			Helpers.isContinuousDescription(this.system.system.description.value);
 
 		if (debug.enabled) console.debug(this);
 	}

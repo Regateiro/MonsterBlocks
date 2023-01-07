@@ -4,7 +4,7 @@ import ItemPreper from "./ItemPreper.js";
 
 export default class ActionPreper extends ItemPreper {
 	prepare() {
-		this.data.is = this.is;
+		this.system.is = this.is;
 	}
 
 	/**
