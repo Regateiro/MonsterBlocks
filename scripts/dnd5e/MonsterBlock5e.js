@@ -329,7 +329,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	prepSkillsMenu(attrMenu) {
 		let menu = this.addMenu("skills", game.i18n.localize("MOBLOKS5E.SkillS"), attrMenu);
 
-		Object.entries(this.actor.data.data.skills).forEach(([id, skill]) => {
+		Object.entries(this.actor.system.skills).forEach(([id, skill]) => {
 			skill.abilityAbbr = game.i18n.localize(`MOBLOKS5E.Abbr${skill.ability}`);
 			skill.icon = this._getProficiencyIcon(skill.value);
 			skill.hover = CONFIG.DND5E.proficiencyLevels[skill.value];
