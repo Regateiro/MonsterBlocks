@@ -976,7 +976,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		["dv", "dr", "di"].forEach(dg => {
 			let damageTypes = html.find(`[data-damage-type="system.traits.${dg}"]`);
-			let key = `data.traits.${dg}.value`;
+			let key = `system.traits.${dg}.value`;
 			let value = [];
 			for (let dt of damageTypes) {
 				let state = (dt.dataset.flag == "true");
