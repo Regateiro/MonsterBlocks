@@ -24,10 +24,10 @@ export default class ResourcePreper {
 	static hasResource(item) {
 		return Boolean(
 			// eslint-disable-next-line no-mixed-spaces-and-tabs
-			   item.data.data.consume?.target
+			   item.system.consume?.target
 			|| item.type == "consumable"
 			|| item.type == "loot"
-			|| item.data.data.uses?.max
+			|| item.system.uses?.max
 		);
 	}
 
