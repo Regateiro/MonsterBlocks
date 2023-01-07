@@ -97,8 +97,8 @@ export default class ResourcePreper {
 		let max = `data.${r[1]}.${r[2]}.max`;
 		
 		this.res.target = "data." + t;
-		this.res.current = getProperty(this.sheet.actor.data, this.res.target);
-		this.res.limit = getProperty(this.sheet.actor.data, max);
+		this.res.current = getProperty(this.sheet.actor.system, this.res.target);
+		this.res.limit = getProperty(this.sheet.actor.system, max);
 		this.res.refresh = game.i18n.localize("MOBLOKS5E.ResourceRefresh"); // It just says "Day" becaause thats typically the deal, and I don't see any other option.
 	}
 	/**

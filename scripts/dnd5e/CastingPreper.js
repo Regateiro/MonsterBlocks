@@ -330,8 +330,7 @@ export default class CastingPreper extends ItemPreper {
 	 * @memberof CastingPreper
 	 */
 	get casterLevel() {
-		return this.sheet.actor.data
-			.data?.details?.spellLevel ?? 0;
+		return this.sheet.actor.system?.details?.spellLevel ?? 0;
 	}
 
 	/**
@@ -562,7 +561,7 @@ export default class CastingPreper extends ItemPreper {
 		}
 		
 		return [
-			this.templateData.actor.data?.abilities[castingability]?.label 
+			this.templateData.actor.system?.abilities[castingability]?.label 
 				?? game.i18n.localize("DND5E.AbilityInt"), 
 			castingability
 		];
