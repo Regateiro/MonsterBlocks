@@ -25,13 +25,13 @@ export default class ItemPrep {
 	 * Creates an instance of ItemPrep.
 	 *
 	 * @param {MonsterBlock5e} sheet
-	 * @param {object}         data
+	 * @param {object}         system
 	 * @memberof ItemPrep
 	 */
-	constructor(sheet, data) {
+	constructor(sheet, system) {
 		this.sheet = sheet;
-		this.data = data;
-		this.data.features = this.features;
+		this.system = system;
+		this.system.features = this.features;
 
 		this.prepareItems();
 	}
@@ -57,7 +57,7 @@ export default class ItemPrep {
 	 * @memberof ItemPrep
 	 */
 	prepareItems() {
-		const [other, spells] = this.data.items.partition(item => item.type === "spell");
+		const [other, spells] = this.system.items.partition(item => item.type === "spell");
 		this.organizeSpellbooks(spells);
 		this.organizeFeatures(other);
 	}
@@ -69,8 +69,8 @@ export default class ItemPrep {
 	 * @memberof ItemPrep
 	 */
 	organizeSpellbooks(spells) {
-		this.data.spellbook = this.sheet._prepareSpellbook(this.data, spells);
-		this.data.innateSpellbook = new InnateSpellbookPrep(this.data.spellbook, this.sheet).prepare();
+		this.system.spellbook = this.sheet._prepareSpellbook(this.system, spells);
+		this.system.innateSpellbook = new InnateSpellbookPrep(this.system.spellbook, this.sheet).prepare();
 	}
 
 	/**
@@ -82,7 +82,7 @@ export default class ItemPrep {
 	organizeFeatures(items) {
 		for (let item of items) {
 			const category = Object.values(this.features).find(cat => cat.filter(item));
-			this.prepareItem(category, item, this.data);
+			this.prepareItem(category, item, this.system);
 			category.items.push(item);
 		}
 	}
