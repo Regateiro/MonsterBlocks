@@ -11,7 +11,7 @@ function createRelease(cb) {
 		"actor-sheet.html",
 		"lang/*",
 		"input-expressions/handler.js"
-	], { base: "." })
+	], { base: ".", allowEmpty: true })
 		.pipe(zip("monsterblock.zip"))
 		.pipe(Gulp.dest("./"));
 }
