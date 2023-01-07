@@ -19,7 +19,7 @@ export default class AttackPreper extends ItemPreper {
 		this.data.tohit = this.item.labels.toHit;
 		this.data.description = this.getDescription();
 		this.data.continuousDescription = 
-			Helpers.isContinuousDescription(this.data.data.description.value);
+			Helpers.isContinuousDescription(this.data.system.description.value);
 
 		if (debug.enabled) console.debug(this);
 	}
@@ -218,7 +218,7 @@ export default class AttackPreper extends ItemPreper {
 	 * @memberof MonsterBlock5e
 	 */
 	getAttackFormula(index=0) {
-		const atkd = this.item.data.data;
+		const atkd = this.item.system;
 
 		if (index == "v") return atkd?.damage?.versatile  // Versitile formula is index 'v'
 		
