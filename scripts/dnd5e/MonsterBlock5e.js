@@ -71,8 +71,8 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		data.limited = this.actor.limited;
 
 		// Tweak a few properties to get a proper output
-		data.data.details.xp.label = this.constructor.formatNumberCommas(data.data.details.xp.value);
-		data.data.attributes.hp.average = this.constructor.averageRoll(data.data.attributes.hp.formula, this.actor.getRollData());
+		data.system.details.xp.label = this.constructor.formatNumberCommas(data.system.details.xp.value);
+		data.system.attributes.hp.average = this.constructor.averageRoll(data.system.attributes.hp.formula, this.actor.getRollData());
 	
 		this.prepAbilities(data);
 		this.prepMovement(data);
@@ -335,8 +335,8 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			skill.hover = CONFIG.DND5E.proficiencyLevels[skill.value];
 			skill.label = CONFIG.DND5E.skills[id];
 			menu.add(new MenuItem("skill", { id, skill }, (m, data) => {
-				m.skill.icon = data.data.skills[m.id].icon,
-				m.skill.value = data.data.skills[m.id].value
+				m.skill.icon = data.system.skills[m.id].icon,
+				m.skill.value = data.system.skills[m.id].value
 			}));
 		});
 			
@@ -366,7 +366,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	 */
 	replaceNonMagPysicalText(data) {
 		["di", "dr", "dv"].forEach(damageSet => {
-			const selected = data.actor.data.traits[damageSet]?.selected;
+			const selected = data.actor.system.traits[damageSet]?.selected;
 			if (selected.physical) selected.physical = game.i18n.localize("MOBLOKS5E.physicalDamage");
 		});
 	}
@@ -404,10 +404,10 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 
 	hasSaveProfs() {
-		return Object.values(this.actor.data?.data?.abilities)?.some(ability => ability.proficient);
+		return Object.values(this.actor.system?.abilities)?.some(ability => ability.proficient);
 	}
 	hasSkills() {
-		return Object.values(this.actor.data?.data?.skills)?.some(skill => skill.value);
+		return Object.values(this.actor.system?.skills)?.some(skill => skill.value);
 	}
 	hasAtWillSpells() {	// Some normal casters also have a few spells that they can cast "At will"
 		return this.actor.data.items.some((item) => {
@@ -513,11 +513,11 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 	getPassivePerception() {
 		return game.i18n.format("MOBLOKS5E.PassivePerception", {
-			pp: this.actor.data.data.skills.prc.passive
+			pp: this.actor.system.skills.prc.passive
 		});
 	}
 	prepAbilities(data) {
-		Object.entries(data.data?.abilities)?.forEach(
+		Object.entries(data.system?.abilities)?.forEach(
 			([id, ability]) => ability.abbr = game.i18n.localize("MOBLOKS5E.Abbr" + id)
 		)
 	}
@@ -545,10 +545,10 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		const moveTpyes = ["walk", "burrow", "climb", "fly", "swim"];
 		/** @type moveData[] */
 		const movement = [];
-		const hover = data.data.attributes.movement.hover;
+		const hover = data.system.attributes.movement.hover;
 
 		for (let move of moveTpyes) {
-			const speed = data.data.attributes.movement[move];
+			const speed = data.system.attributes.movement[move];
 			
 			let moveName = move;
 			const moveNameCaps = moveName.replace(moveName[0], moveName[0].toUpperCase());
@@ -559,7 +559,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				showLabel: move != "walk",
 				label: game.i18n.localize(`DND5E.Movement${moveNameCaps}`).toLowerCase(),
 				value: speed > 0 ? speed : move != "walk" ? "" : "0",
-				unit: data.data.attributes.movement.units + game.i18n.localize("MOBLOKS5E.SpeedUnitAbbrEnd"),
+				unit: data.system.attributes.movement.units + game.i18n.localize("MOBLOKS5E.SpeedUnitAbbrEnd"),
 				key: `data.attributes.movement.${move}`
 			});
 		}
@@ -592,7 +592,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		const senses = [];
 
 		for (let sense of senseTypes) {
-			const range = data.data.attributes.senses[sense];
+			const range = data.system.attributes.senses[sense];
 
 			let senseName = sense;
 			const senseNameCaps = senseName.replace(senseName[0], senseName[0].toUpperCase());
@@ -601,8 +601,8 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				name: sense,
 				label: game.i18n.localize(`DND5E.Sense${senseNameCaps}`).toLowerCase(),
 				value: sense == "special" ? range : range > 0 ? range : "",
-				unit: data.data.attributes.senses.units + game.i18n.localize("MOBLOKS5E.SpeedUnitAbbrEnd"),
-				key: `data.attributes.senses.${sense}`
+				unit: data.system.attributes.senses.units + game.i18n.localize("MOBLOKS5E.SpeedUnitAbbrEnd"),
+				key: `system.attributes.senses.${sense}`
 			});
 		}
 
