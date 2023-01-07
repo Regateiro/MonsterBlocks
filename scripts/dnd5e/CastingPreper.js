@@ -54,7 +54,7 @@ export default class CastingPreper extends ItemPreper {
 	 * @memberof CastingPreper
 	 */
 	static isPactMagic(item) {
-		const desc = item.data.data.description?.value?.toLowerCase().replace(/\s+/g, "") ?? "";
+		const desc = item.system.description?.value?.toLowerCase().replace(/\s+/g, "") ?? "";
 		return getTranslationArray("MOBLOKS5E.WarlockLocators").some(
 			s => desc.indexOf(s) > -1
 		);
@@ -451,7 +451,7 @@ export default class CastingPreper extends ItemPreper {
 	 */
 	get casterStatsText() {
 		return game.i18n.format("MOBLOKS5E.CastingStats", {
-			savedc: this.sheet.actor.data.data?.attributes?.spelldc,
+			savedc: this.sheet.actor.system?.attributes?.spelldc,
 			bonus: `${this.tohit > -1 ? "+" : ""}${this.tohit}`
 		})
 	}
@@ -525,7 +525,7 @@ export default class CastingPreper extends ItemPreper {
 	 * @memberof CastingPreper
 	 */
 	getSpellAttackBonus() {
-		const data = this.sheet.actor.data.data;
+		const data = this.sheet.actor.system;
 		const abilityBonus = data.abilities[this.castingAbility]?.mod;
 		const profBonus = data.attributes?.prof;
 		
@@ -539,8 +539,7 @@ export default class CastingPreper extends ItemPreper {
 	 * @memberof CastingPreper
 	 */
 	getCastingAbility() {
-		const main = this.sheet.actor.data
-			.data?.attributes?.spellcasting || "int";
+		const main = this.sheet.actor.system?.attributes?.spellcasting || "int";
 
 		let castingability = main;
 		
