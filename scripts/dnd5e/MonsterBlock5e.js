@@ -410,27 +410,27 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		return Object.values(this.actor.system?.skills)?.some(skill => skill.value);
 	}
 	hasAtWillSpells() {	// Some normal casters also have a few spells that they can cast "At will"
-		return this.actor.system.items.some((item) => {
+		return this.actor.items.some((item) => {
 			return item.system.preparation?.mode === "atwill";
 		});
 	}
 	hasBonusActions() {
-		return this.actor.system.items.some((item) => {
+		return this.actor.items.some((item) => {
 			return this.constructor.isBonusAction(item);
 		});
 	}
 	hasReactions() {
-		return this.actor.system.items.some((item) => {
+		return this.actor.items.some((item) => {
 			return this.constructor.isReaction(item)
 		});
 	}
 	hasLair() {
-		return this.actor.system.items.some((item) => {
+		return this.actor.items.some((item) => {
 			return this.constructor.isLairAction(item)
 		});
 	}
 	hasLegendaryActions() {
-		return this.actor.system.items.some((item) => {
+		return this.actor.items.some((item) => {
 			return this.constructor.isLegendaryAction(item)
 		});
 	}
