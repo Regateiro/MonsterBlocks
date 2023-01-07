@@ -195,7 +195,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		return flattenObject(
 			mergeObject(
-				formData.toObject(), 
+				formData.object(), 
 				updateData
 			)
 		);
@@ -1023,7 +1023,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		
 		const entity = input.dataset.entity ? 
 			this.actor.getEmbeddedDocument("Item", input.dataset.entity) : 
-			this.actor.data;
+			this.actor;
 		const key = input.dataset.fieldKey
 		const dtype = input.dataset.dtype;
 
@@ -1069,7 +1069,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		if (window.math?.roll)
 			return inputExpression(new ContentEditableAdapter(input), current, { 
-				entity, event, 
+				event, entity, 
 				data: this.templateData,
 				actor: this.object
 			});
