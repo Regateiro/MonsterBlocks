@@ -333,7 +333,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			skill.abilityAbbr = game.i18n.localize(`MOBLOKS5E.Abbr${skill.ability}`);
 			skill.icon = this._getProficiencyIcon(skill.value);
 			skill.hover = CONFIG.DND5E.proficiencyLevels[skill.value];
-			skill.label = CONFIG.DND5E.skills[id];
+			skill.label = CONFIG.DND5E.skills[id].label;
 			menu.add(new MenuItem("skill", { id, skill }, (m, data) => {
 				m.skill.icon = data.system.skills[m.id].icon,
 				m.skill.value = data.system.skills[m.id].value
