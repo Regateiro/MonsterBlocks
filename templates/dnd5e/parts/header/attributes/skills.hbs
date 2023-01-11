@@ -3,9 +3,8 @@
 	<div class="overflow-fix">
 		<ul>
 		{{#each system.skills as |skill s|}}
-			<script type="text/javascript">console.debug(JSON.stringify({{skill}}, null, 4))</script>
 			<li class="skill {{#if skill.value}}proficient{{/if}}" title="{{skill.ability}}" data-skill="{{s}}">
-				<span class="skill-title">{{skill}}</span>
+				<span class="skill-title">{{skill.toSource()}}</span>
 				<span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>{{~" "~}}
 			</li>
 		{{/each}}
@@ -15,9 +14,8 @@
 <ul class="inline-list">
 {{#each system.skills as |skill s|}}
 	{{#if (or skill.value @root.flags.show-not-prof)}}
-		<script type="text/javascript">console.debug(JSON.stringify({{skill}}, null, 4))</script>
 		<li class="skill {{#if skill.value}}proficient{{/if}}"  title="{{skill.ability}}" data-skill="{{s}}">
-			<span class="skill-title">{{skill}}</span>
+			<span class="skill-title">{{skill.toSource()}}</span>
 			<span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>{{~" "~}}
 		</li>
 	{{/if}}
