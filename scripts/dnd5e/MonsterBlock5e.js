@@ -1214,8 +1214,8 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		"moblok-hascontents": (obj) => { // Check if an array is empty.
 			return Object.keys(obj).length > 0;
 		},
-		"moblok-enrichhtml": async (str, owner, flags) => { // Formats any text to include proper inline rolls and links.
-			return await TextEditor.enrichHTML(str || "", { secrets: (owner && !flags["hidden-secrets"]), async: true });
+		"moblok-enrichhtml": (str, owner, flags) => { // Formats any text to include proper inline rolls and links.
+			return TextEditor.enrichHTML(str || "", { secrets: (owner && !flags["hidden-secrets"]), async: false });
 		}
 	};
 
