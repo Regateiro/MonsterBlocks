@@ -1019,12 +1019,12 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		const input = event.currentTarget;
 
 		input.innerText = input.innerText.replace(/\s+/gm, " ");	// Strip excess whitespace
-		let value = input.innerText;								// .innerText will not include any HTML tags
+		let value = input.dataset.selectedValue ? input.dataset.selectedValue : input.innerText;	// .innerText will not include any HTML tags
 		
 		const entity = input.dataset.entity ? 
 			this.actor.getEmbeddedDocument("Item", input.dataset.entity) : 
 			this.actor;
-		const key = input.dataset.fieldKey
+		const key = input.dataset.fieldKey ? input.dataset.fieldKey : input.dataset.selectKey;
 		const dtype = input.dataset.dtype;
 
 		switch (dtype) {
