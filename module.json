@@ -16,7 +16,7 @@
 			"url": "https://github.com/Regateiro"
 		}
 	],
-	"version": "3.3.7",
+	"version": "3.3.8",
 	"minimumCoreVersion": "9",
 	"compatibleCoreVersion": "10",
 	"system": ["dnd5e"],
