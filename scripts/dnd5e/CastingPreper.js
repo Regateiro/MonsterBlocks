@@ -206,7 +206,7 @@ export default class CastingPreper extends ItemPreper {
 	 */
 	getSpellPageLevel(page) {
 		return page.spells.reduce(
-			(max, spell) => spell.data.level > max ? spell.data.level : max,
+			(max, spell) => spell.system.level > max ? spell.system.level : max,
 		1);
 	}
 
