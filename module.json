@@ -16,11 +16,11 @@
 			"url": "https://github.com/Regateiro"
 		}
 	],
-	"version": "3.3.10",
-	"minimumCoreVersion": "9",
-	"compatibleCoreVersion": "10",
-	"system": ["dnd5e"],
-	"minimumSystemVersion": "1.5.0",
+	"version": "3.3.11",
+	"compatibility": {
+		"minimum": 10,
+		"verified": "10.291"
+	},
 	"esmodules": [
 		"monsterblock.js"
 	],
@@ -49,13 +49,24 @@
 			"path": "lang/pt-BR.json"
 		}
 	],
-	"dependencies": [
-		{
-			"name": "_mathjs",
-			"type": "module",
-			"manifest": "https://raw.githubusercontent.com/League-of-Foundry-Developers/mathjs-lib/master/module.json"
-		}
-	],
+	"relationships": {
+		"systems" : [{
+			"id": "dnd5e",
+			"manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
+			"compatibility": {
+				"minimum": "2.1.1",
+				"verified": "2.1.1"
+			  }
+			}
+		],
+		"requires":[
+			{
+				"id": "_mathjs",
+				"type": "module",
+				"manifest": "https://raw.githubusercontent.com/League-of-Foundry-Developers/mathjs-lib/master/module.json"
+			}
+		]
+	},
 	"manifest": "https://github.com/Regateiro/MonsterBlocks/releases/latest/download/module.json",
 	"url": "https://github.com/Regateiro/MonsterBlocks",
 	"download": "https://github.com/Regateiro/MonsterBlocks/releases/latest/download/monsterblock.zip",
