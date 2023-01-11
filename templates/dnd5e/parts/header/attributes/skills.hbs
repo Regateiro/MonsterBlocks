@@ -4,7 +4,7 @@
 		<ul>
 		{{#each system.skills as |skill s|}}
 			<li class="skill {{#if skill.value}}proficient{{/if}}" title="{{skill.ability}}" data-skill="{{s}}">
-				<span class="skill-title">{{skill.toSource()}}</span>
+				<span class="skill-title">{{skill.label}}</span>
 				<span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>{{~" "~}}
 			</li>
 		{{/each}}
@@ -15,7 +15,7 @@
 {{#each system.skills as |skill s|}}
 	{{#if (or skill.value @root.flags.show-not-prof)}}
 		<li class="skill {{#if skill.value}}proficient{{/if}}"  title="{{skill.ability}}" data-skill="{{s}}">
-			<span class="skill-title">{{skill.toSource()}}</span>
+			<span class="skill-title">{{skill.label}}</span>
 			<span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>{{~" "~}}
 		</li>
 	{{/if}}
