@@ -22,13 +22,13 @@
 </span>
 {{#if flags.editing~}}
 	<div class="hover-only select-field" data-select-key="system.attributes.senses.units"
-		data-selected-value="{{data.attributes.senses.units}}">
+		data-selected-value="{{system.attributes.senses.units}}">
 		<label
-			class="{{#if flags.editing}}select-label{{/if}}">{{lookup config.movementUnits data.attributes.senses.units}}</label>{{~" "~}}
+			class="{{#if flags.editing}}select-label{{/if}}">{{lookup config.movementUnits system.attributes.senses.units}}</label>{{~" "~}}
 		{{#if flags.editing~}}
 			<ul class="actor-size select-list">
 			{{#each config.movementUnits as |label unit|}}
-				{{#unless (eq unit ../data.attributes.senses.units)}}
+				{{#unless (eq unit ../system.attributes.senses.units)}}
 					<li data-selection-value="{{unit}}">{{label}}</li>
 				{{/unless}}
 			{{~/each~}}

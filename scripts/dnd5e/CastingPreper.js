@@ -236,7 +236,7 @@ export default class CastingPreper extends ItemPreper {
 	 */
 	getPageSlotKey({ maxSpellLevel }) {
 		const suffix = this.pact ? "pact" : `spell${maxSpellLevel}`;
-		return `data.spells.${suffix}`;
+		return `system.spells.${suffix}`;
 	}
 
 	/**
@@ -524,9 +524,9 @@ export default class CastingPreper extends ItemPreper {
 	 * @memberof CastingPreper
 	 */
 	getSpellAttackBonus() {
-		const data = this.sheet.actor.system;
-		const abilityBonus = data.abilities[this.castingAbility]?.mod;
-		const profBonus = data.attributes?.prof;
+		const system = this.sheet.actor.system;
+		const abilityBonus = system.abilities[this.castingAbility]?.mod;
+		const profBonus = system.attributes?.prof;
 		
 		return abilityBonus + profBonus;
 	}
@@ -554,10 +554,10 @@ export default class CastingPreper extends ItemPreper {
 
 		if (spelllevel !== undefined) {
 			let spell = spelllevel.spells.find((s) => 
-				s.data.ability && 
-				s.data.ability != main
+				s.system.ability && 
+				s.system.ability != main
 			);
-			castingability = spell?.data?.ability ?? main;
+			castingability = spell?.system?.ability ?? main;
 		}
 		
 		return [
