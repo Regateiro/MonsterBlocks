@@ -770,7 +770,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				const preset = event.altKey ? 1 : 0;
 				window.BetterRolls.rollItem(item, { event, preset }).toMessage();
 			}
-			else return item.roll(); // Conveniently, items have all this logic built in already.
+			else return item.use(); // Conveniently, items have all this logic built in already.
 		});
 
 		// uses the built in attack roll from the item
