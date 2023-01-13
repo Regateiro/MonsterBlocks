@@ -1,5 +1,11 @@
 <h1 class="charname" contenteditable="{{flags.editing}}" data-field-key="name" placeholder="{{localize "DND5E.Name"}}">{{actor.name}}</h1>
 <div class="chartype">
+	<a class="rest short-rest" data-action="rest" title="{{localize "DND5E.ShortRest"}}">
+		<i class="fas fa-hourglass-half"></i>
+	</a>{{~" "~}}
+	<a class="rest long-rest" data-action="rest" title="{{localize "DND5E.LongRest"}}">
+		<i class="fas fa-hourglass-end"></i></a>
+	</a>{{~" | "~}}
 	<div class="select-field" data-select-key="system.traits.size" data-selected-value="{{system.traits.size}}">
 		<label class="{{#if flags.editing}}select-label{{/if}}">{{lookup config.actorSizes system.traits.size}}</label>{{~" "~}}
 		{{#if flags.editing~}}
@@ -21,14 +27,6 @@
 	<span class="optional-comma" contenteditable="{{flags.editing}}" placeholder="{{localize "DND5E.Alignment"}}" data-field-key="system.details.alignment">
 		{{~system.details.alignment~}}
 	</span>
-</div>
-<div>
-	<a class="rest short-rest" data-action="rest" title="{{localize "DND5E.ShortRest"}}">
-		<i class="fas fa-hourglass-half"></i>
-	</a>{{~" "~}}
-	<a class="rest long-rest" data-action="rest" title="{{localize "DND5E.LongRest"}}">
-		<i class="fas fa-hourglass-end"></i></a>
-	</a>
 </div>
 {{#unless flags.hide-profile-image}}
 	<figure class="profile-image">

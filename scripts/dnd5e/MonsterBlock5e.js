@@ -898,6 +898,10 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		// Configure Special Flags
 		html.find(".config-button").click(this._onConfigMenu.bind(this));
+
+		// Rest bindings
+		html.find(".short-rest").click(this._onShortRest.bind(this));
+		html.find(".long-rest").click(this._onLongRest.bind(this));
 	}
 	
 	toggleExpanded(event) {
@@ -1116,6 +1120,32 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		// Update the field value and save the form
 		this._onSubmit(event);
+	}
+
+   /**
+   * Take a short rest, calling the relevant function on the Actor instance.
+   * @param {Event} event             The triggering click event.
+   * @returns {Promise<RestResult>}  Result of the rest action.
+   * @private
+   */
+	async _onShortRest(event) {
+		event.preventDefault();
+		await this._onSubmit(event);
+		return this.actor.shortRest();
+	}
+
+	/* -------------------------------------------- */
+
+	/**
+	 * Take a long rest, calling the relevant function on the Actor instance.
+	 * @param {Event} event             The triggering click event.
+	 * @returns {Promise<RestResult>}  Result of the rest action.
+	 * @private
+	 */
+	async _onLongRest(event) {
+		event.preventDefault();
+		await this._onSubmit(event);
+		return this.actor.longRest();
 	}
 	
 	/**
