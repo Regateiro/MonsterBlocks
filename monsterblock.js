@@ -20,7 +20,7 @@ Hooks.once("ready", () => {
 	if (debug.INFO) console.debug("Monster Blocks | Registering Settings");
 
 	Object.entries(Flags5e.flagDefaults)
-		.filter(([n, d]) => !d.hidden)
+		.filter(([_, d]) => !d.hidden)
 		.forEach(([name, details]) =>
 			game.settings.register(Flags5e.scope, details.setting || name, {
 				name: game.i18n.localize(`MOBLOKS5E.${name}.settings.name`),

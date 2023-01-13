@@ -1,340 +1,335 @@
 {
-	"MOBLOKS5E": {
-		"mini-block": {
-			"label": "Blocos Pequenos"
-		},
-		"compact-window": {
-			"enable": "Habilitar Janela Compacta",
-			"disable": "Desabilitar Janela Compacta",
-			"settings": {
-				"name": "Janela Compacta",
-				"hint": "Remove a barra de título da janela e faz com que a ficha fique com a aparência mais compacta."
-			}
-		},
-		"compact-layout": {
-			"enable": "Habilitar Layout Compacto",
-			"disable": "Desabilitar Layout Compacto",
-			"settings": {
-				"name": "Layout Compacto",
-				"hint": "Reduz o espaço entre os itens na ficha para economizar espaço."
-			}
-		},
-		"compact-feats": {
-			"enable": "Habilitar Características Compactas",
-			"disable": "Desabilitar Características Compactas",
-			"settings": {
-				"name": "Características Compactas",
-				"hint": "Reduz o espaço utilizado pelas características. Quando esta opção estiver habilitada, cada característica utilizará somente duas linhas. Ao passar o ponteiro por cima, a descrição completa das características serão reveladas. Características podem ser expandidas/compactadas individualmente ao clicar nelas."
-			}
-		},
-		"show-collapsible": {
-			"enable": "Ativar seções recolhíveis",
-			"disable": "Desativar seções recolhíveis",
-			"settings": {
-				"name": "Ativar seções recolhíveis",
-				"hint": "Fornece uma alternância para recolher cada seção de recurso. Isso adiciona um cabeçalho de recursos à seção de recursos mais alta da planilha."
-			}
-		},
-		"font-size": {
-			"label": "Tamanho da fonte",
-			"placeholder": "Tamanho da fonte (px)",
-			"NaN-error": "O tamanho da fonte precisa ser um número.",
-			"settings": {
-				"name": "Tamanho da Fonte",
-				"hint": "Define o tamanho da fonte, em pixels, para o texto na ficha. Outros aspectos da ficha irão se adaptar de acordo, reduzindo o tamanho da fonte irá fazer a ficha inteira menor menor enquanto aumentar a fonte irá melhor legibilidade."
-			}
-		},
-		"resetDefaults": {
-			"label": "Restaurar configuração padrão"
-		},
-		"attack-descriptions": {
-			"enable": "Mostrar ataques gerados",
-			"disable": "Ocultar ataques gerados",
-			"settings": {
-				"name": "Descrições de ataque geradas",
-				"hint": "Mostra descrições de ataque automaticamente geradas por padrão."
-			}
-		},
-		"casting-feature": {
-			"enable": "Mostrar conjuração gerada",
-			"disable": "Ocultar conjuração gerada",
-			"settings": {
-				"name": "Características de Conjuração geradas",
-				"hint": "Mostra características de conjuração automaticamente geradas por padrão."
-			}
-		},
-		"inline-secrets": {
-			"enable": "Habilitar Segredos Inline",
-			"disable": "Desabilitar Segredos Inline",
-			"settings": {
-				"name": "Mostrar 'Secrets Inline'",
-				"hint": "Por padrão, mostrar blocos de segredos (inline) como todos os outros textos? Ou, mostrar blocos inline como blocos de textos estilizados."
-			}
-		},
-		"hidden-secrets": {
-			"enable": "Esconder segredos",
-			"disable": "Mostrar segredos",
-			"settings": {
-				"name": "Esconder 'Secrets'",
-				"hint": "Por padrão, esconder blocos de segredos da ficha."
-			}
-		},
-		"hide-profile-image": {
-			"enable": "Esconder Imagem do Perfil",
-			"disable": "Mostrar Imagem do Perfil",
-			"settings": {
-				"name": "Esconder Imagens",
-				"hint": "Por padrão, não mostrar a imagem da criatura na ficha (mais próximo da versão do livro)."
-			}
-		},
-		"use-token-image": {
-			"enable": "Usar imagem de token",
-			"disable": "Usar imagem de perfil",
-			"settings": {
-				"name": "Usar imagem de token",
-				"hint": "Por padrão, use a imagem do token na página principal e a imagem do perfil na página de biografia."
-			}
-		},
-		"show-lair-actions": {
-			"enable": "Mostrar Ações do Covil",
-			"disable": "Esconder Ações do Covil",
-			"settings": {
-				"name": "Mostrar Ações de Covil",
-				"hint": "Por padrão, mostrar Ações de Covil (não incluídas nos blocos de criaturas do livro)."
-			}
-		},
-		"current-hit-points": {
-			"enable": "Mostrar Pontos de Vida atuais",
-			"disable": "Esconder Pontos de Vida atuais",
-			"settings": {
-				"name": "Mostrar Pontos de Vida Atuais",
-				"hint": "Por padrão, mostrar os pontos de vida atuais na campo de Pontos de Vida. Se nem o máximo ou o mínimo de Pontos de Vida estivem aparecendo, a média será calculada e mostrada."
-			}
-		},
-		"maximum-hit-points": {
-			"enable": "Mostrar Pontos de Vida máximos",
-			"disable": "Esconder Pontos de Vida máximos",
-			"settings": {
-				"name": "Mostrar Pontos de Vida máximos",
-				"hint": "Por padrão, mostrar o máximo de Pontos de Vida no campo Pontos de Vida."
-			}
-		},
-		"max-height-offset": {
-			"settings": {
-				"name": "Compensação da Altura Máxima",
-				"hint": "A altura máxima da janela do Monster Blocks é baseado na altura da janela de exibição (viewport) do navegador, menos essa compensação (offset). O padrão de 72 é a altura da barra de macros mais 10px de preenchimento (padding). Se você preferir que a ficha seja mais alta e fina, reduza esse valor. Se você preferir que a ficha seja mais larga (mais colunas) aumente esse valor."
-			}
-		},
-		"default-theme": {
-			"settings": {
-				"name": "Tema Padrão",
-				"hint": "Escolha qual tema é aplicado por padrão."
-			}
-		},
-		"custom-theme-class": {
-			"settings": {
-				"name": "Classe Padrão do Tema Personalizado",
-				"hint": "O nome da classe (class, css) usada no seu tema personalizado padrão."
-			}
-		},
-		"editing": {
-			"enable": "Habilitar edição",
-			"disable": "Desabilitar edição",
-			"settings": {
-				"name": "Edição Habilitada",
-				"hint": "Escolha se a edição está ativada ou desativada por padrão."
-			}
-		},
-		"show-not-prof": {
-			"enable": "Mostrar testes em que não é proficiente",
-			"disable": "Esconder testes em que não é proficiente",
-			"settings": {
-				"name": "Mostrar Perícias e Salvaguardas em que não é proficiente",
-				"hint": "Escolha mostrar ou não perícias e salvaguardas em que não é proficiente por padrão."
-			}
-		},
-		"show-resources": {
-			"enable": "Mostrar Valores dos Recursos",
-			"disable": "Esconder Valores dos Recursos",
-			"settings": {
-				"name": "Mostrar valores dos recursos",
-				"hint": "Escolha mostrar ou não valores dos recursos por padrão."
-			}
-		},
-		"show-skill-save": {
-			"enable": "Sempre mostrar perícias e salvaguardas",
-			"disable": "Esconder perícias e salvaguardas vazias",
-			"settings": {
-				"name": "Sempre mostrar perícias e salvaguardas",
-				"hint": "Escolha mostrar ou não a lista vazia de perícias e salvaguardas por padrão."
-			}
-		},
-		"show-delete": {
-			"enable": "Habilitar deletar",
-			"disable": "Desabilitar deletar"
-		},
-		"show-bio": {
-			"enable": "Mostrar Biografia",
-			"disable": "Esconder Biografia"
-		},
-
-		"MonsterBlocks": "Monster Blocks",
-
-		"SwitchToDefault": "Alterar para Ficha Padrão",
-		"SwitchToMobloks": "Alterar para Monster Blocks",
-		
-		"DescriptionS": "Descrições",
-		"ProfileImage": "Imagem de perfil",
-		"OpenTokenizer": "Abrir VTTA Tokenizer",
-		"QuickInsert": "Quick Insert",
-
-		"Theme": "Tema",
-		"CustomThemeName": "Personalizado",
-		"DefaultThemeName": "Livro dos Monstros",
-		"SimpleThemeName": "5e SRD",
-		"DarkThemeName": "Escuridão",
-		"CoolThemeName": "Friozinho Delícia",
-		"HotThemeName": "Calor do Inferno",
-		"FoundryThemeName": "Foundry",
-		"SystemThemeName": "5e System",
-
-		"Average": "Média",
-		"Current": "Atual",
-		"Maximum": "Máximo",
-
-		"Abbrstr": "for",
-		"Abbrdex": "des",
-		"Abbrcon": "con",
-		"Abbrint": "int",
-		"Abbrwis": "sab",
-		"Abbrcha": "car",
-		"Abbrhon": "hon",
-		"Abbrsan": "san",
-		"Abbrblo": "blo",
-
-		"Score": "Atributo",
-		"Modifier": "Modificador",
-		"SavingThrowS": "Salvaguardas",
-		"PassivePerception": "Percepção passiva {pp}",
-		"PerceptionLocator": "percepção",
-		"SkillS": "Perícias",
-		"XPLabel": "{xp} XP",
-		"physicalDamage": "contundente, cortante e perfurante de ataques não mágicos",
-		"Challenge": "Nível de Desafio",
-		"ProfBonus": "Bônus de proficiência",
-
-		"EditHint": "Clique com o botão direito para editar",
-		"EditButtonHint": "Clique no botão + acima para adicionar recursos",
-
-		"AddFeat": "Característica",
-		"AddAttack": "Ataque",
-		"AddAct": "Ação",
-		"AddSpell": "Magia",
-		"AddInventory": "Inventário",
-		"AddConsumable": "Consumível",
-
-		"Recharge": "Recarga",
-		"NCharged": "Não carregada",
-		"Costs": "Custa",
-		"ResourceRefresh": "Dia",
-
-		"zero": "zero",
-		"one": "um",
-		"two": "dois",
-		"three": "três",
-		"four": "quatro",
-		"five": "cinco",
-		"six": "seis",
-		"seven": "sete",
-		"eight": "oito",
-		"nine": "novo",
-
-		"FullStop": ".",
-		"NameDescriptionSep": ".",
-		"SpeedUnitAbbrEnd": ".",
-		"Comma": ",",
-		"Colon": ":",
-		"SemiColon": ";",
-
-		"Cantrips": "Truques",
-		"AtWill": "à vontade",
-
-		"CasterNameLevel": "O(a) {name} é um(a) conjurador(a) de {level}º nível.",
-		"CastingAbility": "{ability} é o atributo de conjuração",
-		"InnateCastingAbility": "{ability} é o atributo de conjuração inata do(a) {name}",
-		"CastingStats": "(DC {savedc} para evitar magia, {bonus} para acertar com ataques mágicos).",
-		"CasterAtWill": " pode conjurar {spells} à vontade e",
-		"CasterSpellsPreped": "O(a) {name}{atwill} tem preparadas as seguintes magias:",
-		"WarlockSpellsPreped": "{atwill} tem preparadas as seguintes magias de bruxo:",
-		"InnateSpellsKnown": "Ele(a) {name} pode conjurar inatamente as seguintes magias, sem precisar de componentes materiais:",
-		"WarlockSlotRegain": "Ele(a) recupera seus espaços de magia da lista expandida de magias quando terminar um descanso curto ou longo.",
-		"ListFinalConjunctionAnd": "e",
-		"MultiDamageAttackConjunctionPlus": "mais",
-
-		"SpellLevel": "{level} círculo",
-		"SpellCost": "{cost} cada",
-		"SpellSlots": "{slots} espaço(s)",
-		"SpellPactSlots": "{slots} espaços de {level}º círculo",
-
-		"range": "alcance",
-		"reach": "alcance",
-		"target": "alvo",
-		"targetS": "alvos",
-		"AttackToHit": "{bonus} para acertar",
-		"AttackRange": "{reachRange} {range}{sep}{max} {units}.",
-		"AttackTarget": "{quantity} {type}",
-		"AttackHitLabel": "Dano:",
-		"AttackDamageTemplate": "{average} ({formula}) {type}",
-		"AttackVersatile": "ou {damage} se usada com duas mãos",
-		"damage": "dano",
-
-		"Reactions": "Reações",
-		"Multiattack": "Ataques Múltiplos",
-		"LegendaryResistance": "Resistência Lendária",
-
-		"OrdinalSuffixes": [
-			"º"
-		],
-
-		"MultiattackLocators": [
-			"multiattack",
-			"extraattack",
-			"extraattacks",
-			"multiattacks",
-			"multipleattacks",
-			"manyattacks",
-			"ataquesmúltiplos",
-			"ataqueextra",
-			"ataquesextras",
-			"ataquemúltiplo",
-			"muitosataques",
-			"ataquesmultiplos"
-		],
-		"WarlockLocators": [
-			"warlock",
-			"pactmagic",
-			"bruxo",
-			"magiadepacto"
-		],
-		"SpellcastingLocators": [
-			"spellcasting",
-			"pactmagic",
-			"conjuração",
-			"magiadepacto"
-		],
-		"InnateCastingLocators": [
-			"innatespellcasting",
-			"innatespellcasting(psionics)",
-			"innatespellcastingpsionics",
-			"conjuraçãoinata",
-			"conjuraçãoinata(psiônico)",
-			"conjuraçãoinatapsiônico"
-		],
-
-		"LegActionCost": "Custa {number} Ações",
-		"LegendaryText": "O(a) {name} pode executar {number} ações lendárias, escolhendo entre as opções abaixo. Apenas uma opção de ação lendária pode ser usada por vez, e apenas no final do turno de outro criatura. O(a) {name} recupera as ações lendárias gastas no começo do turno dele.",
-
-		"LairActionsHeading": "Ações de Covil",
-		"LairText": "Na contagem de iniciativa 20 (interrompendo a sequência de iniciativa), o(a) {name} executa uma ação de covil para causar um dos efeitos a seguir; o(a) {name} não pode usar o mesmo efeito em duas rodadas seguidas:"
-	}
+    "MOBLOKS5E": {
+        "Abbrblo": "blo",
+        "Abbrcha": "car",
+        "Abbrcon": "con",
+        "Abbrdex": "des",
+        "Abbrhon": "hon",
+        "Abbrint": "int",
+        "Abbrsan": "san",
+        "Abbrstr": "for",
+        "Abbrwis": "sab",
+        "AddAct": "Ação",
+        "AddAttack": "Ataque",
+        "AddConsumable": "Consumível",
+        "AddFeat": "Característica",
+        "AddInventory": "Inventário",
+        "AddSpell": "Magia",
+        "attack-descriptions": {
+            "disable": "Ocultar ataques gerados",
+            "enable": "Mostrar ataques gerados",
+            "settings": {
+                "hint": "Mostra descrições de ataque automaticamente geradas por padrão.",
+                "name": "Descrições de ataque geradas"
+            }
+        },
+        "AttackDamageTemplate": "{average} ({formula}) {type}",
+        "AttackHitLabel": "Dano:",
+        "AttackRange": "{reachRange} {range}{sep}{max} {units}.",
+        "AttackTarget": "{quantity} {type}",
+        "AttackToHit": "{bonus} para acertar",
+        "AttackVersatile": "ou {damage} se usada com duas mãos",
+        "AtWill": "à vontade",
+        "Average": "Média",
+        "Cantrips": "Truques",
+        "CasterAtWill": " pode conjurar {spells} à vontade e",
+        "CasterNameLevel": "O(a) {name} é um(a) conjurador(a) de {level}º nível.",
+        "CasterSpellsPreped": "O(a) {name}{atwill} tem preparadas as seguintes magias:",
+        "casting-feature": {
+            "disable": "Ocultar conjuração gerada",
+            "enable": "Mostrar conjuração gerada",
+            "settings": {
+                "hint": "Mostra características de conjuração automaticamente geradas por padrão.",
+                "name": "Características de Conjuração geradas"
+            }
+        },
+        "CastingAbility": "{ability} é o atributo de conjuração",
+        "CastingStats": "(DC {savedc} para evitar magia, {bonus} para acertar com ataques mágicos).",
+        "Challenge": "Nível de Desafio",
+        "Colon": ":",
+        "Comma": ",",
+        "compact-feats": {
+            "disable": "Desabilitar Características Compactas",
+            "enable": "Habilitar Características Compactas",
+            "settings": {
+                "hint": "Reduz o espaço utilizado pelas características. Quando esta opção estiver habilitada, cada característica utilizará somente duas linhas. Ao passar o ponteiro por cima, a descrição completa das características serão reveladas. Características podem ser expandidas/compactadas individualmente ao clicar nelas.",
+                "name": "Características Compactas"
+            }
+        },
+        "compact-layout": {
+            "disable": "Desabilitar Layout Compacto",
+            "enable": "Habilitar Layout Compacto",
+            "settings": {
+                "hint": "Reduz o espaço entre os itens na ficha para economizar espaço.",
+                "name": "Layout Compacto"
+            }
+        },
+        "compact-window": {
+            "disable": "Desabilitar Janela Compacta",
+            "enable": "Habilitar Janela Compacta",
+            "settings": {
+                "hint": "Remove a barra de título da janela e faz com que a ficha fique com a aparência mais compacta.",
+                "name": "Janela Compacta"
+            }
+        },
+        "CoolThemeName": "Friozinho Delícia",
+        "Costs": "Custa",
+        "Current": "Atual",
+        "current-hit-points": {
+            "disable": "Esconder Pontos de Vida atuais",
+            "enable": "Mostrar Pontos de Vida atuais",
+            "settings": {
+                "hint": "Por padrão, mostrar os pontos de vida atuais na campo de Pontos de Vida. Se nem o máximo ou o mínimo de Pontos de Vida estivem aparecendo, a média será calculada e mostrada.",
+                "name": "Mostrar Pontos de Vida Atuais"
+            }
+        },
+        "custom-theme-class": {
+            "settings": {
+                "hint": "O nome da classe (class, css) usada no seu tema personalizado padrão.",
+                "name": "Classe Padrão do Tema Personalizado"
+            }
+        },
+        "CustomThemeName": "Personalizado",
+        "damage": "dano",
+        "DarkThemeName": "Escuridão",
+        "default-theme": {
+            "settings": {
+                "hint": "Escolha qual tema é aplicado por padrão.",
+                "name": "Tema Padrão"
+            }
+        },
+        "DefaultThemeName": "Livro dos Monstros",
+        "DescriptionS": "Descrições",
+        "EditButtonHint": "Clique no botão + acima para adicionar recursos",
+        "EditHint": "Clique com o botão direito para editar",
+        "editing": {
+            "disable": "Desabilitar edição",
+            "enable": "Habilitar edição",
+            "settings": {
+                "hint": "Escolha se a edição está ativada ou desativada por padrão.",
+                "name": "Edição Habilitada"
+            }
+        },
+        "eight": "oito",
+        "five": "cinco",
+        "font-size": {
+            "settings": {
+                "hint": "Define o tamanho da fonte, em pixels, para o texto na ficha. Outros aspectos da ficha irão se adaptar de acordo, reduzindo o tamanho da fonte irá fazer a ficha inteira menor menor enquanto aumentar a fonte irá melhor legibilidade.",
+                "name": "Tamanho da Fonte"
+            },
+            "label": "Tamanho da fonte",
+            "NaN-error": "O tamanho da fonte precisa ser um número.",
+            "placeholder": "Tamanho da fonte (px)"
+        },
+        "FoundryThemeName": "Foundry",
+        "four": "quatro",
+        "FullStop": ".",
+        "hidden-secrets": {
+            "disable": "Mostrar segredos",
+            "enable": "Esconder segredos",
+            "settings": {
+                "hint": "Por padrão, esconder blocos de segredos da ficha.",
+                "name": "Esconder 'Secrets'"
+            }
+        },
+        "hide-profile-image": {
+            "disable": "Mostrar Imagem do Perfil",
+            "enable": "Esconder Imagem do Perfil",
+            "settings": {
+                "hint": "Por padrão, não mostrar a imagem da criatura na ficha (mais próximo da versão do livro).",
+                "name": "Esconder Imagens"
+            }
+        },
+        "HotThemeName": "Calor do Inferno",
+        "inline-secrets": {
+            "disable": "Desabilitar Segredos Inline",
+            "enable": "Habilitar Segredos Inline",
+            "settings": {
+                "hint": "Por padrão, mostrar blocos de segredos (inline) como todos os outros textos? Ou, mostrar blocos inline como blocos de textos estilizados.",
+                "name": "Mostrar 'Secrets Inline'"
+            }
+        },
+        "InnateCastingAbility": "{ability} é o atributo de conjuração inata do(a) {name}",
+        "InnateCastingLocators": [
+            "conjuraçãoinata",
+            "conjuraçãoinata(psiônico)",
+            "conjuraçãoinatapsiônico",
+            "innatespellcasting",
+            "innatespellcasting(psionics)",
+            "innatespellcastingpsionics"
+        ],
+        "InnateSpellsKnown": "Ele(a) {name} pode conjurar inatamente as seguintes magias, sem precisar de componentes materiais:",
+        "LairActionsHeading": "Ações de Covil",
+        "LairText": "Na contagem de iniciativa 20 (interrompendo a sequência de iniciativa), o(a) {name} executa uma ação de covil para causar um dos efeitos a seguir; o(a) {name} não pode usar o mesmo efeito em duas rodadas seguidas:",
+        "LegActionCost": "Custa {number} Ações",
+        "LegendaryResistance": "Resistência Lendária",
+        "LegendaryText": "O(a) {name} pode executar {number} ações lendárias, escolhendo entre as opções abaixo. Apenas uma opção de ação lendária pode ser usada por vez, e apenas no final do turno de outro criatura. O(a) {name} recupera as ações lendárias gastas no começo do turno dele.",
+        "ListFinalConjunctionAnd": "e",
+        "max-height-offset": {
+            "settings": {
+                "hint": "A altura máxima da janela do Monster Blocks é baseado na altura da janela de exibição (viewport) do navegador, menos essa compensação (offset). O padrão de 72 é a altura da barra de macros mais 10px de preenchimento (padding). Se você preferir que a ficha seja mais alta e fina, reduza esse valor. Se você preferir que a ficha seja mais larga (mais colunas) aumente esse valor.",
+                "name": "Compensação da Altura Máxima"
+            }
+        },
+        "Maximum": "Máximo",
+        "maximum-hit-points": {
+            "disable": "Esconder Pontos de Vida máximos",
+            "enable": "Mostrar Pontos de Vida máximos",
+            "settings": {
+                "hint": "Por padrão, mostrar o máximo de Pontos de Vida no campo Pontos de Vida.",
+                "name": "Mostrar Pontos de Vida máximos"
+            }
+        },
+        "mini-block": {
+            "label": "Blocos Pequenos"
+        },
+        "Modifier": "Modificador",
+        "MonsterBlocks": "Monster Blocks",
+        "Multiattack": "Ataques Múltiplos",
+        "MultiattackLocators": [
+            "ataqueextra",
+            "ataquemúltiplo",
+            "ataquesextras",
+            "ataquesmultiplos",
+            "ataquesmúltiplos",
+            "extraattack",
+            "extraattacks",
+            "manyattacks",
+            "muitosataques",
+            "multiattack",
+            "multiattacks",
+            "multipleattacks"
+        ],
+        "MultiDamageAttackConjunctionPlus": "mais",
+        "NameDescriptionSep": ".",
+        "NCharged": "Não carregada",
+        "nine": "novo",
+        "one": "um",
+        "OpenTokenizer": "Abrir VTTA Tokenizer",
+        "OrdinalSuffixes": [
+            "º"
+        ],
+        "PassivePerception": "Percepção passiva {pp}",
+        "PerceptionLocator": "percepção",
+        "physicalDamage": "contundente, cortante e perfurante de ataques não mágicos",
+        "ProfBonus": "Bônus de proficiência",
+        "ProfileImage": "Imagem de perfil",
+        "QuickInsert": "Quick Insert",
+        "range": "alcance",
+        "reach": "alcance",
+        "Reactions": "Reações",
+        "Recharge": "Recarga",
+        "resetDefaults": {
+            "label": "Restaurar configuração padrão"
+        },
+        "ResourceRefresh": "Dia",
+        "SavingThrowS": "Salvaguardas",
+        "Score": "Atributo",
+        "SemiColon": ";",
+        "seven": "sete",
+        "show-bio": {
+            "disable": "Esconder Biografia",
+            "enable": "Mostrar Biografia"
+        },
+        "show-collapsible": {
+            "disable": "Desativar seções recolhíveis",
+            "enable": "Ativar seções recolhíveis",
+            "settings": {
+                "hint": "Fornece uma alternância para recolher cada seção de recurso. Isso adiciona um cabeçalho de recursos à seção de recursos mais alta da planilha.",
+                "name": "Ativar seções recolhíveis"
+            }
+        },
+        "show-delete": {
+            "disable": "Desabilitar deletar",
+            "enable": "Habilitar deletar"
+        },
+        "show-lair-actions": {
+            "disable": "Esconder Ações do Covil",
+            "enable": "Mostrar Ações do Covil",
+            "settings": {
+                "hint": "Por padrão, mostrar Ações de Covil (não incluídas nos blocos de criaturas do livro).",
+                "name": "Mostrar Ações de Covil"
+            }
+        },
+        "show-legendary-resistance": {
+            "disable": "Esconder resistência lendária",
+            "enable": "Mostrar resistência lendária",
+            "settings": {
+                "hint": "Por padrão, mostra a resistência lendária.",
+                "name": "Mostrar resistência lendária"
+            }
+        },
+        "show-not-prof": {
+            "disable": "Esconder testes em que não é proficiente",
+            "enable": "Mostrar testes em que não é proficiente",
+            "settings": {
+                "hint": "Escolha mostrar ou não perícias e salvaguardas em que não é proficiente por padrão.",
+                "name": "Mostrar Perícias e Salvaguardas em que não é proficiente"
+            }
+        },
+        "show-resources": {
+            "disable": "Esconder Valores dos Recursos",
+            "enable": "Mostrar Valores dos Recursos",
+            "settings": {
+                "hint": "Escolha mostrar ou não valores dos recursos por padrão.",
+                "name": "Mostrar valores dos recursos"
+            }
+        },
+        "show-rest-buttons": {
+            "disable": "Esconder butões de descanço",
+            "enable": "Mostrar butões de descanço",
+            "settings": {
+                "hint": "Por padrão, mostra os butões de descanço.",
+                "name": "Mostrar butões de descanço"
+            }
+        },
+        "show-skill-save": {
+            "disable": "Esconder perícias e salvaguardas vazias",
+            "enable": "Sempre mostrar perícias e salvaguardas",
+            "settings": {
+                "hint": "Escolha mostrar ou não a lista vazia de perícias e salvaguardas por padrão.",
+                "name": "Sempre mostrar perícias e salvaguardas"
+            }
+        },
+        "SimpleThemeName": "5e SRD",
+        "six": "seis",
+        "SkillS": "Perícias",
+        "SpeedUnitAbbrEnd": ".",
+        "SpellcastingLocators": [
+            "conjuração",
+            "magiadepacto",
+            "pactmagic",
+            "spellcasting"
+        ],
+        "SpellCost": "{cost} cada",
+        "SpellLevel": "{level} círculo",
+        "SpellPactSlots": "{slots} espaços de {level}º círculo",
+        "SpellSlots": "{slots} espaço(s)",
+        "SwitchToDefault": "Alterar para Ficha Padrão",
+        "SwitchToMobloks": "Alterar para Monster Blocks",
+        "SystemThemeName": "5e System",
+        "target": "alvo",
+        "targetS": "alvos",
+        "Theme": "Tema",
+        "three": "três",
+        "two": "dois",
+        "use-token-image": {
+            "disable": "Usar imagem de perfil",
+            "enable": "Usar imagem de token",
+            "settings": {
+                "hint": "Por padrão, use a imagem do token na página principal e a imagem do perfil na página de biografia.",
+                "name": "Usar imagem de token"
+            }
+        },
+        "WarlockLocators": [
+            "bruxo",
+            "magiadepacto",
+            "pactmagic",
+            "warlock"
+        ],
+        "WarlockSlotRegain": "Ele(a) recupera seus espaços de magia da lista expandida de magias quando terminar um descanso curto ou longo.",
+        "WarlockSpellsPreped": "{atwill} tem preparadas as seguintes magias de bruxo:",
+        "XPLabel": "{xp} XP",
+        "zero": "zero"
+    }
 }

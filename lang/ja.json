@@ -1,330 +1,325 @@
 {
-	"MOBLOKS5E": {
-		"mini-block": {
-			"label": "ミニブロック"
-		},
-		"compact-window": {
-			"enable": "コンパクトウィンドウを有効にする",
-			"disable": "コンパクトウィンドウを無効にする",
-			"settings": {
-				"name": "コンパクトウィンドウ",
-				"hint": "ウィンドウのタイトルバーを削除し、シートをよりコンパクトに見せます。"
-			}
-		},
-		"compact-layout": {
-			"enable": "コンパクトレイアウトを有効にする",
-			"disable": "コンパクトレイアウトを無効にする",
-			"settings": {
-				"name": "コンパクトなレイアウト",
-				"hint": "スペースを節約するために、シート上のアイテム間の間隔を減らします。"
-			}
-		},
-		"compact-feats": {
-			"enable": "コンパクト機能を有効にする",
-			"disable": "コンパクト機能を無効にする",
-			"settings": {
-				"name": "コンパクトな機能",
-				"hint": "機能が占めるスペースを削減します。この設定を有効にすると、各機能は2行のスペースしか占有しません。マウスを機能の上に置くと、完全な説明が表示されます。機能をクリックすると、機能を個別に拡張/圧縮できます。"
-			}
-		},
-		"show-collapsible": {
-			"enable": "折りたたみ可能なセクションを有効にする",
-			"disable": "折りたたみ可能なセクションを無効にする",
-			"settings": {
-				"name": "折りたたみ可能なセクションを有効にする",
-				"hint": "各機能セクションを折りたたむためのトグルを提供します。これにより、シートの最上位の機能セクションに機能ヘッダーが追加されます。"
-			}
-		},
-		"font-size": {
-			"label": "フォントサイズ",
-			"placeholder": "フォントサイズ（px）",
-			"NaN-error": "フォントサイズは数値である必要があります。",
-			"settings": {
-				"name": "フォントサイズ",
-				"hint": "シート内のテキストのフォントサイズをピクセル単位で設定します。シートの他の側面はそれに応じて拡大縮小されます。フォントサイズを小さくするとシート全体がはるかに小さくなり、大きくすると読みやすさが向上します。"
-			}
-		},
-		"resetDefaults": {
-			"label": "既定値にリセット"
-		},
-		"attack-descriptions": {
-			"enable": "自動生成された攻撃を表示する",
-			"disable": "自動生成攻撃を隠す",
-			"settings": {
-				"name": "攻撃詳細を自動生成",
-				"hint": "デフォルトで（攻撃＋12、間合い5フィート、クリーチヤー1体。ヒット:10(3d6)[冷気]ダメージ）のような攻撃の詳細を自動的に表示する。"
-			}
-		},
-		"casting-feature": {
-			"enable": "自動生成されたスペルキャスティングを表示する",
-			"disable": "自動生成のスペルキャスティングを非表示にする",
-			"settings": {
-				"-name": "呪文発動能力の詳細を表示",
-				"hint": "自動的に呪文発動能力を持ったモンスターの特徴を表示する。"
-			}
-		},
-		"inline-secrets": {
-			"enable": "インライン秘密の説明文を表示",
-			"disable": "インライン秘密の説明文を非表示",
-			"settings": {
-				"name": "インラインの秘密の文を表示",
-				"hint": "デフォルトとして攻撃等の中に記述されている秘密の文（テキストエディターの秘密）をおなじ行間で表示するか、別途のブロックとして表示するかを設定します。"
-			}
-		},
-		"hidden-secrets": {
-			"enable": "秘密の説明文を非表示",
-			"disable": "秘密の説明文を表示",
-			"settings": {
-				"name": "秘密の文を非表示",
-				"hint": "デフォルトとしてデータブロックからすべての秘密の文を非表示にします。"
-			}
-		},
-		"hide-profile-image": {
-			"enable": "画像を非表示",
-			"disable": "画像を表示",
-			"settings": {
-				"name": "画像を非表示",
-				"hint": "デフォルトとしてデータブロックにそのモンスターの画像を表示しなくします。"
-			}
-		},
-		"use-token-image": {
-			"enable": "トークン画像を使用する",
-			"disable": "プロフィール画像を使用する",
-			"settings": {
-				"name": "トークン画像を使用する",
-				"hint": "デフォルトでは、メインページのトークン画像とバイオページのプロフィール画像を使用します。"
-			}
-		},
-		"show-lair-actions": {
-			"enable": "住処アクションを表示",
-			"disable": "住処アクションを非表示",
-			"settings": {
-				"name": "住処アクション",
-				"hint": "住処アクションを表示する。"
-			}
-		},
-		"current-hit-points": {
-			"enable": "現在HPを表示",
-			"disable": "現在HPを非表示",
-			"settings": {
-				"name": "現在のヒットポイントを表示する。",
-				"hint": "現在のヒットポイントを計算して表示します。最大と最低HPが表示されていない場合は平均を使用します。"
-			}
-		},
-		"maximum-hit-points": {
-			"enable": "最大HPを表示",
-			"disable": "最大HPを非表示",
-			"settings": {
-				"name": "最大ヒットポイントを表示する",
-				"hint": "最大ヒットポイントを計算して表示します。最大と最低HPが表示されていない場合は平均を使用します。"
-			}
-		},
-		"max-height-offset": {
-			"settings": {
-				"name": "ウィンドウの最大の長さオフセット",
-				"hint": "データブロックのウィンドウの最大の長さは現在使用している画面の大きさからこのオフセットを引いたものになります。デフォルトが72はマクロのバーと同等の長さのオフセットとなり10ピクセルのパディングも含みます。データブロックを細く・長くしたい場合はこの数値を減らしてください。広くしたい場合はこの数値を増やしてください。"
-			}
-		},
-		"default-theme": {
-			"settings": {
-				"name": "デフォルトテーマ",
-				"hint": "データブロックに適用されるデフォルトのテーマを設定します。"
-			}
-		},
-		"custom-theme-class": {
-			"settings": {
-				"name": "デフォルトのカスタムテーマのクラス名",
-				"hint": "（プログラマー用）デフォルトのカスタムテーマに使用されるクラス名を定義できます。"
-			}
-		},
-		"editing": {
-			"enable": "編集を有効にします",
-			"disable": "編集を無効にする",
-			"settings": {
-				"name": "編集可能",
-				"hint": "編集がデフォルトで有効になっているかどうかを選択します。"
-			}
-		},
-		"show-not-prof": {
-			"enable": "熟練していないチェックを表示する",
-			"disable": "熟練していないチェックを非表示にする",
-			"settings": {
-				"name": "熟練していないスキルと節約を表示する",
-				"hint": "熟練していないスキルと保存を表示することがデフォルトで有効になっているかどうかを選択します。"
-			}
-		},
-		"show-resources": {
-			"enable": "リソース値を表示",
-			"disable": "リソース値を非表示",
-			"settings": {
-				"name": "リソース値を表示する",
-				"hint": "デフォルトでリソース値を表示するかどうかを選択します。"
-			}
-		},
-		"show-skill-save": {
-			"enable": "常にスキルと節約を示す",
-			"disable": "空のスキルを非表示にして保存",
-			"settings": {
-				"name": "常にスキルと節約を示す",
-				"hint": "デフォルトで空のスキルと保存リストを表示するかどうかを選択します。"
-			}
-		},
-		"show-delete": {
-			"enable": "削除を有効にする",
-			"disable": "削除を無効にする"
-		},
-		"show-bio": {
-			"enable": "伝記を表示",
-			"disable": "伝記を隠す"
-		},
-		
-		"MonsterBlocks": "モンスターデータブロック",
-
-		"SwitchToDefault": "デフォルトシートに切り替える",
-		"SwitchToMobloks": "データブロックシートに切り替える",
-
-		"DescriptionS": "説明文",
-		"ProfileImage": "プロフィール画像",
-		"OpenTokenizer": "VTTAトークナイザーを開く",
-		"QuickInsert": "クイックインサート",
-
-		"Theme": "テーマ",
-		"CustomThemeName": "カスタム",
-		"DefaultThemeName": "モンスターマニュアル",
-		"SimpleThemeName": "5e SRD（白黒）",
-		"DarkThemeName": "ダークネス",
-		"CoolThemeName": "アイス",
-		"HotThemeName": "エンバー",
-		"FoundryThemeName": "Foundry",
-		"SystemThemeName": "5e System",
-
-		"Average": "平均",
-		"Current": "現在",
-		"Maximum": "最大",
-
-		"Abbrstr": "【筋】",
-		"Abbrdex": "【敏】",
-		"Abbrcon": "【耐】",
-		"Abbrint": "【知】",
-		"Abbrwis": "【判】",
-		"Abbrcha": "【魅】",
-		"Abbrhon": "ほん",
-		"Abbrsan": "さん",
-		"Abbrblo": "ブロ",
-
-		"Score": "現在値",
-		"Modifier": "修正値",
-		"SavingThrowS": "セーヴィング・スロー",
-		"PassivePerception": "受動〈知覚〉{pp}",
-		"PerceptionLocator": "〈知覚〉",
-		"SkillS": "技能",
-		"XPLabel": "{xp}XP",
-		"physicalDamage": "非魔法攻撃からの殴打、刺突、斬撃",
-		"Challenge": "チャレンジ",
-		"ProfBonus": "習熟度ボーナス",
-
-		"EditHint": "右クリックして編集",
-		"EditButtonHint": "機能を追加するには、上の[+]ボタンをクリックしてください",
-
-		"AddFeat": "特徴",
-		"AddAttack": "攻撃",
-		"AddAct": "アクション",
-		"AddSpell": "スペル",
-		"AddInventory": "戦利品",
-		"AddConsumable": "消耗品",
-
-		"Recharge": "再チャージ",
-		"NCharged": "チャージ失敗",
-		"Costs": "コスト",
-		"ResourceRefresh": "日",
-
-		"zero": "0つ",
-		"one": "1つ",
-		"two": "2つ",
-		"three": "3つ",
-		"four": "4つ",
-		"five": "5つ",
-		"six": "6つ",
-		"seven": "7つ",
-		"eight": "8つ",
-		"nine": "9つ",
-
-		"FullStop": "。",
-		"NameDescriptionSep": "：",
-		"SpeedUnitAbbrEnd": "：",
-		"Comma": "、",
-		"Colon": "：",
-		"SemiColon": ";",
-
-		"Cantrips": "初級呪文",
-		"AtWill": "生得呪文",
-
-		"CasterNameLevel": "この{name}は{level}レベルの術者である。",
-		"CastingAbility": "呪文発動能力値は【{ability}】である。",
-		"InnateCastingAbility": "この{name}の生得呪文発動能力値は【{ability}】である",
-		"CastingStats": "(呪文セーヴ難易度{savedc}、呪文攻撃{bonus})。",
-		"CasterAtWill": "{spells}の呪文を任意に発動することが可能であり、",
-		"CasterSpellsPreped": "以下の{name}{atwill}呪文を準備している。",
-		"WarlockSpellsPreped": "以下の{atwill}ウォーロック呪文を準備している。",
-		"InnateSpellsKnown": "{name}は生来、以下の呪文を物質要素なしで発動できる。",
-		"WarlockSlotRegain": "小休憩または大休憩終了後に使用済みの呪文スロットを回復する。",
-		"ListFinalConjunctionAnd": "",
-		"MultiDamageAttackConjunctionPlus": "",
-
-		"SpellLevel": "{level}レベル",
-		"SpellCost": "{cost} each",
-		"SpellSlots": "{slots}スロット",
-		"SpellPactSlots": "{slots}{level}-level slots",
-
-		"range": "射程",
-		"reach": "間合い",
-		"target": "目標",
-		"targetS": "目標",
-		"AttackToHit": "攻撃{bonus}",
-		"AttackRange": "{reachRange} {range}{sep}{max}{units}.",
-		"AttackTarget": "{type}{quantity}",
-		"AttackHitLabel": "　ヒット：",
-		"AttackDamageTemplate": "{average} ({formula}) {type}",
-		"damage": "ダメージ",
-
-		"Reactions": "リアクション",
-		"BonusActions": "ボーナスアクション",
-		"Multiattack": "追加攻撃",
-		"LegendaryResistance": "伝説的抵抗",
-
-		"OrdinalSuffixes": [
-			"",
-			"",
-			"",
-			""
-		],
-
-		"MultiattackLocators": [
-			"追加攻撃",
-			"複数回攻撃",
-			"マルチアタック",
-			"追加の攻撃",
-			"連続攻撃",
-			"メニーアタック"
-		],
-		"WarlockLocators": [
-			"ウォーロック",
-			"契約呪文"
-		],
-		"SpellcastingLocators": [
-			"呪文発動能力",
-			"契約魔法"
-		],
-		"InnateCastingLocators": [
-			"生得呪文",
-			"生得呪文(サイオニック)",
-			"生得呪文(サイオニック)"
-		],
-
-		"LegActionCost": "{number}伝説的アクション消費",
-		"LegendaryText": "{name}は以下の伝説的アクションを合計3回行なうことができる。1度に使用できる伝説的アクションはいずれか1つだけであり、行なえるのは他のクリーチヤーのターンの終了時である。{name} は消費した伝説的アクションの回数を自身のターンの開始時に回復する。",
-
-		"LairActionsHeading": "住処アクション",
-		"LairText": "イニシアチブ20の時点で(同値の場合は常に後)、この{name}は住処アクションを行ない､以下のうち任意の1つの効果を生み出せる。同一の効果を2ラウンド連続で使用することはできない。"
-	}
+    "MOBLOKS5E": {
+        "Abbrblo": "ブロ",
+        "Abbrcha": "【魅】",
+        "Abbrcon": "【耐】",
+        "Abbrdex": "【敏】",
+        "Abbrhon": "ほん",
+        "Abbrint": "【知】",
+        "Abbrsan": "さん",
+        "Abbrstr": "【筋】",
+        "Abbrwis": "【判】",
+        "AddAct": "アクション",
+        "AddAttack": "攻撃",
+        "AddConsumable": "消耗品",
+        "AddFeat": "特徴",
+        "AddInventory": "戦利品",
+        "AddSpell": "スペル",
+        "attack-descriptions": {
+            "disable": "自動生成攻撃を隠す",
+            "enable": "自動生成された攻撃を表示する",
+            "settings": {
+                "hint": "デフォルトで（攻撃＋12、間合い5フィート、クリーチヤー1体。ヒット:10(3d6)[冷気]ダメージ）のような攻撃の詳細を自動的に表示する。",
+                "name": "攻撃詳細を自動生成"
+            }
+        },
+        "AttackDamageTemplate": "{average} ({formula}) {type}",
+        "AttackHitLabel": "　ヒット：",
+        "AttackRange": "{reachRange} {range}{sep}{max}{units}.",
+        "AttackTarget": "{type}{quantity}",
+        "AttackToHit": "攻撃{bonus}",
+        "AtWill": "生得呪文",
+        "Average": "平均",
+        "BonusActions": "ボーナスアクション",
+        "Cantrips": "初級呪文",
+        "CasterAtWill": "{spells}の呪文を任意に発動することが可能であり、",
+        "CasterNameLevel": "この{name}は{level}レベルの術者である。",
+        "CasterSpellsPreped": "以下の{name}{atwill}呪文を準備している。",
+        "casting-feature": {
+            "disable": "自動生成のスペルキャスティングを非表示にする",
+            "enable": "自動生成されたスペルキャスティングを表示する",
+            "settings": {
+                "hint": "自動的に呪文発動能力を持ったモンスターの特徴を表示する。",
+                "-name": "呪文発動能力の詳細を表示"
+            }
+        },
+        "CastingAbility": "呪文発動能力値は【{ability}】である。",
+        "CastingStats": "(呪文セーヴ難易度{savedc}、呪文攻撃{bonus})。",
+        "Challenge": "チャレンジ",
+        "Colon": "：",
+        "Comma": "、",
+        "compact-feats": {
+            "disable": "コンパクト機能を無効にする",
+            "enable": "コンパクト機能を有効にする",
+            "settings": {
+                "hint": "機能が占めるスペースを削減します。この設定を有効にすると、各機能は2行のスペースしか占有しません。マウスを機能の上に置くと、完全な説明が表示されます。機能をクリックすると、機能を個別に拡張/圧縮できます。",
+                "name": "コンパクトな機能"
+            }
+        },
+        "compact-layout": {
+            "disable": "コンパクトレイアウトを無効にする",
+            "enable": "コンパクトレイアウトを有効にする",
+            "settings": {
+                "hint": "スペースを節約するために、シート上のアイテム間の間隔を減らします。",
+                "name": "コンパクトなレイアウト"
+            }
+        },
+        "compact-window": {
+            "disable": "コンパクトウィンドウを無効にする",
+            "enable": "コンパクトウィンドウを有効にする",
+            "settings": {
+                "hint": "ウィンドウのタイトルバーを削除し、シートをよりコンパクトに見せます。",
+                "name": "コンパクトウィンドウ"
+            }
+        },
+        "CoolThemeName": "アイス",
+        "Costs": "コスト",
+        "Current": "現在",
+        "current-hit-points": {
+            "disable": "現在HPを非表示",
+            "enable": "現在HPを表示",
+            "settings": {
+                "hint": "現在のヒットポイントを計算して表示します。最大と最低HPが表示されていない場合は平均を使用します。",
+                "name": "現在のヒットポイントを表示する。"
+            }
+        },
+        "custom-theme-class": {
+            "settings": {
+                "hint": "（プログラマー用）デフォルトのカスタムテーマに使用されるクラス名を定義できます。",
+                "name": "デフォルトのカスタムテーマのクラス名"
+            }
+        },
+        "CustomThemeName": "カスタム",
+        "damage": "ダメージ",
+        "DarkThemeName": "ダークネス",
+        "default-theme": {
+            "settings": {
+                "hint": "データブロックに適用されるデフォルトのテーマを設定します。",
+                "name": "デフォルトテーマ"
+            }
+        },
+        "DefaultThemeName": "モンスターマニュアル",
+        "DescriptionS": "説明文",
+        "EditButtonHint": "機能を追加するには、上の[+]ボタンをクリックしてください",
+        "EditHint": "右クリックして編集",
+        "editing": {
+            "disable": "編集を無効にする",
+            "enable": "編集を有効にします",
+            "settings": {
+                "hint": "編集がデフォルトで有効になっているかどうかを選択します。",
+                "name": "編集可能"
+            }
+        },
+        "eight": "8つ",
+        "five": "5つ",
+        "font-size": {
+            "settings": {
+                "hint": "シート内のテキストのフォントサイズをピクセル単位で設定します。シートの他の側面はそれに応じて拡大縮小されます。フォントサイズを小さくするとシート全体がはるかに小さくなり、大きくすると読みやすさが向上します。",
+                "name": "フォントサイズ"
+            },
+            "label": "フォントサイズ",
+            "NaN-error": "フォントサイズは数値である必要があります。",
+            "placeholder": "フォントサイズ（px）"
+        },
+        "FoundryThemeName": "Foundry",
+        "four": "4つ",
+        "FullStop": "。",
+        "hidden-secrets": {
+            "disable": "秘密の説明文を表示",
+            "enable": "秘密の説明文を非表示",
+            "settings": {
+                "hint": "デフォルトとしてデータブロックからすべての秘密の文を非表示にします。",
+                "name": "秘密の文を非表示"
+            }
+        },
+        "hide-profile-image": {
+            "disable": "画像を表示",
+            "enable": "画像を非表示",
+            "settings": {
+                "hint": "デフォルトとしてデータブロックにそのモンスターの画像を表示しなくします。",
+                "name": "画像を非表示"
+            }
+        },
+        "HotThemeName": "エンバー",
+        "inline-secrets": {
+            "disable": "インライン秘密の説明文を非表示",
+            "enable": "インライン秘密の説明文を表示",
+            "settings": {
+                "hint": "デフォルトとして攻撃等の中に記述されている秘密の文（テキストエディターの秘密）をおなじ行間で表示するか、別途のブロックとして表示するかを設定します。",
+                "name": "インラインの秘密の文を表示"
+            }
+        },
+        "InnateCastingAbility": "この{name}の生得呪文発動能力値は【{ability}】である",
+        "InnateCastingLocators": [
+            "生得呪文",
+            "生得呪文(サイオニック)",
+            "生得呪文(サイオニック)"
+        ],
+        "InnateSpellsKnown": "{name}は生来、以下の呪文を物質要素なしで発動できる。",
+        "LairActionsHeading": "住処アクション",
+        "LairText": "イニシアチブ20の時点で(同値の場合は常に後)、この{name}は住処アクションを行ない､以下のうち任意の1つの効果を生み出せる。同一の効果を2ラウンド連続で使用することはできない。",
+        "LegActionCost": "{number}伝説的アクション消費",
+        "LegendaryResistance": "伝説的抵抗",
+        "LegendaryText": "{name}は以下の伝説的アクションを合計3回行なうことができる。1度に使用できる伝説的アクションはいずれか1つだけであり、行なえるのは他のクリーチヤーのターンの終了時である。{name} は消費した伝説的アクションの回数を自身のターンの開始時に回復する。",
+        "ListFinalConjunctionAnd": "",
+        "max-height-offset": {
+            "settings": {
+                "hint": "データブロックのウィンドウの最大の長さは現在使用している画面の大きさからこのオフセットを引いたものになります。デフォルトが72はマクロのバーと同等の長さのオフセットとなり10ピクセルのパディングも含みます。データブロックを細く・長くしたい場合はこの数値を減らしてください。広くしたい場合はこの数値を増やしてください。",
+                "name": "ウィンドウの最大の長さオフセット"
+            }
+        },
+        "Maximum": "最大",
+        "maximum-hit-points": {
+            "disable": "最大HPを非表示",
+            "enable": "最大HPを表示",
+            "settings": {
+                "hint": "最大ヒットポイントを計算して表示します。最大と最低HPが表示されていない場合は平均を使用します。",
+                "name": "最大ヒットポイントを表示する"
+            }
+        },
+        "mini-block": {
+            "label": "ミニブロック"
+        },
+        "Modifier": "修正値",
+        "MonsterBlocks": "モンスターデータブロック",
+        "Multiattack": "追加攻撃",
+        "MultiattackLocators": [
+            "マルチアタック",
+            "メニーアタック",
+            "複数回攻撃",
+            "追加の攻撃",
+            "追加攻撃",
+            "連続攻撃"
+        ],
+        "MultiDamageAttackConjunctionPlus": "",
+        "NameDescriptionSep": "：",
+        "NCharged": "チャージ失敗",
+        "nine": "9つ",
+        "one": "1つ",
+        "OpenTokenizer": "VTTAトークナイザーを開く",
+        "OrdinalSuffixes": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "PassivePerception": "受動〈知覚〉{pp}",
+        "PerceptionLocator": "〈知覚〉",
+        "physicalDamage": "非魔法攻撃からの殴打、刺突、斬撃",
+        "ProfBonus": "習熟度ボーナス",
+        "ProfileImage": "プロフィール画像",
+        "QuickInsert": "クイックインサート",
+        "range": "射程",
+        "reach": "間合い",
+        "Reactions": "リアクション",
+        "Recharge": "再チャージ",
+        "resetDefaults": {
+            "label": "既定値にリセット"
+        },
+        "ResourceRefresh": "日",
+        "SavingThrowS": "セーヴィング・スロー",
+        "Score": "現在値",
+        "SemiColon": ";",
+        "seven": "7つ",
+        "show-bio": {
+            "disable": "伝記を隠す",
+            "enable": "伝記を表示"
+        },
+        "show-collapsible": {
+            "disable": "折りたたみ可能なセクションを無効にする",
+            "enable": "折りたたみ可能なセクションを有効にする",
+            "settings": {
+                "hint": "各機能セクションを折りたたむためのトグルを提供します。これにより、シートの最上位の機能セクションに機能ヘッダーが追加されます。",
+                "name": "折りたたみ可能なセクションを有効にする"
+            }
+        },
+        "show-delete": {
+            "disable": "削除を無効にする",
+            "enable": "削除を有効にする"
+        },
+        "show-lair-actions": {
+            "disable": "住処アクションを非表示",
+            "enable": "住処アクションを表示",
+            "settings": {
+                "hint": "住処アクションを表示する。",
+                "name": "住処アクション"
+            }
+        },
+        "show-legendary-resistance": {
+            "disable": "伝説のレジスタンスを隠す",
+            "enable": "伝説の抵抗を見せる",
+            "settings": {
+                "hint": "デフォルトでは、伝説の耐性を示します。",
+                "name": "伝説の抵抗を見せる"
+            }
+        },
+        "show-not-prof": {
+            "disable": "熟練していないチェックを非表示にする",
+            "enable": "熟練していないチェックを表示する",
+            "settings": {
+                "hint": "熟練していないスキルと保存を表示することがデフォルトで有効になっているかどうかを選択します。",
+                "name": "熟練していないスキルと節約を表示する"
+            }
+        },
+        "show-resources": {
+            "disable": "リソース値を非表示",
+            "enable": "リソース値を表示",
+            "settings": {
+                "hint": "デフォルトでリソース値を表示するかどうかを選択します。",
+                "name": "リソース値を表示する"
+            }
+        },
+        "show-rest-buttons": {
+            "disable": "残りのボタンを隠す",
+            "enable": "残りのボタンを表示",
+            "settings": {
+                "hint": "デフォルトでは、残りのボタンを表示します。",
+                "name": "残りのボタンを表示"
+            }
+        },
+        "show-skill-save": {
+            "disable": "空のスキルを非表示にして保存",
+            "enable": "常にスキルと節約を示す",
+            "settings": {
+                "hint": "デフォルトで空のスキルと保存リストを表示するかどうかを選択します。",
+                "name": "常にスキルと節約を示す"
+            }
+        },
+        "SimpleThemeName": "5e SRD（白黒）",
+        "six": "6つ",
+        "SkillS": "技能",
+        "SpeedUnitAbbrEnd": "：",
+        "SpellcastingLocators": [
+            "呪文発動能力",
+            "契約魔法"
+        ],
+        "SpellCost": "{cost} each",
+        "SpellLevel": "{level}レベル",
+        "SpellPactSlots": "{slots}{level}-level slots",
+        "SpellSlots": "{slots}スロット",
+        "SwitchToDefault": "デフォルトシートに切り替える",
+        "SwitchToMobloks": "データブロックシートに切り替える",
+        "SystemThemeName": "5e System",
+        "target": "目標",
+        "targetS": "目標",
+        "Theme": "テーマ",
+        "three": "3つ",
+        "two": "2つ",
+        "use-token-image": {
+            "disable": "プロフィール画像を使用する",
+            "enable": "トークン画像を使用する",
+            "settings": {
+                "hint": "デフォルトでは、メインページのトークン画像とバイオページのプロフィール画像を使用します。",
+                "name": "トークン画像を使用する"
+            }
+        },
+        "WarlockLocators": [
+            "ウォーロック",
+            "契約呪文"
+        ],
+        "WarlockSlotRegain": "小休憩または大休憩終了後に使用済みの呪文スロットを回復する。",
+        "WarlockSpellsPreped": "以下の{atwill}ウォーロック呪文を準備している。",
+        "XPLabel": "{xp}XP",
+        "zero": "0つ"
+    }
 }
