@@ -1,6 +1,17 @@
-![](https://img.shields.io/badge/Foundry-v9-informational)
-![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fmonsterblock&colorB=4aa94a)
-![Latest Release Download Count](https://img.shields.io/github/downloads/zeel01/MonsterBlocks/latest/monsterblock.zip)
+![](https://img.shields.io/badge/Foundry-v10.291-informational)
+![](https://img.shields.io/badge/DnD5e-v2.1.2-informational)
+![Latest Release Download Count](https://img.shields.io/github/downloads/regateiro/MonsterBlocks/latest/monsterblock.zip)
+
+# About this fork
+
+This fork extends the basic functionality of Monster Blocks by zeel01 to allow NPC sheets to:
+
+- Have short/long rest buttons.
+- Easily accessible legendary resistance fields.
+
+It also aims to maintain the module up-to-date with the most recent version of Foundry and the DND5e game system.
+
+This version of the module can be installed on Foundry using the following link: https://github.com/Regateiro/MonsterBlocks/releases/latest/download/module.json
 
 # Monster Blocks
 
@@ -11,6 +22,7 @@ Monster Blocks is an NPC sheet for FoundryVTT designed to faithfully reproduce t
 ![Ancient Red Dragon](examples/ancientRedDragon_5.png)
 
 ## Features
+
 - Generate attack descriptions including hit bonus, damage formula, and average damage
 - Generate spellcasting features for regular and innate casters based on their spellbook data
 - Promote the Multiattack action to be displayed first, even if it isn't the first in the actor's list
@@ -27,8 +39,8 @@ Monster Blocks is an NPC sheet for FoundryVTT designed to faithfully reproduce t
 - Support for Quick Insert
 - Support for [Better Rolls for 5e](https://github.com/RedReign/FoundryVTT-BetterRolls5e) if installed.
 - Per-monster theme selection to help differentiate them.<br>
-	<img src="examples/ancientRedDragon_5.png" width="200">
-	<img src="examples/ancientRedDragon_5-dark.png" width="200">
+ <img src="examples/ancientRedDragon_5.png" width="200">
+ <img src="examples/ancientRedDragon_5-dark.png" width="200">
 - Custom theme support (see **Theme Customization**)
 - Image pop-ups for creature artwork which can be shown to players
 - Manage various features and items
@@ -43,6 +55,7 @@ or a browser extension like [Stylish](https://chrome.google.com/webstore/detail/
 to target `.monsterblock.your-class-name` and modify the appearance however you like.
 
 The following CSS variables define the most important values:
+
 ```CSS
 --heading-color: rgb(89 23 13);
 --roll-hover-color: hsl(8 70% 14% / 1);
@@ -54,23 +67,29 @@ The following CSS variables define the most important values:
 --background-blend: hard-light;
 --main-text-color: black;
 ```
+
 ## FAQ
 
 ### Q: How do I change the settings for specific monsters?
+
 **A**: You can adjust the default settings in the Foundry module settings menu. The settings cog located in the upper left corner of the sheet next to the creature's name adjusts settings for each individual monster.
 
 ### Q. How do I edit avatar/character art?
+
 **A**: Right click on the image.
 
 ### Q. How do I edit spells and features?
+
 **A**: Right click on any feature, item, or spell to edit it.
 
 ### Q: Why can't I resize the window?
+
 **A**: The window automatically calculates its own size. Any time the data in the sheet changes, the window size might need to change - even a few extra words in a description might mean it needs more space.
 To avoid situations where a user custom-sizes the window, and then it either resizes itself, or content becomes invisible, I decided to just disable manual sizing.
 I may be revisit this in the future.
 
 ### Q: What are "secret blocks" and how do those settings work?
+
 **A**: Secret blocks are a feature of Foundry that allows some text to be "secret" for only the GM to see.
 Typically, this text is displayed differently, in its own special box.
 The SRD monsters included with Foundry 5e use this feature for all their attack descriptions, such that text like:
@@ -102,6 +121,7 @@ You can of course edit your monster to have/not have secret text in the descript
 For monsters you create, you can just let Monster Blocks do all the work, and not bother typing out the attack and damage info yourself.
 
 ### Q: How can I roll from the sheet?
+
 **A**: To ensure varisamilitude, the sheet doesn't show rollables in a big obvious way.
 Inline rolls in feature descriptions are still marked with the d20 icon, but the built-in rolls of Monster Blocks are only indicated when moused over.
 Monster Blocks supports rolling of abilities, saves, and skills, as well as the ability to send chat cards for features, spells, and actions.
@@ -114,21 +134,26 @@ In this case, you can simply roll the corresponding ability check.
 
 If you have Better Rolls installed, most rolls from this sheet will use BRs custom rolls.
 
-### Q: When I use [insert creature] something displays wrong!
+### Q: When I use [insert creature] something displays wrong
+
 **A**: Please let me know! I'm on the lookout for creatures that break the mold, so if you find something that doesn't work right please report it and I'll try to figure out how to handle it.
 
 ### Q: Does Monster Blocks support Lair Actions?
+
 **A**: Yes! I have Lair Actions disabled by default, but you can configure this either by changing the default, or per-creature.
 Technically, Lair Actions aren't part of monster statblocks, but since Foundry 5e treats them as monster features rather than location features, I did make it possible to show them.
 They appear in their own section after Legendary Actions, in a bulleted list.
 
 ### Q: Some of the buttons on the title bar are missing! What do I do?
+
 **A**: When the sheet only needs to be one column wide, the titlebar may not be able to fit the name of the monster and all the buttons.
 This is much more of a problem if you have *lots* of other modules installed. A quick fix is to hide the labels on those buttons with Custom CSS:
+
 ```css
 .window-app.monsterblock .window-header { font-size: 0px; padding-right: 30px; }
 .window-app.monsterblock .window-header i { font-size: 14px; }
 ```
+
 This will show only icons, which should help as long as you remember what they all do.
 
 ![Alt](https://repobeats.axiom.co/api/embed/2e3b62aabb8d72467d37b9c547b192bd3f0eee2c.svg "Repobeats analytics image")
