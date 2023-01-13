@@ -616,7 +616,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 	async switchToDefault() {
 		const config = CONFIG[this.object.documentName];
-		const type = this.object.data.type;
+		const type = this.object.type;
 		const classes = Object.values(config.sheetClasses[type]);
 		let defcls = classes.find(c => c.default).id;
 
