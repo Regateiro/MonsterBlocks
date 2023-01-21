@@ -561,7 +561,7 @@ export default class CastingPreper extends ItemPreper {
 		}
 		
 		return [
-			this.templateData.actor.system?.abilities[castingability]?.label 
+			this.templateData?.abilities[castingability]?.label 
 				?? game.i18n.localize("DND5E.AbilityInt"), 
 			castingability
 		];
