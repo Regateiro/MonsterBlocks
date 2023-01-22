@@ -247,7 +247,7 @@ export default class CastingPreper extends ItemPreper {
 	 * @memberof CastingPreper
 	 */
 	getPageSlotLabel(page) {
-		const string = this.pact          // Which translation key
+		const string = this.pact         // Which translation key
 			? "MOBLOKS5E.SpellPactSlots" // pact magic
 			: "MOBLOKS5E.SpellSlots";    // or normal
 

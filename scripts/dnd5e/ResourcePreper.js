@@ -94,7 +94,7 @@ export default class ResourcePreper {
 	prepAttribute() {
 		let t = this.item.system.consume.target;
 		let r = t.match(/(.+)\.(.+)\.(.+)/);
-		let max = `data.${r[1]}.${r[2]}.max`;
+		let max = `system.${r[1]}.${r[2]}.max`;
 		
 		this.res.target = "system." + t;
 		this.res.current = getProperty(this.sheet.actor.system, this.res.target);
@@ -126,7 +126,7 @@ export default class ResourcePreper {
 		if (!ammo) return;
 		
 		this.res.limit = false;
-		this.res.current = ammo.data.quantity;
+		this.res.current = ammo.system.quantity;
 		this.res.target = "system.quantity";
 		this.res.name = ammo.name;
 	}
@@ -136,7 +136,7 @@ export default class ResourcePreper {
 	 * @memberof ResourcePreper
 	 */
 	prepConsume() {
-		this.res.entity = this.item._id;
+		this.res.entity = this.item.id;
 		this.res.limit = false;
 		this.res.current = this.item.system.quantity;
 		this.res.target = "system.quantity";
