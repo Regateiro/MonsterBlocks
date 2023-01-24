@@ -1,5 +1,8 @@
 <h1 class="charname" contenteditable="{{flags.editing}}" data-field-key="name" placeholder="{{localize "DND5E.Name"}}">{{actor.name}}</h1>
 <div class="chartype">
+	<a class="config-button" data-action="flags" title="{{localize 'MOBLOKS5E.SpecialTraits'}}">
+		<i class="fas fa-cog"></i>{{~" "~}}
+	</a>{{~" "~}}
 	{{#if flags.show-rest-buttons}}
 	<a class="rest short-rest" data-action="rest" title="{{localize "DND5E.ShortRest"}}">
 		<i class="fas fa-hourglass-half"></i>
