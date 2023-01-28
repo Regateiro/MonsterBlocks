@@ -919,6 +919,9 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		// Rest bindings
 		html.find(".short-rest").click(this._onShortRest.bind(this));
 		html.find(".long-rest").click(this._onLongRest.bind(this));
+
+		// Roll Hit Points Formula
+		html.find(".roll-hit-points").click(this._onConfigMenu.bind(this));
 	}
 	
 	toggleExpanded(event) {
