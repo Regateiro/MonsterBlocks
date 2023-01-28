@@ -1250,8 +1250,8 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			const rollMin = new Roll(formula, mods);
 			const rollMax = rollMin.clone();
 			return Math.floor((		// The maximum roll plus the minimum roll, divided by two, rounded down.
-				rollMax.evaluate({ maximize: true }).total +
-				rollMin.evaluate({ minimize: true }).total
+				rollMax.evaluate({ maximize: true, async: false }).total +
+				rollMin.evaluate({ minimize: true, async: false }).total
 			) / 2);
 		}
 		catch (e) {
@@ -1269,6 +1269,9 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		},
 		"expand-skill": (id) => { // Formats any text to include proper inline rolls and links.
 			return CONFIG.DND5E.skills[id].label;
+		},
+		"expand-abl": (id) => { // Formats any text to include proper inline rolls and links.
+			return CONFIG.DND5E.abilities[id];
 		}
 	};
 

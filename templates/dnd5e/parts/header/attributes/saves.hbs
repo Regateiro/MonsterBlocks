@@ -5,7 +5,7 @@
 		{{#each system.abilities as |ability id|}}
 			<li class="saving-throw {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}"
 				title="{{ability.label}}">
-				<span class="ability-title">{{ability.label}}</span>
+				<span class="ability-title">{{expand-abl ability.abbr}}</span>
 				<span>{{numberFormat ability.save decimals=0 sign=true}}</span>{{~" "~}}
 			</li>
 		{{/each}}
