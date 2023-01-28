@@ -1291,6 +1291,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/armorclass.hbs",
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/hitpoints.hbs",
+			"modules/monsterblock/templates/dnd5e/parts/header/attributes/temphitpoints.hbs",
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/movement.hbs",
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/legendaryResistance.hbs",
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/saves.hbs",
