@@ -1,5 +1,5 @@
 {
-	"name": "monsterblock",
+	"name": "monsterblock-morb",
 	"title": "Monster Blocks",
 	"description": "An NPC sheet designed to emulate standard 5e monster stat blocks as faithfully as possible.",
 	"author": "regateiro",
@@ -16,7 +16,7 @@
 			"url": "https://github.com/Regateiro"
 		}
 	],
-	"version": "3.4.9",
+	"version": "3.4.10",
 	"compatibility": {
 		"minimum": 10,
 		"verified": "10.291"

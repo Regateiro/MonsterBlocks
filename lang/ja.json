@@ -269,6 +269,14 @@
                 "name": "リソース値を表示する"
             }
         },
+        "show-temporary-hit-points": {
+            "disable": "一時的なヒット ポイントを非表示にする",
+            "enable": "一時的ヒットポイントを表示",
+            "settings": {
+                "hint": "デフォルトでは、一時的なヒット ポイントを表示します。",
+                "name": "一時的ヒットポイントを表示"
+            }
+        },
         "show-rest-buttons": {
             "disable": "残りのボタンを隠す",
             "enable": "残りのボタンを表示",

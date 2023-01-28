@@ -274,6 +274,14 @@
                 "name": "Afficher les valeurs de ressources"
             }
         },
+        "show-temporary-hit-points": {
+            "disable": "Cacher les points de vie temporaires",
+            "enable": "Afficher les points de vie temporaires",
+            "settings": {
+                "hint": "Afficher les points de vie temporaires par défaut.",
+                "name": "Afficher les points de vie temporaires"
+            }
+        },
         "show-rest-buttons": {
             "disable": "Cacher les boutons de repos",
             "enable": "Afficher les boutons de repos",

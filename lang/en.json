@@ -270,6 +270,14 @@
                 "name": "Show resource values"
             }
         },
+        "show-temporary-hit-points": {
+            "disable": "Hide temporary hit points",
+            "enable": "Show temporary hit points",
+            "settings": {
+                "hint": "By default, display the temporary hit points.",
+                "name": "Show Temporary Hit Points"
+            }
+        },
         "show-rest-buttons": {
             "disable": "Hide rest buttons",
             "enable": "Show rest buttons",
