@@ -1,5 +1,5 @@
 import MonsterBlock5e from "./scripts/dnd5e/MonsterBlock5e.js";
-import { debug } from "./scripts/utilities.js";
+import { debug, getGridSize } from "./scripts/utilities.js";
 import { inputExprInitHandler } from "./scripts/handler.js";
 import PopupHandler from "./scripts/PopupHandler.js"
 import Flags5e from "./scripts/dnd5e/Flags5e.js";
@@ -32,6 +32,8 @@ Hooks.once("ready", () => {
 			}
 		)
 	);
+
+	CONFIG.DND5E.actorSizes["cl"] = "Colossal";
 
 	game.settings.register("monsterblock", "max-height-offset", {
 		name: game.i18n.localize("MOBLOKS5E.max-height-offset.settings.name"),
@@ -121,4 +123,11 @@ Hooks.on("renderActorSheet", () => {	// This is just for debugging, it prevents 
 Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
 	registerPackageDebugFlag("monsterblock", "level");
 	if (debug.INFO) console.log(`Monster Block | Debug level: ${debug.level}`);
+});
+
+Hooks.on("updateToken", (token, update, _) => {
+	if(update.actorData?.system?.traits?.size) {
+		const gridSize = getGridSize(update.actorData.system.traits.size)
+		token.update({"width": gridSize, "height": gridSize});
+	}
 });

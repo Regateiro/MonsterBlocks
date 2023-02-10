@@ -29,6 +29,19 @@ export class debug {
 	static get ALL()   { return this.level > 4; }
 }
 
+export function getGridSize(size) {
+	switch(size) {
+		case "cl": return 5;
+		case "grg": return 4;
+		case "huge": return 3;
+		case "lg": return 2;
+		case "tiny": return 0.5;
+		case "med":
+		case "sm": 
+		default: return 1;
+	}
+}
+
 export class ContentEditableAdapter extends InputAdapter {
 	get value() {
 		return this.element.innerText;
