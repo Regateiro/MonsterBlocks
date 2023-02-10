@@ -127,7 +127,18 @@ Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
 
 Hooks.on("updateToken", (token, update, _, userId) => {
 	if(update.actorData?.system?.traits?.size && game.userId === userId) {
-		const gridSize = getGridSize(update.actorData.system.traits.size)
+		const gridSize = getGridSize(update.actorData.system.traits.size);
 		token.update({"width": gridSize, "height": gridSize});
+	}
+});
+
+Hooks.on("updateActor", (actor, update, _, userId) => {
+	if(update.system?.traits?.size && game.userId === userId) {
+		const gridSize = getGridSize(update.system.traits.size);
+		if(actor.token) {
+			actor.token.update({"width": gridSize, "height": gridSize});
+		} else if(actor.prototypeToken) {
+			actor.prototypeToken.update({"width": gridSize, "height": gridSize});
+		}
 	}
 });
