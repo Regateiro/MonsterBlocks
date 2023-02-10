@@ -125,10 +125,11 @@ Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
 	if (debug.INFO) console.log(`Monster Block | Debug level: ${debug.level}`);
 });
 
-Hooks.on("updateToken", (token, update, _, userId) => {
-	if(update.actorData?.system?.traits?.size && game.userId === userId) {
-		const gridSize = getGridSize(update.actorData.system.traits.size);
-		token.update({"width": gridSize, "height": gridSize});
+Hooks.on("createActor", (actor, _, userId) => {
+	if(actor.system?.traits?.size === "cl" && actor.prototypeToken && game.userId === userId) {
+		if(actor.prototypeToken.height !== 5 || actor.prototypeToken.width !== 5) {
+			actor.prototypeToken.update({"width": 5, "height": 5});
+		}
 	}
 });
 
@@ -140,5 +141,20 @@ Hooks.on("updateActor", (actor, update, _, userId) => {
 		} else if(actor.prototypeToken) {
 			actor.prototypeToken.update({"width": gridSize, "height": gridSize});
 		}
+	}
+});
+
+Hooks.on("createToken", (token, _, userId) => {
+	if(game.actors.get(token.actorId).system?.traits?.size === "cl" && game.userId === userId) {
+		if(token.height !== 5 || token.width !== 5) {
+			token.update({"width": 5, "height": 5});
+		}
+	}
+});
+
+Hooks.on("updateToken", (token, update, _, userId) => {
+	if(update.actorData?.system?.traits?.size && game.userId === userId) {
+		const gridSize = getGridSize(update.actorData.system.traits.size);
+		token.update({"width": gridSize, "height": gridSize});
 	}
 });
