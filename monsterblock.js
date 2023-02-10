@@ -125,8 +125,8 @@ Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
 	if (debug.INFO) console.log(`Monster Block | Debug level: ${debug.level}`);
 });
 
-Hooks.on("updateToken", (token, update, _) => {
-	if(update.actorData?.system?.traits?.size) {
+Hooks.on("updateToken", (token, update, _, userId) => {
+	if(update.actorData?.system?.traits?.size && game.userId === userId) {
 		const gridSize = getGridSize(update.actorData.system.traits.size)
 		token.update({"width": gridSize, "height": gridSize});
 	}
