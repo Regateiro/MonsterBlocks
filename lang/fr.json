@@ -92,6 +92,7 @@
         },
         "CustomThemeName": "Custom",
         "damage": "dégâts",
+        "Damage": "Dégâts",
         "DarkThemeName": "Darkness",
         "default-theme": {
             "settings": {

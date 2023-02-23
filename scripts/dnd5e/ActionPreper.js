@@ -27,6 +27,7 @@ export default class ActionPreper extends ItemPreper {
 		/** @type {Is} */
 		const is = { 
 			multiAttack:  MonsterBlock5e.isMultiAttack(this.item),
+			save:         MonsterBlock5e.isSave(this.item),
 			legendary:    MonsterBlock5e.isLegendaryAction(this.item),
 			lair:         MonsterBlock5e.isLairAction(this.item),
 			legResist:    MonsterBlock5e.isLegendaryResistance(this.item),

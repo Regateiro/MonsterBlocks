@@ -34,6 +34,24 @@
 		{{~else~}}
 			<span class="item-name" data-item-id="{{item._id}}"></span>
 		{{~/unless}}
+		{{~#if item.is.save~}}
+			<span class="description">
+				DC {{ item.system.save.dc }} {{ item.system.save.ability }}
+				{{~#if item.system.damage.parts~}} 
+					{{localize "MOBLOKS5E.Comma"}} {{on-save-text item.system}}
+				{{~/if~}}
+				{{~#if item.system.target.value~}}
+					{{localize "MOBLOKS5E.Comma"}} {{ item.system.target.value }}{{ item.system.target.units }} {{ item.system.target.type }}
+				{{~/if~}}
+				{{~#if item.system.range.value~}}
+					{{localize "MOBLOKS5E.Comma"}} {{ item.system.range.value }}{{ item.system.range.units }} {{localize "MOBLOKS5E.range"}}
+				{{~/if~}}{{localize "MOBLOKS5E.NameDescriptionSep"}}
+				{{~#if item.system.damage.parts~}}
+					<br />
+					{{localize "MOBLOKS5E.Damage"}}: {{damage-parts-to-text item.system}}{{localize "MOBLOKS5E.NameDescriptionSep"}}
+				{{~/if~}}
+			</span>
+		{{~/if~}}
 		<span class="description">{{{moblok-enrichhtml item.system.description.value @root.owner @root.flags}}}</span>
 	</div>
 </section>

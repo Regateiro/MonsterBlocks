@@ -1210,6 +1210,10 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		let name = item.name.toLowerCase().replace(/\s+/g, "");	// Convert the name of the item to all lower case, and remove whitespace.
 		return getTranslationArray("MOBLOKS5E.MultiattackLocators").some(loc => name.includes(loc));
 	}
+
+	static isSave(item) {	// Checks if the item is a save action.
+		return item.system?.actionType === "save";
+	}
 	
 	static isLegendaryResistance(item) {
 		return item.system?.consume?.target === "resources.legres.value";
@@ -1272,6 +1276,37 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		},
 		"expand-abl": (id) => { // Formats any text to include proper inline rolls and links.
 			return CONFIG.DND5E.abilities[id];
+		},
+		"on-save-text": (item) => { // Formats any text to include proper inline rolls and links.
+			if(item.description?.value?.toLowerCase()?.includes("half as much damage")) {
+				return "half damage on save";
+			}
+			return "no damage on save";
+		},
+		"damage-parts-to-text": (item) => { // Formats any text to include proper inline rolls and links.
+			let text = "";
+			let halfDamageOnSave = false;
+		
+			if(item.description?.value?.toLowerCase()?.includes("half as much damage")) {
+				halfDamageOnSave = true;
+			}
+
+			item.damage?.parts?.forEach(part => {
+				const noSaveAvgDmg = MonsterBlock5e.averageRoll(part[0]);
+				let saveAvgDmg = 0;
+				let damageType = part[1];
+
+				if(damageType !== "healing") {
+					damageType += " damage";
+				}
+
+				if (halfDamageOnSave) {
+					saveAvgDmg = Math.floor(noSaveAvgDmg / 2);
+				}
+
+				text += (" " + noSaveAvgDmg + "/" + saveAvgDmg + " (" + part[0] + ") " + damageType + " plus");
+			});
+			return text.substring(0, text.length - 5);
 		}
 	};
 

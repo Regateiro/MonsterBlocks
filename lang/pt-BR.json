@@ -91,6 +91,7 @@
         },
         "CustomThemeName": "Personalizado",
         "damage": "dano",
+        "Damage": "Dano",
         "DarkThemeName": "Escuridão",
         "default-theme": {
             "settings": {

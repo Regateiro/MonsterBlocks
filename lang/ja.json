@@ -91,6 +91,7 @@
         },
         "CustomThemeName": "カスタム",
         "damage": "ダメージ",
+        "Damage": "ダメージ",
         "DarkThemeName": "ダークネス",
         "default-theme": {
             "settings": {
