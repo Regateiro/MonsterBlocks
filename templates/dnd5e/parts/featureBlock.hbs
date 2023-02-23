@@ -41,16 +41,19 @@
 					{{localize "MOBLOKS5E.Comma"}} {{on-save-text item.system}}
 				{{~/if~}}
 				{{~#if item.system.target.value~}}
-					{{localize "MOBLOKS5E.Comma"}} {{ item.system.target.value }}{{ item.system.target.units }} {{ item.system.target.type }}
+					{{localize "MOBLOKS5E.Comma"}} {{ item.system.target.value }}{{#if item.system.target.width}} × {{ item.system.target.width }}{{/if}} {{ item.system.target.units }} {{ item.system.target.type }}
 				{{~/if~}}
 				{{~#if item.system.range.value~}}
-					{{localize "MOBLOKS5E.Comma"}} {{ item.system.range.value }}{{ item.system.range.units }} {{localize "MOBLOKS5E.range"}}
-				{{~/if~}}{{localize "MOBLOKS5E.NameDescriptionSep"}}
-				{{~#if item.system.damage.parts~}}
-					<br />
-					{{localize "MOBLOKS5E.Damage"}}: {{damage-parts-to-text item.system}}{{localize "MOBLOKS5E.NameDescriptionSep"}}
+					{{localize "MOBLOKS5E.Comma"}} {{ item.system.range.value }}{{#if item.system.range.long}}/{{ item.system.range.long }}{{/if}} {{ item.system.range.units }} {{localize "MOBLOKS5E.range"}}
 				{{~/if~}}
+				{{~#if (or item.system.duration.value item.system.duration.units)~}}
+					{{localize "MOBLOKS5E.Comma"}} {{ item.system.duration.value }} {{duration-to-text item.system.duration.units}}
+				{{~/if~}}
+				{{~#if item.system.damage.parts~}}
+					{{localize "MOBLOKS5E.NameDescriptionSep"}} {{localize "MOBLOKS5E.Damage"}}: {{damage-parts-to-text item.system}}
+				{{~/if~}}{{localize "MOBLOKS5E.NameDescriptionSep"}}
 			</span>
+			<br />
 		{{~/if~}}
 		<span class="description">{{{moblok-enrichhtml item.system.description.value @root.owner @root.flags}}}</span>
 	</div>

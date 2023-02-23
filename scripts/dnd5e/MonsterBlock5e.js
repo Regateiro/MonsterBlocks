@@ -1277,6 +1277,9 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		"expand-abl": (id) => { // Formats any text to include proper inline rolls and links.
 			return CONFIG.DND5E.abilities[id];
 		},
+		"duration-to-text": (unit) => { // Formats any text to include proper inline rolls and links.
+			return CONFIG.DND5E.timePeriods[unit].toLowerCase();
+		},
 		"on-save-text": (item) => { // Formats any text to include proper inline rolls and links.
 			if(item.description?.value?.toLowerCase()?.includes("half as much damage")) {
 				return "half damage on save";
