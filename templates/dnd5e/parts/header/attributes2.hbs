@@ -25,19 +25,19 @@
 
 {{! Damage & Condition Resistances & Immunities}}
 	{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/damage.hbs"
-		damage=system.traits.dv.selected
+		damage=system.traits.dv.value
 		label="DND5E.DamVuln" 
 	}}
 	{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/damage.hbs"
-		damage=system.traits.dr.selected
+		damage=system.traits.dr.value
 		label="DND5E.DamRes" 
 	}}
 	{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/damage.hbs"
-		damage=system.traits.di.selected
+		damage=system.traits.di.value
 		label="DND5E.DamImm" 
 	}}
 	{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/damage.hbs"
-		damage=system.traits.ci.selected
+		damage=system.traits.ci.value
 		label="DND5E.ConImm" 
 	}}
 
@@ -53,8 +53,8 @@
 		<span class="attribute-wrapper">
 			<h4 class="attribute-name">{{localize "DND5E.Languages"}}</h4>
 			<ul class="traits-list inline-list">
-			{{#if (moblok-hascontents system.traits.languages.selected)}}
-				{{#each system.traits.languages.selected as |v k|}}
+			{{#if (moblok-hascontents system.traits.languages.value)}}
+				{{#each system.traits.languages.value as |v k|}}
 					<li class="trait-value">{{v}}</li>
 				{{/each}}
 			{{else}}

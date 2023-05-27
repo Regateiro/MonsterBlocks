@@ -358,7 +358,7 @@ export default class CastingPreper extends ItemPreper {
 		return Object.entries(CONFIG.DND5E.abilities)
 			.map(([key, value]) => ({ 
 				value: key, 
-				label: value 
+				label: value.label 
 			}))
 			.filter(opt => opt.value != this.castingAbility);
 	} 

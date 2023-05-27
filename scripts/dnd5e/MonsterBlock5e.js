@@ -331,7 +331,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		Object.entries(this.actor.system.abilities).forEach(([ab, ability]) => {
 			let flag = Boolean(ability.proficient);
 			menu.add(new MenuItem("save-toggle", {
-				name: CONFIG.DND5E.abilities[ab], 
+				name: CONFIG.DND5E.abilities[ab].label, 
 				flag, d: ab,
 				target: `system.abilities.${ab}.proficient`,
 				icon: flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>'
@@ -383,8 +383,8 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	 */
 	replaceNonMagPysicalText(data) {
 		["di", "dr", "dv"].forEach(damageSet => {
-			const selected = data.actor.system.traits[damageSet]?.selected;
-			if (selected.physical) selected.physical = game.i18n.localize("MOBLOKS5E.physicalDamage");
+			const selected = data.actor.system.traits[damageSet].value;
+			if (selected?.physical) selected.physical = game.i18n.localize("MOBLOKS5E.physicalDamage");
 		});
 	}
 	/**
@@ -1262,7 +1262,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 	static handlebarsHelpers = {
 		"moblok-hascontents": (obj) => { // Check if an array is empty.
-			return Object.keys(obj).length > 0;
+			return obj.size > 0;
 		},
 		"moblok-enrichhtml": (str, owner, flags) => { // Formats any text to include proper inline rolls and links.
 			return TextEditor.enrichHTML(str || "", { secrets: (owner && !flags["hidden-secrets"]), async: false });
@@ -1271,7 +1271,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			return CONFIG.DND5E.skills[id].label;
 		},
 		"expand-abl": (id) => { // Formats any text to include proper inline rolls and links.
-			return CONFIG.DND5E.abilities[id];
+			return CONFIG.DND5E.abilities[id].label;
 		}
 	};
 
