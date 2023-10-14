@@ -12,10 +12,22 @@
 		{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/hitpoints.hbs"}}
 	</li>
 
+{{! Temporary Hit Points }}
+	<li class="attribute">
+		{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/temphitpoints.hbs"}}
+	</li>
+
 {{! Movement Speeds }}
 	<li class="attribute">
 		<span class="attribute-wrapper">
 			{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/movement.hbs"}}
+		</span>
+	</li>
+
+{{! Legendary Resistance }}
+	<li class="attribute">
+		<span class="attribute-wrapper">
+			{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/legendaryResistance.hbs"}}
 		</span>
 	</li>
 </ul>

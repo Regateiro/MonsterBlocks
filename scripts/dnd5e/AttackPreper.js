@@ -44,7 +44,7 @@ export default class AttackPreper extends ItemPreper {
 		let attackData = this.item.system;
 
 		return {
-			attackType: this.getAttackType(this.item),
+			attackType: this.getAttackType(),
 			tohit: this.formatToHit(),
 			range: this.formatRange(attackData),
 			target: this.formatTarget(attackData),

@@ -908,6 +908,13 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		// Configure Special Flags
 		html.find(".config-button").click(this._onConfigMenu.bind(this));
+
+		// Rest bindings-]
+		html.find(".short-rest").click(this._onShortRest.bind(this));
+		html.find(".long-rest").click(this._onLongRest.bind(this));
+
+		// Roll Hit Points Formula-]
+		html.find(".roll-hit-points").click(this._onConfigMenu.bind(this));
 	}
 
 	toggleExpanded(event) {
@@ -1129,6 +1136,32 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 
 	/**
+	 * Take a short rest, calling the relevant function on the Actor instance.
+	 * @param {Event} event             The triggering click event.
+	 * @returns {Promise<RestResult>}  Result of the rest action.
+	 * @private
+	 */
+	async _onShortRest(event) {
+		event.preventDefault();
+		await this._onSubmit(event);
+		return this.actor.shortRest();
+	}
+
+	/* -------------------------------------------- */
+
+	/**
+	 * Take a long rest, calling the relevant function on the Actor instance.
+	 * @param {Event} event             The triggering click event.
+	 * @returns {Promise<RestResult>}  Result of the rest action.
+	 * @private
+	 */
+	async _onLongRest(event) {
+		event.preventDefault();
+		await this._onSubmit(event);
+		return this.actor.longRest();
+	}
+
+	/**
 	 * Closes the sheet.
 	 *
 	 * This override adds clearing of some temporary properties
@@ -1211,8 +1244,8 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			const rollMin = new Roll(formula, mods);
 			const rollMax = rollMin.clone();
 			return Math.floor((		// The maximum roll plus the minimum roll, divided by two, rounded down.
-				rollMax.evaluate({ maximize: true }).total +
-				rollMin.evaluate({ minimize: true }).total
+				rollMax.evaluate({ maximize: true, async: false }).total +
+				rollMin.evaluate({ minimize: true, async: false }).total
 			) / 2);
 		}
 		catch (e) {
@@ -1254,7 +1287,9 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/armorclass.hbs",
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/hitpoints.hbs",
+			"modules/monsterblock/templates/dnd5e/parts/header/attributes/temphitpoints.hbs",
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/movement.hbs",
+			"modules/monsterblock/templates/dnd5e/parts/header/attributes/legendaryResistance.hbs",
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/saves.hbs",
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/skills.hbs",
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes/senses.hbs",

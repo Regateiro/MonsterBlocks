@@ -1,0 +1,16 @@
+
+{{#if flags.show-temporary-hit-points}}
+<h4 class="attribute-name box-title">{{~localize "DND5E.HitPointsTemp"}}</h4>
+<span title="{{localize "DND5E.HitPointsTemp"}}" 
+	placeholder="0" 
+	data-field-key="system.attributes.hp.temp" 
+	data-dtype="Number" 
+	class="attr-value" 
+	contenteditable="{{owner}}">
+	{{~#if system.attributes.hp.temp~}}
+		{{~system.attributes.hp.temp~}}
+	{{~else~}}
+		0
+	{{~/if~}}
+</span>
+{{~/if~}}

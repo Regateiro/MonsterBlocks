@@ -9,9 +9,11 @@ function createRelease(cb) {
 		"monsterblock.js",
 		"monsterblock.css",
 		"actor-sheet.html",
+		"scripts/**",
+		"templates/**",
 		"lang/*",
 		"input-expressions/handler.js"
-	], { base: "." })
+	], { base: ".", allowEmpty: true })
 		.pipe(zip("monsterblock.zip"))
 		.pipe(Gulp.dest("./"));
 }
