@@ -392,15 +392,31 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	 */
 	getTraitChecklist(id, menu, target, itemType, traitList) {
 		Object.entries(traitList).forEach(([d, name]) => {
-			let flag = this.actor.system.traits[id].value.has(d);
-			menu.add(new MenuItem(itemType, {
-				d, name, flag,
-				target: target,
-				icon: flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>'
-			}, (m) => {
-				m.flag = this.actor.system.traits[id].value.has(d);
-				m.icon = m.flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>';
-			}));
+			if (typeof(name) === 'string') {
+				let flag = this.actor.system.traits[id].value.has(d);
+				menu.add(new MenuItem(itemType, {
+					d, name, flag,
+					target: target,
+					icon: flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>'
+				}, (m) => {
+					m.flag = this.actor.system.traits[id].value.has(d);
+					m.icon = m.flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>';
+				}));
+			} else {
+				Object.entries(name.children).forEach(([d, name]) => {
+					if (typeof(name) === 'string') {
+						let flag = this.actor.system.traits[id].value.has(d);
+						menu.add(new MenuItem(itemType, {
+							d, name, flag,
+							target: target,
+							icon: flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>'
+						}, (m) => {
+							m.flag = this.actor.system.traits[id].value.has(d);
+							m.icon = m.flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>';
+						}));
+					}
+				});
+			};
 		});
 		menu.add(new MenuItem("custom-val", {
 			d: "custom",
@@ -567,9 +583,9 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				name: move,
 				fly: move == "fly",
 				showLabel: move != "walk",
-				label: game.i18n.localize(`DND5E.Movement${moveNameCaps}`).toLowerCase(),
+				label: game.i18n.localize(`DND5E.movementTypes.${moveName}`).toLowerCase(),
 				value: speed > 0 ? speed : move != "walk" ? "" : "0",
-				unit: data.system.attributes.movement.units + game.i18n.localize("MOBLOKS5E.SpeedUnitAbbrEnd"),
+				unit: (data.system.attributes.movement.units || "ft") + game.i18n.localize("MOBLOKS5E.SpeedUnitAbbrEnd"),
 				key: `system.attributes.movement.${move}`
 			});
 		}
