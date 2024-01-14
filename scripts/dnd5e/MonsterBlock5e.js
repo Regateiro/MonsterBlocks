@@ -583,7 +583,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				name: move,
 				fly: move == "fly",
 				showLabel: move != "walk",
-				label: game.i18n.localize(`DND5E.movementTypes.${moveName}`).toLowerCase(),
+				label: game.i18n.localize(`DND5E.Movement${moveNameCaps}`).toLowerCase(),
 				value: speed > 0 ? speed : move != "walk" ? "" : "0",
 				unit: (data.system.attributes.movement.units || "ft") + game.i18n.localize("MOBLOKS5E.SpeedUnitAbbrEnd"),
 				key: `system.attributes.movement.${move}`
@@ -1196,8 +1196,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 	async maximize() {
 		// this led to some sort of infinite resize loops
-		// await super.maximize();
-		await this.render(true);
+		await super.maximize();
 	}
 
 	/**
