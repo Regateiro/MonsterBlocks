@@ -57,6 +57,11 @@
 				{{#each system.traits.languages.value as |v k|}}
 					<li class="trait-value">{{v}}</li>
 				{{/each}}
+				{{#if system.traits.languages.custom }}
+					{{#each (moblok-split-clang system.traits.languages.custom) as |v| }}
+						<li class="trait-value">{{v}}</li>
+					{{/each}}
+				{{/if}}
 			{{else}}
 				<li class="trait-value">&mdash;</li>
 			{{/if}}

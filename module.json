@@ -16,10 +16,10 @@
 			"url": "https://github.com/Regateiro"
 		}
 	],
-	"version": "3.6.0",
+	"version": "3.6.2",
 	"compatibility": {
 		"minimum": 10,
-		"verified": "10.291"
+		"verified": "10.303"
 	},
 	"esmodules": [
 		"monsterblock.js"
@@ -55,7 +55,7 @@
 			"manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
 			"compatibility": {
 				"minimum": "2.2.1",
-				"verified": "2.2.1"
+				"verified": "2.4.1"
 			  }
 			}
 		],
