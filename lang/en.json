@@ -150,6 +150,7 @@
                 "name": "Display Secrets Inline"
             }
         },
+        "Initiative": "Initiative",
         "InnateCastingAbility": "The {name}'s innate spellcasting ability is {ability}",
         "InnateCastingLocators": [
             "innatespellcasting",

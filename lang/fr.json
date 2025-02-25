@@ -150,6 +150,7 @@
                 "name": "Afficher les textes secrets"
             }
         },
+        "Initiative": "Initiative",
         "InnateCastingAbility": "La caractéristique d'incantation innée du {name} est {ability}",
         "InnateCastingLocators": [
             "incantationinnée",

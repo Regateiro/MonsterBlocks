@@ -149,6 +149,7 @@
                 "name": "Mostrar 'Secrets Inline'"
             }
         },
+        "Initiative": "Iniciativa",
         "InnateCastingAbility": "{ability} é o atributo de conjuração inata do(a) {name}",
         "InnateCastingLocators": [
             "conjuraçãoinata",

@@ -149,6 +149,7 @@
                 "name": "インラインの秘密の文を表示"
             }
         },
+        "Initiative": "主導権",
         "InnateCastingAbility": "この{name}の生得呪文発動能力値は【{ability}】である",
         "InnateCastingLocators": [
             "生得呪文",
