@@ -35,7 +35,8 @@ export default class Flags {
 			"show-delete"       : { type: Boolean, default: false  , hidden: true  },
 			"font-size"         : { type: Number , default: 14    },
 			"scale"             : { type: Number , default: 1      , hidden: true  },
-			"collapsed"         : { type: Object,  default: {}     , hidden: true  }
+			"collapsed"         : { type: Object,  default: {}     , hidden: true  },
+			"initProfMult"      : { type: Number , default: 0     }
 		}
 	}
 

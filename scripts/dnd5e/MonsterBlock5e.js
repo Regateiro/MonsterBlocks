@@ -76,6 +76,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	
 		this.prepAbilities(data);
 		this.prepMovement(data);
+		this.prepInitiative(data);
 		this.prepSenses(data);
 		this.replaceNonMagPysicalText(data);
 
@@ -598,6 +599,21 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		}
 
 		data.movement = movement;
+	}
+	/**
+	 * Prepares a new `initiative` property on data
+	 * containing information needed to format the
+	 * various initiative proficiency icon on the sheet.
+	 *
+	 * @param {object} data - The data object returned by this.getData() for the template.
+	 * @memberof MonsterBlock5e
+	 */
+	prepInitiative(data) {
+		const initProfMult = this.actor.getFlag("monsterblock", "initProfMult");
+
+		this.actor.update({
+			"system.attributes.init.bonus": math.floor(data.system.attributes.prof * initProfMult)
+		});
 	}
 
 	/**
@@ -1175,7 +1191,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		// Toggle next level - forward on click, backwards on right
 		elem.dataset.skillValue = levels[(idx === levels.length - 1) ? 0 : idx + 1];
-
+		Flags.setFlag(this.flagManager, "initProfMult", elem.dataset.skillValue);
 
 		// Update the field value and save the form
 		this._onSubmit(event);
@@ -1314,6 +1330,17 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		},
 		"expand-abl": (id) => { // Formats any text to include proper inline rolls and links.
 			return CONFIG.DND5E.abilities[id].label;
+		},
+		"prof-icon": (profMult) => {
+			let iconClass = "fa-circle";
+			if(profMult == 0.5) {
+				iconClass = "fa-adjust";
+			} else if (profMult == 1) {
+				iconClass = "fa-check";
+			} else if (profMult == 2) {
+				iconClass = "fa-check-double";
+			}
+			return iconClass;
 		}
 	};
 
