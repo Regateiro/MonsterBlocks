@@ -10,6 +10,7 @@ export default class Flags5e extends Flags {
 	 */
 	static get flagDefaults() {
 		return mergeObject(super.flagDefaults, {
+			"initProfMult"      	   : { type: Number , default: 0     },
 			"attack-descriptions"      : { type: Boolean, default: true  },
 			"casting-feature"          : { type: Boolean, default: true  },
 			"current-hit-points"       : { type: Boolean, default: true  },
