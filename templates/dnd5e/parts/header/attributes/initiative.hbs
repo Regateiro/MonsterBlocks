@@ -1,4 +1,7 @@
-<h4 class="attribute-name box-title">{{localize "DND5E.Initiative"}}</h4>
+<h4 class="attribute-name box-title">
+	<a class="initiative">{{localize "DND5E.Initiative"}}</a>
+</h4>
 <span class="attr-value">
-	<span class="skill-mod">{{numberFormat system.attributes.init.total decimals=0 sign=true}}</span>
+	<span class="init-icon"><i class="far fa-circle"></i></span>
+	<span class="init-mod">{{numberFormat system.attributes.init.total decimals=0 sign=true}}</span>
 </span>

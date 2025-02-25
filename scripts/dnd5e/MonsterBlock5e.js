@@ -888,6 +888,12 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		html.find(".trait-selector-add").click(this._onTraitSelector.bind(this));
 		html.find("[data-skill-id]").contextmenu(this._onCycleSkillProficiency.bind(this));
 		html.find("[data-skill-id]").click(this._onCycleSkillProficiency.bind(this));
+		html.find(".init-icon").click(this._onCycleInitProficiency.bind(this));
+
+		html.find(".initiative").click(async (event) => {
+			event.preventDefault();
+			this.actor.rollInitiative({ createCombatants: true });
+		});
 
 		this.menus.forEach(m => m.attachHandler());
 
@@ -1153,6 +1159,23 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		} else if (event.type === "contextmenu") {
 			elem.dataset.skillValue = levels[(idx === 0) ? levels.length - 1 : idx - 1];
 		}
+
+		// Update the field value and save the form
+		this._onSubmit(event);
+	}
+	_onCycleInitProficiency(event) {
+		event.preventDefault();
+		let elem = event.currentTarget;
+		let value = elem.dataset.skillValue;
+
+		// Get the current level and the array of levels
+		const level = parseFloat(value);
+		const levels = [0, 1, 0.5, 2];
+		let idx = levels.indexOf(level);
+
+		// Toggle next level - forward on click, backwards on right
+		elem.dataset.skillValue = levels[(idx === levels.length - 1) ? 0 : idx + 1];
+
 
 		// Update the field value and save the form
 		this._onSubmit(event);

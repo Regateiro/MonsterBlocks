@@ -499,6 +499,12 @@
 	width: 3.5ch;
 	top: 1px;
 }
+.monsterblock .init-icon {
+	position: relative;
+	padding-left: 15px;
+	display: inline;
+	top: 1px;
+}
 .monsterblock .charname {
 	font-size: 2em;
 	color: var(--heading-color);
