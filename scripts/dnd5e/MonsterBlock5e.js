@@ -17,14 +17,14 @@ import Flags from "./Flags5e.js";
 export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5eNPC {
 	constructor(...args) {
 		super(...args);
-		
+
 		this.position.default = true;
-		
+
 		this.flagManager = new Flags(this);
 
 		//this.flagManager.prep().then((p) => {
 			this.options.classes.push(this.themes[this.currentTheme].class);
-			//if (p) 
+			//if (p)
 			if (!this.actor.compendium) this.setCurrentTheme(this.currentTheme);
 		//});
 
@@ -34,7 +34,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	get template() {
 		return "modules/monsterblock/templates/dnd5e/monsterblock5e.hbs";
 	}
-	
+
 	static get defaultOptions() {
 		return mergeObject(super.defaultOptions, {
 			classes: ["monsterblock", "sheet", "actor"],
@@ -54,17 +54,17 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	get defaultFlags() {
 		return this.flagManager.constructor.defaultFlags;
 	}
-	
+
 	/**
 	 * Provides the data used in Handlebars for the sheet template.
 	 *
-	 * @return {object} 
+	 * @return {object}
 	 * @memberof MonsterBlock5e
 	 * @override
 	 */
 	async getData() {	// Override and add to the getData() function
 		const data = await super.getData();
-		
+
 		//console.debug(data);
 
 		data.notOwner = !data.owner;
@@ -73,7 +73,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		// Tweak a few properties to get a proper output
 		data.system.details.xp.label = this.constructor.formatNumberCommas(data.system.details.xp.value);
 		data.system.attributes.hp.average = this.constructor.averageRoll(data.system.attributes.hp.formula, this.actor.getRollData());
-	
+
 		this.prepAbilities(data);
 		this.prepMovement(data);
 		this.prepInitiative(data);
@@ -94,10 +94,10 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		if (data.notOwner || !this.options.editable) data.flags.editing = false;
 		if (!data.flags.editing) data.flags["show-delete"] = false;
 		if (this.actor.limited) data.flags["show-bio"] = true;
-		
+
 		data.info = {		// A collection of extra information used mainly for conditionals
 			hasSaveProfs: this.hasSaveProfs(),
-			hasSkills: this.hasSkills(),							
+			hasSkills: this.hasSkills(),
 			hasCastingFeature: Boolean(data.features.casting.items.length),
 			hasLegendaryActions: Boolean(data.features.legendary.items.length),
 			hasLair: Boolean(data.features.lair.items.length),
@@ -120,37 +120,37 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		data.menus = this.menuTrees;
 		Object.values(this.menuTrees).forEach(m => m.update(m, data));
-				
+
 		data.themes = this.themes;
-		
+
 		this.templateData = data;
 		return data;
 	}
 
 	/**
 	 * Constructs a FormData object using data from the sheet,
-	 * this version gets data from `contenteditable` and other 
+	 * this version gets data from `contenteditable` and other
 	 * custom fields rather than standard HTML form elements.
 	 *
 	 * @param {object} updateData     Additional data that should be merged with the form data
-	 * @return {object} 
+	 * @return {object}
 	 * @memberof MonsterBlock5e
 	 * @override
 	 */
-	_getSubmitData(updateData={}) {	
+	_getSubmitData(updateData={}) {
 		if (!this.form) throw new Error(`The FormApplication subclass has no registered form element`);
 
 		if (!updateData) updateData = {};
-		
+
 		const form = this.form;
 		const formData = new FormDataExtended(this.form, { editors: this.editors });
-		
+
 		const fields = form.querySelectorAll("[data-field-key]");
 		for (let field of fields) {
 			let key = field.dataset.fieldKey;
 			let type = field.dataset.dtype || "String";
 			let value = field.innerText;
-			
+
 			value = castType(this.handleSpecial(key, value), type);
 
 			if(this.getActorProp(key) != value) {
@@ -200,7 +200,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		return flattenObject(
 			mergeObject(
-				formData.object, 
+				formData.object,
 				updateData
 			)
 		);
@@ -208,7 +208,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	getActorProp(key) {
 		// Split the string into individual parts
 		var fields = key.split(".");
-    
+
 		let prop = this.actor;
 		for (let field of fields) {
 			if(!(field in prop)) {
@@ -249,7 +249,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 	/**
 	 * @param {...*} args - Array of arguments
-	 * @return {MenuTree} 
+	 * @return {MenuTree}
 	 * @memberof MonsterBlock5e
 	 */
 	addMenu(...args) {
@@ -266,7 +266,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		let featMenu = this.addMenu("monster-features", `<i class="fa fa-plus"></i>`, undefined, undefined, ".main-section", "menu-active");
 
 		featMenu.add(this.createFeatureAdder({ type: "feat" }, "MOBLOKS5E.AddFeat"));
-		featMenu.add(this.createFeatureAdder({ 
+		featMenu.add(this.createFeatureAdder({
 			"type": "weapon",
 			"activation.type": "action",
 			"weapon-type": "natural",
@@ -310,12 +310,12 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 
 	/**
-	 * @return {MenuTree} 
+	 * @return {MenuTree}
 	 * @memberof MonsterBlock5e
 	 */
 	prepAttributeMenu() {
 		let attrMenu = this.addMenu("monster-attributes", `<i class="fa fa-edit"></i>`, undefined, undefined, ".monster-attributes2", "menu-active");
-		
+
 		attrMenu.add(this.prepareSavingThrowsMenu(attrMenu));
 		attrMenu.add(this.prepSkillsMenu(attrMenu));
 		attrMenu.add(this.prepDamageTypeMenu("dv", "DND5E.DamVuln", attrMenu));
@@ -323,7 +323,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		attrMenu.add(this.prepDamageTypeMenu("di", "DND5E.DamImm", attrMenu));
 		attrMenu.add(this.prepConditionTypeMenu("ci", "DND5E.ConImm", attrMenu));
 		attrMenu.add(this.prepLanguageMenu("languages", "DND5E.Languages", attrMenu));
-		
+
 		return attrMenu;
 	}
 	prepareSavingThrowsMenu(attrMenu) {
@@ -332,7 +332,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		Object.entries(this.actor.system.abilities).forEach(([ab, ability]) => {
 			let flag = Boolean(ability.proficient);
 			menu.add(new MenuItem("save-toggle", {
-				name: CONFIG.DND5E.abilities[ab].label, 
+				name: CONFIG.DND5E.abilities[ab].label,
 				flag, d: ab,
 				target: `system.abilities.${ab}.proficient`,
 				icon: flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>'
@@ -357,7 +357,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				m.skill.icon = this._getProficiencyIcon(m.skill.value)
 			}));
 		});
-			
+
 		this._skillMenu = menu;
 		return menu;
 	}
@@ -491,7 +491,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 	get themes() {
 		if (this._themes) return this._themes;
-		
+
 		this._themes = MonsterBlock5e.themes;
 		this._themes.custom = { name: "MOBLOKS5E.CustomThemeName", class: this.flagManager.flags["custom-theme-class"] };
 		return this._themes;
@@ -506,26 +506,26 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		if (!(theme in this.themes)) return this.currentTheme;
 		let oldTheme = this.themes[this.currentTheme];
 		let newTheme = this.themes[theme];
-			
+
 		this.element.removeClass(oldTheme.class);
 		this.element.addClass(newTheme.class);
-		
+
 		let classes = this.options.classes;
 		classes[classes.indexOf(oldTheme.class)] = newTheme.class;
-		
+
 		return await Flags.setFlag(this.flagManager, "theme-choice", theme);
 	}
-		
+
 	async pickTheme(event) {
 		let value = event.currentTarget.dataset.value;
-		
+
 		if (value == "custom") {
 			await this.setCurrentTheme("default");
 			const className = event.currentTarget.nextElementSibling.value;
 			this.themes.custom.class = className;
 			await Flags.setFlag(this.flagManager, "custom-theme-class", className);
 		}
-		
+
 		this.setCurrentTheme(value);
 	}
 	async setFontSize(event) {
@@ -538,7 +538,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		await Flags.setFlag(this.flagManager, "font-size", value)
 	}
-	
+
 	_prepareItems(data) {
 		return new ItemPrep(this, data);
 	}
@@ -556,10 +556,10 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		)
 	}
 	/**
-	 * @typedef moveData 
-	 * A set of data about a movement speed 
+	 * @typedef moveData
+	 * A set of data about a movement speed
 	 * used to generate the text to display on the sheet.
-	 * 
+	 *
 	 * @property {string} name - The name of the movement type
 	 * @property {Boolean} showLabel - True if the label should be shown, otherwise the label is hidden.
 	 * @property {string} label - The label for this movement speed, should not be capitalized
@@ -583,7 +583,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		for (let move of moveTpyes) {
 			const speed = data.system.attributes.movement[move];
-			
+
 			let moveName = move;
 			const moveNameCaps = moveName.replace(moveName[0], moveName[0].toUpperCase());
 
@@ -609,18 +609,21 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	 * @memberof MonsterBlock5e
 	 */
 	prepInitiative(data) {
-		const initProfMult = this.actor.getFlag("monsterblock", "initProfMult");
+		const initProfMult = this.actor.getFlag("monsterblock", "initProfMult") || 0;
 
-		this.actor.update({
-			"system.attributes.init.bonus": math.floor(data.system.attributes.prof * initProfMult)
-		});
+		let initBonus = math.floor(data.system.attributes.prof * initProfMult);
+		if (isNaN(initBonus)) {
+			initBonus = 0;
+		};
+
+		this.actor.update({"system.attributes.init.bonus": initBonus});
 	}
 
 	/**
-	 * @typedef senseData 
-	 * A set of data about a sense 
+	 * @typedef senseData
+	 * A set of data about a sense
 	 * used to generate the text to display on the sheet.
-	 * 
+	 *
 	 * @property {string} name - The name of the sense type
 	 * @property {string} label - The label for this sense, should not be capitalized
 	 * @property {number|string} value - The sense, if zero this is set to an empty string so that nothing is displayed
@@ -671,7 +674,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		// When Monster Blocks *is* the default, use the system default instead.
 		if (defcls == "dnd5e.MonsterBlock5e") defcls = "dnd5e.ActorSheet5eNPC";
-		
+
 		return await this.constructor.switchSheetTo(defcls, this);
 	}
 	static async switchSheetTo(sheetClass, that) {
@@ -720,19 +723,19 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		html.find(".switch").click((event) => {							// Switches are the primary way that settings are applied per-actor.
 			event.preventDefault();
 			let control = event.currentTarget.dataset.control;			// A data attribute is used on an element with the class .switch, and it contains the name of the switch to toggle.
-			
+
 			let state = !this.flagManager.flags[control];	            // Get the current setting of this flag, and reverse it.
 			if (debug.enabled) console.debug(`Monster Block | %cSwitching: ${control} to: ${state}`, "color: orange")
-			
+
 			this.flagManager.flags[control] = state;                    // Set the flag to the new state.
 		});
-		html.find(".trigger").click((event) => {							
+		html.find(".trigger").click((event) => {
 			event.preventDefault();
 			let control = event.currentTarget.dataset.control;
-			
+
 			this[control](event);
 		});
-		html.find(".switch-input").keydown((event) => {							
+		html.find(".switch-input").keydown((event) => {
 			if (event.key !== "Enter") return;
 			event.preventDefault();
 			let target = event.currentTarget;
@@ -750,22 +753,22 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				uuid: this.actor.uuid
 			}).render(true);
 		});
-		
+
 		html.find("[data-roll-formula]").click(async (event) => {			// Universal way to add an element that provides a roll, just add the data attribute "data-roll-formula" with a formula in it, and this applies.
 			event.preventDefault();									// This handler makes "quick rolls" possible, it just takes some data stored on the HTML element, and rolls dice directly.
 			event.stopPropagation();
-			
+
 			const formula = event.currentTarget.dataset.rollFormula;
 			const target = event.currentTarget.dataset.rollTarget;
 			const success = event.currentTarget.dataset.rollSuccess;
 			const failure = event.currentTarget.dataset.rollFailure;
 			const handler = event.currentTarget.dataset.rollHandler;
 			let flavor = event.currentTarget.dataset.rollFlavor;	// Optionally, you can include data-roll-flavor to add text to the message.
-			
+
 			let roll;
-			try { 
+			try {
 				roll = new Roll(formula);
-				await roll.roll({ async: true }); 
+				await roll.roll({ async: true });
 			}
 			catch (e) {
 				console.error(e);
@@ -773,32 +776,32 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				roll = new Roll("0");
 				await roll.roll({ async: true });
 			}
-			
+
 			if (target) {
 				let s = roll.total >= parseInt(target, 10);
-				if (handler) this[handler](s, event); 
-				
+				if (handler) this[handler](s, event);
+
 				flavor += `<span style="font-weight: bold; color: ${s ? "green" : "red"};">${s ? success : failure}</span>`;
 			}
-			
+
 			roll.toMessage({					// Creates a new Roll, rolls it, and sends the result as a message
 				flavor: flavor,										// Including the text as defined
 				speaker: ChatMessage.getSpeaker({actor: this.actor})// And setting the speaker to the actor this sheet represents
 			});
 		});
-		
+
 		// Special Roll Handlers
 		html.find(".ability").click(async (event) => {
 			event.preventDefault();
 			let ability = event.currentTarget.dataset.ability;
-			
+
 			if (window.BetterRolls) window.BetterRolls.rollCheck(this.actor, ability, { event });
 			else this.actor.rollAbilityTest(ability, {event: event});
 		});
 		html.find(".saving-throw").click(async (event) => {
 			event.preventDefault();
 			let ability = event.currentTarget.dataset.ability;
-			
+
 			if (window.BetterRolls) window.BetterRolls.rollSave(this.actor, ability, { event });
 			else this.actor.rollAbilitySave(ability, {event: event});
 		});
@@ -808,7 +811,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			if (window.BetterRolls) window.BetterRolls.rollSkill(this.actor, skill, { event });
 			else this.actor.rollSkill(skill, {event: event});
 		});
-		
+
 		// Item and spell "roll" handlers. Really just pops their chat card into chat, allowing for rolling from there.
 		html.find(".item-name, .spell").click(async (event) => {
 			event.preventDefault();
@@ -842,11 +845,11 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 			item.rollDamage({event, versatile});
 		})
-		
+
 		// Item editing handlers. Allows right clicking on the description of any item (features, action, etc.) to open its own sheet to edit.
 		html.find(".item").contextmenu(this.openItemEditor.bind(this));
 		html.find(".spell").contextmenu(this.openSpellEditor.bind(this));
-					
+
 		html.find(".select-field").click((event) => {
 			let control = event.currentTarget;
 			let selection = event.target;
@@ -895,10 +898,10 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		html.find(".custom-trait input").keydown((event) => {
 			if (event.key == "Enter") this.onCustomTraitChange(event);
 		});
-		
-		
+
+
 		html.find("[contenteditable=true]").focusin(this._onFocusEditable.bind(this));
-		
+
 		html.find("[contenteditable=true]").focusout(this._onUnfocusEditable.bind(this));
 		html.find(".trait-selector").contextmenu(this._onTraitSelector.bind(this));
 		html.find(".trait-selector-add").click(this._onTraitSelector.bind(this));
@@ -933,7 +936,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			html.find("img[data-edit]").contextmenu(ev => this._onEditImage(ev));
 			html.find("token.img[data-edit]").contextmenu(ev => this._onEditImage(ev));
 		}
-		
+
 		if (!this.lastSelection) this.lastSelection = {};
 		const key    = this.lastSelection.key    ? `[data-field-key="${this.lastSelection.key}"]` : "";
 		const entity = this.lastSelection.entity ? `[data-entity="${this.lastSelection.entity}"]` : "";
@@ -961,7 +964,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		// Roll Hit Points Formula
 		html.find(".roll-hit-points").click(this._onConfigMenu.bind(this));
 	}
-	
+
 	toggleExpanded(event) {
 		if (!this.flags["compact-feats"]) return;
 
@@ -974,7 +977,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		item.setFlag("monsterblock", "expanded", !expanded);
 	}
-	
+
 	setWindowClasses(html) {
 		const outer = html.parents(".monsterblock");
 
@@ -1049,7 +1052,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		const traitReducer = (acc, n) => {
 			if (n.dataset.flag == "true") acc.push(n.dataset.option);
-			return acc; 
+			return acc;
 		}
 		data["system.traits.languages.value"] =
 		[...html.find(`[data-language-opt]`)].reduce(traitReducer, []);
@@ -1074,7 +1077,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	 * If the input is attached to an item, it updates that item.
 	 *
 	 * @param {Event} event - The triggering event.
-	 * @return {null} 
+	 * @return {null}
 	 * @memberof MonsterBlock5e
 	 */
 	_onChangeInput(event) {
@@ -1082,9 +1085,9 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		input.innerText = input.innerText.replace(/\s+/gm, " ");	// Strip excess whitespace
 		let value = input.dataset.selectedValue ? input.dataset.selectedValue : input.innerText;	// .innerText will not include any HTML tags
-		
-		const entity = input.dataset.entity ? 
-			this.actor.getEmbeddedDocument("Item", input.dataset.entity) : 
+
+		const entity = input.dataset.entity ?
+			this.actor.getEmbeddedDocument("Item", input.dataset.entity) :
 			this.actor;
 		const key = input.dataset.fieldKey ? input.dataset.fieldKey : input.dataset.selectKey;
 		const dtype = input.dataset.dtype;
@@ -1094,7 +1097,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				if (value != "") value = this.handleNumberChange(entity, key, input, event);
 				break;
 			case "Roll": {
-				try { 
+				try {
 					value ? new Roll(value).roll() : null;
 				}
 				catch (e) {
@@ -1106,7 +1109,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			}
 		}
 
-		if (input.dataset.entity) {		
+		if (input.dataset.entity) {
 			this.actor.updateEmbeddedDocuments("Item", [{
 				_id: input.dataset.entity,
 				[key]: value
@@ -1116,7 +1119,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			this.actor.update({[key]: value}).then(()=> { super._onChangeInput(event); });
 		}
 	}
-	
+
 	/**
 	 * Evaluate numeric input, handling expressions using Input Expressions
 	 *
@@ -1130,8 +1133,8 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		const current = getProperty(entity, key);
 
 		if (window.math?.roll)
-			return inputExpression(new ContentEditableAdapter(input), current, { 
-				event, entity, 
+			return inputExpression(new ContentEditableAdapter(input), current, {
+				event, entity,
 				data: this.templateData,
 				actor: this.object
 			});
@@ -1222,7 +1225,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		await this._onSubmit(event);
 		return this.actor.longRest();
 	}
-	
+
 	/**
 	 * Closes the sheet.
 	 *
@@ -1231,7 +1234,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	 *
 	 * @override
 	 * @param {object} args
-	 * @return {Promise} 
+	 * @return {Promise}
 	 * @memberof MonsterBlock5e
 	 */
 	async close(...args) {
@@ -1265,16 +1268,16 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		let name = item.name.toLowerCase().replace(/\s+/g, "");	// Convert the name of the item to all lower case, and remove whitespace.
 		return getTranslationArray("MOBLOKS5E.MultiattackLocators").some(loc => name.includes(loc));
 	}
-	
+
 	static isLegendaryResistance(item) {
 		return item.system?.consume?.target === "resources.legres.value";
 	}
-	
+
 	// Item purpose checks
 	static isLegendaryAction(item) {
 		return item.system?.activation?.type === "legendary";
 	}
-	
+
 	static isLairAction(item) {
 		return item.system?.activation?.type === "lair";
 	}
@@ -1286,11 +1289,11 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	static isBonusAction(item) {
 		return item.system?.activation?.type === "bonus";
 	}
-	
+
 	static isReaction(item) {
 		return item.system?.activation?.type === "reaction";
 	}
-		
+
 
 	static getItemAbility(item, actor, master) {
 		return master.object.items.get(item._id).abilityMod;
@@ -1301,7 +1304,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 	static averageRoll(formula, mods) {
 		if (!formula) return 0;
-		try { 
+		try {
 			const rollMin = new Roll(formula, mods);
 			const rollMax = rollMin.clone();
 			return Math.floor((		// The maximum roll plus the minimum roll, divided by two, rounded down.
@@ -1357,7 +1360,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			"modules/monsterblock/templates/dnd5e/main.hbs",
 			"modules/monsterblock/templates/dnd5e/collapsibleSection.hbs",
 			"modules/monsterblock/templates/dnd5e/sectionHeader.hbs",
-			
+
 			// Actor Sheet Partials
 			"modules/monsterblock/templates/dnd5e/parts/header/identity.hbs",
 			"modules/monsterblock/templates/dnd5e/parts/header/attributes1.hbs",
