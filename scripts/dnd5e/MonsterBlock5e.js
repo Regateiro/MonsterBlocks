@@ -611,7 +611,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	prepInitiative(data) {
 		const initProfMult = this.actor.getFlag("monsterblock", "initProfMult") || 0;
 
-		let initBonus = math.floor(data.system.attributes.prof * initProfMult);
+		let initBonus = Math.floor(data.system.attributes.prof * initProfMult);
 		if (isNaN(initBonus)) {
 			initBonus = 0;
 		};
