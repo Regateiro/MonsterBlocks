@@ -527,8 +527,9 @@ export default class CastingPreper extends ItemPreper {
 		const system = this.sheet.actor.system;
 		const abilityBonus = system.abilities[this.castingAbility]?.mod;
 		const profBonus = system.attributes?.prof;
+		const attackBonus = parseInt(system.bonuses?.rsak?.attack || "0");
 		
-		return abilityBonus + profBonus;
+		return abilityBonus + profBonus + attackBonus;
 	}
 
 	/**

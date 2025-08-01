@@ -16,7 +16,7 @@
 			"url": "https://github.com/Regateiro"
 		}
 	],
-	"version": "3.7.2",
+	"version": "3.7.3",
 	"compatibility": {
 		"minimum": 10,
 		"verified": "10.303"
@@ -67,9 +67,9 @@
 			}
 		]
 	},
-	"manifest": "https://github.com/Regateiro/MonsterBlocks/releases/download/v3.7.2/module.json",
+	"manifest": "https://github.com/Regateiro/MonsterBlocks/releases/download/v3.7.3/module.json",
 	"url": "https://github.com/Regateiro/MonsterBlocks",
-	"download": "https://github.com/Regateiro/MonsterBlocks/releases/download/v3.7.2/monsterblock.zip",
+	"download": "https://github.com/Regateiro/MonsterBlocks/releases/download/v3.7.3/monsterblock.zip",
 	"readme": "https://github.com/Regateiro/MonsterBlocks/blob/master/readme.md",
 	"bugs": "https://github.com/Regateiro/MonsterBlocks/issues",
 	"allowBugReporter": true,
