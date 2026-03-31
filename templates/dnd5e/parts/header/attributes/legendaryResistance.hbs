@@ -1,14 +1,14 @@
 
-{{#if flags.show-fortitude-points}}
-<h4 class="attribute-name box-title">{{~localize "DND5E.FortitudePoints"}}</h4>
+{{#if flags.show-legendary-resistance}}
+<h4 class="attribute-name box-title">{{~localize "DND5E.LegRes"}}</h4>
 <span title="{{localize "MOBLOKS5E.Current"}}" 
 	placeholder="0" 
-	data-field-key="system.attributes.fp.value" 
+	data-field-key="system.resources.legres.value" 
 	data-dtype="Number" 
 	class="attr-value" 
 	contenteditable="{{owner}}">
-	{{~#if system.attributes.fp.value~}}
-		{{~system.attributes.fp.value~}}
+	{{~#if system.resources.legres.value~}}
+		{{~system.resources.legres.value~}}
 	{{~else~}}
 		0
 	{{~/if~}}
@@ -16,12 +16,12 @@
 <span class="sep"> / </span>
 <span title="{{localize "MOBLOKS5E.Maximum"}}" 
 	placeholder="0" 
-	data-field-key="system.attributes.fp.max" 
+	data-field-key="system.resources.legres.max" 
 	data-dtype="Number"
 	class="attr-value" 
 	contenteditable="{{owner}}">
-	{{~#if system.attributes.fp.max~}}
-		{{system.attributes.fp.max~}}
+	{{~#if system.resources.legres.max~}}
+		{{system.resources.legres.max~}}
 	{{~else~}}
 		0
 	{{~/if~}}

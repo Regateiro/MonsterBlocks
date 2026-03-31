@@ -104,7 +104,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			hasActions: Boolean(data.features.attacks.items.length || data.features.actions.items.length || data.features.multiattack.items.length),
 			hasBonusActions: Boolean(data.features.bonusActions.items.length),
 			hasReactions: Boolean(data.features.reaction.items.length),
-			hasFeatures: Boolean(data.features.features.items.length || data.features.casting.items.length || data.features.fortPoints.items.length),
+			hasFeatures: Boolean(data.features.features.items.length || data.features.casting.items.length || data.features.legResist.items.length),
 			hasLoot: Boolean(data.features.equipment.items.length),
 			vttatokenizer: Boolean(window.Tokenizer)
 		}
@@ -1269,8 +1269,8 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		return getTranslationArray("MOBLOKS5E.MultiattackLocators").some(loc => name.includes(loc));
 	}
 
-	static isFortitudePoints(item) {
-		return item.system?.consume?.target === "attributes.fp.value";
+	static isLegendaryResistance(item) {
+		return item.system?.consume?.target === "resources.legres.value";
 	}
 
 	// Item purpose checks

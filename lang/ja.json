@@ -246,12 +246,12 @@
                 "name": "住処アクション"
             }
         },
-        "show-fortitude-points": {
-            "disable": "耐久力ポイントを隠す",
-            "enable": "忍耐力ポイントを表示",
+        "show-legendary-resistance": {
+            "disable": "伝説のレジスタンスを隠す",
+            "enable": "伝説の抵抗を見せる",
             "settings": {
-                "hint": "デフォルトでは、耐久力ポイントを表示します。",
-                "name": "忍耐力ポイントを表示"
+                "hint": "デフォルトでは、伝説の耐性を示します。",
+                "name": "伝説の抵抗を見せる"
             }
         },
         "show-not-prof": {
