@@ -16,7 +16,7 @@
 			"url": "https://github.com/Regateiro"
 		}
 	],
-	"version": "3.7.3",
+	"version": "3.7.4",
 	"compatibility": {
 		"minimum": 10,
 		"verified": "10.303"
@@ -54,8 +54,8 @@
 			"id": "dnd5e",
 			"manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
 			"compatibility": {
-				"minimum": "2.2.1",
-				"verified": "2.4.1"
+				"minimum": "2.4.4",
+				"verified": "2.4.4"
 			  }
 			}
 		],
@@ -67,9 +67,9 @@
 			}
 		]
 	},
-	"manifest": "https://github.com/Regateiro/MonsterBlocks/releases/download/v3.7.3/module.json",
+	"manifest": "https://github.com/Regateiro/MonsterBlocks/releases/download/v3.7.4/module.json",
 	"url": "https://github.com/Regateiro/MonsterBlocks",
-	"download": "https://github.com/Regateiro/MonsterBlocks/releases/download/v3.7.3/monsterblock.zip",
+	"download": "https://github.com/Regateiro/MonsterBlocks/releases/download/v3.7.4/monsterblock.zip",
 	"readme": "https://github.com/Regateiro/MonsterBlocks/blob/master/readme.md",
 	"bugs": "https://github.com/Regateiro/MonsterBlocks/issues",
 	"allowBugReporter": true,
