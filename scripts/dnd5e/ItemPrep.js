@@ -38,7 +38,7 @@ export default class ItemPrep {
 	
 	/** @type {Object.<string, Feature>} A set of item classifications by type */
 	features = {
-		legResist:	  { prep: ItemPreper,    filter: MonsterBlock5e.isLegendaryResistance,        items: [], dataset: {type: "feat"}   },
+		fortPoints:	  { prep: ItemPreper,    filter: MonsterBlock5e.isFortitudePoints,            items: [], dataset: {type: "feat"}   },
 		legendary:	  { prep: ActionPreper,  filter: MonsterBlock5e.isLegendaryAction,            items: [], dataset: {type: "feat"}   },
 		lair:		  { prep: ActionPreper,  filter: MonsterBlock5e.isLairAction,                 items: [], dataset: {type: "feat"}   },
 		multiattack:  { prep: ActionPreper,  filter: MonsterBlock5e.isMultiAttack,                items: [], dataset: {type: "feat"}   },

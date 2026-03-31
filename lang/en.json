@@ -247,12 +247,12 @@
                 "name": "Show Lair Actions"
             }
         },
-        "show-legendary-resistance": {
-            "disable": "Hide legendary resistance",
-            "enable": "Show legendary resistance",
+        "show-fortitude-points": {
+            "disable": "Hide fortitude points",
+            "enable": "Show fortitude points",
             "settings": {
-                "hint": "By default, display the legendary resistance fields.",
-                "name": "Show Legendary Resistance"
+                "hint": "By default, display the fortitude points.",
+                "name": "Show Fortitude Points"
             }
         },
         "show-not-prof": {

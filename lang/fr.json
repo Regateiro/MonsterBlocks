@@ -251,12 +251,12 @@
                 "name": "Afficher les actions d'antre"
             }
         },
-        "show-legendary-resistance": {
-            "disable": "Cacher la résistance légendaire",
-            "enable": "Afficher la résistance légendaire",
+        "show-fortitude-points": {
+            "disable": "Cacher les points de fortitude",
+            "enable": "Afficher les points de fortitude",
             "settings": {
-                "hint": "Affiche la résistance légendaire par défaut.",
-                "name": "Afficher la résistance légendaire"
+                "hint": "Afficher les points de fortitude. par défaut.",
+                "name": "Afficher les points de fortitude"
             }
         },
         "show-not-prof": {

@@ -252,12 +252,12 @@
                 "name": "Mostrar Ações de Covil"
             }
         },
-        "show-legendary-resistance": {
-            "disable": "Esconder resistência lendária",
-            "enable": "Mostrar resistência lendária",
+        "show-fortitude-points": {
+            "disable": "Esconder pontos de resistência",
+            "enable": "Mostrar pontos de resistência",
             "settings": {
-                "hint": "Por padrão, mostra a resistência lendária.",
-                "name": "Mostrar resistência lendária"
+                "hint": "Por padrão, exibe os campos de pontos de resistência.",
+                "name": "Mostrar pontos de resistência"
             }
         },
         "show-not-prof": {

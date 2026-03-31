@@ -13,7 +13,7 @@ export default class ActionPreper extends ItemPreper {
 	 * @property {boolean} multiattack   - Whether or not this is the multiattack action
 	 * @property {boolean} legendary     - Whether or not this is a legendary action
 	 * @property {boolean} lair          - Whether or not this is a lair action
-	 * @property {boolean} legResist     - Whether or not this is the legendary resistance feature
+	 * @property {boolean} fortPoints    - Whether or not this is the fortitude points feature
 	 * @property {boolean} reaction      - Whether or not this is a reaction
 	 *//**
 	 *
@@ -29,7 +29,7 @@ export default class ActionPreper extends ItemPreper {
 			multiAttack:  MonsterBlock5e.isMultiAttack(this.item),
 			legendary:    MonsterBlock5e.isLegendaryAction(this.item),
 			lair:         MonsterBlock5e.isLairAction(this.item),
-			legResist:    MonsterBlock5e.isLegendaryResistance(this.item),
+			fortPoints:   MonsterBlock5e.isFortitudePoints(this.item),
 			bonusAction:  MonsterBlock5e.isBonusAction(this.item),
 			reaction:     MonsterBlock5e.isReaction(this.item)
 		};

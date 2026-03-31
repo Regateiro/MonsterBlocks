@@ -26,9 +26,9 @@
 				{{/unless}}
 			{{/each}}
 
-			{{! Legendary Resistance }}
-			{{#if features.legResist.items}}
-				{{> "modules/monsterblock/templates/dnd5e/parts/featureBlock.hbs" item=features.legResist.items.[0]}}
+			{{! Fortitude Points }}
+			{{#if features.fortPoints.items}}
+				{{> "modules/monsterblock/templates/dnd5e/parts/featureBlock.hbs" item=features.fortPoints.items.[0]}}
 			{{/if}}
 		{{/"modules/monsterblock/templates/dnd5e/collapsibleSection.hbs"}}
 	{{/if}}
