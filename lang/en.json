@@ -248,11 +248,11 @@
             }
         },
         "show-legendary-resistance": {
-            "disable": "Hide legendary resistance",
-            "enable": "Show legendary resistance",
+            "disable": "Hide fortitude points",
+            "enable": "Show fortitude points",
             "settings": {
-                "hint": "By default, display the legendary resistance fields.",
-                "name": "Show Legendary Resistance"
+                "hint": "By default, display the fortitude points fields.",
+                "name": "Show Fortitude Points"
             }
         },
         "show-not-prof": {
