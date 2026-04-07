@@ -13,7 +13,7 @@ function createRelease(cb) {
 		"templates/**",
 		"lang/*"
 	], { base: ".", allowEmpty: true })
-		.pipe(zip("monsterblock.zip"))
+		.pipe(zip("module.zip"))
 		.pipe(Gulp.dest("./"));
 }
 

@@ -69,7 +69,7 @@
 	},
 	"manifest": "https://github.com/Regateiro/MonsterBlocks/releases/latest/download/module.json",
 	"url": "https://github.com/Regateiro/MonsterBlocks",
-	"download": "https://github.com/Regateiro/MonsterBlocks/releases/latest/download/monsterblock.zip",
+	"download": "https://github.com/Regateiro/MonsterBlocks/releases/latest/download/module.zip",
 	"readme": "https://github.com/Regateiro/MonsterBlocks/blob/master/readme.md",
 	"bugs": "https://github.com/Regateiro/MonsterBlocks/issues",
 	"allowBugReporter": true,

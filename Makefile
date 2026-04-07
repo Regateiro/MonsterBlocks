@@ -8,4 +8,4 @@ compress:
 install: compress
 	rm -rf $(INSTALL_PATH)
 	mkdir $(INSTALL_PATH)
-	unzip monsterblock.zip -d $(INSTALL_PATH)
+	unzip module.zip -d $(INSTALL_PATH)
