@@ -255,6 +255,14 @@
                 "name": "Show Fortitude Points"
             }
         },
+        "show-armor-mastery": {
+            "disable": "Hide armor mastery",
+            "enable": "Show armor mastery",
+            "settings": {
+                "hint": "By default, display the armor mastery fields.",
+                "name": "Show Armor Mastery"
+            }
+        },
         "show-not-prof": {
             "disable": "Hide not-proficient checks",
             "enable": "Show not-proficient checks",

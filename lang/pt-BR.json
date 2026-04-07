@@ -260,6 +260,14 @@
                 "name": "Mostrar resistência lendária"
             }
         },
+        "show-armor-mastery": {
+            "disable": "Esconder maestria de armadura",
+            "enable": "Mostrar maestria de armadura",
+            "settings": {
+                "hint": "Por padrão, mostra a maestria de armadura.",
+                "name": "Mostrar maestria de armadura"
+            }
+        },
         "show-not-prof": {
             "disable": "Esconder testes em que não é proficiente",
             "enable": "Mostrar testes em que não é proficiente",

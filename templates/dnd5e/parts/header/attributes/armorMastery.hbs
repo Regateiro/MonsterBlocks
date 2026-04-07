@@ -1,0 +1,29 @@
+
+{{#if flags.show-armor-mastery}}
+<h4 class="attribute-name box-title">{{~localize "DND5E.ArmorMastery"}}</h4>
+<span title="{{localize "MOBLOKS5E.Current"}}" 
+	placeholder="0" 
+	data-field-key="system.attributes.hp.armor" 
+	data-dtype="Number" 
+	class="attr-value" 
+	contenteditable="{{owner}}">
+	{{~#if system.attributes.hp.armor~}}
+		{{~system.attributes.hp.armor~}}
+	{{~else~}}
+		0
+	{{~/if~}}
+</span>
+<span class="sep"> / </span>
+<span title="{{localize "MOBLOKS5E.Maximum"}}" 
+	placeholder="0" 
+	data-field-key="system.attributes.hp.armormax" 
+	data-dtype="Number"
+	class="attr-value" 
+	contenteditable="{{owner}}">
+	{{~#if system.attributes.hp.armormax~}}
+		{{system.attributes.hp.armormax~}}
+	{{~else~}}
+		0
+	{{~/if~}}
+</span>
+{{~/if~}}

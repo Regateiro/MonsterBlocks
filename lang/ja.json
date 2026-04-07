@@ -254,6 +254,14 @@
                 "name": "伝説の抵抗を見せる"
             }
         },
+        "show-armor-mastery": {
+            "disable": " armor masteryを隠す",
+            "enable": " armor masteryを表示",
+            "settings": {
+                "hint": "デフォルトでは、 armor masteryを示します。",
+                "name": "armor masteryを表示"
+            }
+        },
         "show-not-prof": {
             "disable": "熟練していないチェックを非表示にする",
             "enable": "熟練していないチェックを表示する",

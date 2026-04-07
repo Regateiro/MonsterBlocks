@@ -259,6 +259,14 @@
                 "name": "Afficher la résistance légendaire"
             }
         },
+        "show-armor-mastery": {
+            "disable": "Cacher la maîtrise de l'armure",
+            "enable": "Afficher la maîtrise de l'armure",
+            "settings": {
+                "hint": "Affiche la maîtrise de l'armure par défaut.",
+                "name": "Afficher la maîtrise de l'armure"
+            }
+        },
         "show-not-prof": {
             "disable": "Cacher les compétences non-maîtrisées",
             "enable": "Afficher les compétences non-maîtrisées",
