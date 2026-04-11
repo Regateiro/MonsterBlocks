@@ -1,5 +1,5 @@
 import MonsterBlock5e from "./scripts/dnd5e/MonsterBlock5e.js";
-import { debug, getGridSize } from "./scripts/utilities.js";
+import { debug } from "./scripts/utilities.js";
 import { inputExprInitHandler } from "./scripts/handler.js";
 import PopupHandler from "./scripts/PopupHandler.js"
 import Flags5e from "./scripts/dnd5e/Flags5e.js";
@@ -20,7 +20,7 @@ Hooks.once("ready", () => {
 	if (debug.INFO) console.debug("Monster Blocks | Registering Settings");
 
 	Object.entries(Flags5e.flagDefaults)
-		.filter(([_, d]) => !d.hidden)
+		.filter(([, d]) => !d.hidden)
 		.forEach(([name, details]) =>
 			game.settings.register(Flags5e.scope, details.setting || name, {
 				name: game.i18n.localize(`MOBLOKS5E.${name}.settings.name`),

@@ -1,6 +1,9 @@
 INSTALL_PATH=~/.local/share/FoundryVTT/Data/modules/monsterblock
 
-.PHONY: install
+.PHONY: install lint
+
+lint:
+	npx eslint monsterblock.js scripts/ macros.js
 
 compress:
 	gulp

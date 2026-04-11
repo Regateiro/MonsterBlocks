@@ -400,7 +400,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	 */
 	getTraitChecklist(id, menu, target, itemType, traitList) {
 		Object.entries(traitList).forEach(([d, name]) => {
-			if (typeof(name) === 'string') {
+			if (typeof(name) === "string") {
 				let flag = this.actor.system.traits[id].value.has(d);
 				menu.add(new MenuItem(itemType, {
 					d, name, flag,
@@ -412,7 +412,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				}));
 			} else {
 				Object.entries(name.children).forEach(([d, name]) => {
-					if (typeof(name) === 'string') {
+					if (typeof(name) === "string") {
 						let flag = this.actor.system.traits[id].value.has(d);
 						menu.add(new MenuItem(itemType, {
 							d, name, flag,
@@ -424,7 +424,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 						}));
 					}
 				});
-			};
+			}
 		});
 		menu.add(new MenuItem("custom-val", {
 			d: "custom",
@@ -469,7 +469,6 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		});
 	}
 	async openTokenizer() {
-		/* global Tokenizer */
 		if (window.Tokenizer) {
 			window.Tokenizer.tokenizeActor(this.object);
 		}
@@ -579,7 +578,6 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		const moveTpyes = ["walk", "burrow", "climb", "fly", "swim"];
 		/** @type moveData[] */
 		const movement = [];
-		const hover = data.system.attributes.movement.hover;
 
 		for (let move of moveTpyes) {
 			const speed = data.system.attributes.movement[move];
@@ -614,7 +612,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		let initBonus = Math.floor(data.system.attributes.prof * initProfMult);
 		if (isNaN(initBonus)) {
 			initBonus = 0;
-		};
+		}
 
 		this.actor.update({"system.attributes.init.bonus": initBonus});
 	}
@@ -690,7 +688,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 	getSwitches(data) {
 		return Object.fromEntries(
-			Object.entries(data.allFlags).map(([k,f]) => [f.name, {
+			Object.entries(data.allFlags).map(([,f]) => [f.name, {
 					enable: game.i18n.localize(`MOBLOKS5E.${f.name}.enable`),
 					disable: game.i18n.localize(`MOBLOKS5E.${f.name}.disable`)
 			}])

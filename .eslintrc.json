@@ -102,6 +102,8 @@
         "math": "readonly",
         "game": "readonly",
         "FormDataExtended": "readonly",
-        "foundry": "readonly"
+        "foundry": "readonly",
+        "token": "readonly",
+        "Actor": "readonly"
     }
 }
