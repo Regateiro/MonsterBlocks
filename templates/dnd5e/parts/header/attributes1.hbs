@@ -13,12 +13,12 @@
 	</li>
 
 {{! Temporary Hit Points }}
-	<li class="attribute">
+	<li class="attribute" {{#unless flags.show-temporary-hit-points}}hidden{{/unless}}>
 		{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/temphitpoints.hbs"}}
 	</li>
 
 {{! Armor Mastery }}
-	<li class="attribute">
+	<li class="attribute" {{#unless flags.show-armor-mastery}}hidden{{/unless}}>
 		<span class="attribute-wrapper">
 			{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/armorMastery.hbs"}}
 		</span>
@@ -39,7 +39,7 @@
 	</li>
 
 {{! Legendary Resistance }}
-	<li class="attribute">
+	<li class="attribute" {{#unless flags.show-legendary-resistance}}hidden{{/unless}}>
 		<span class="attribute-wrapper">
 			{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/legendaryResistance.hbs"}}
 		</span>
