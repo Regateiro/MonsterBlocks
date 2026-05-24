@@ -215,6 +215,7 @@
         "reach": "reach",
         "Reactions": "Reactions",
         "Recharge": "Recharge",
+        "RechargeIndicator": "Click to toggle charged status.",
         "resetDefaults": {
             "label": "Reset to defaults"
         },

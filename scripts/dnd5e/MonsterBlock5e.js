@@ -810,6 +810,19 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			else this.actor.rollSkill(skill, {event: event});
 		});
 
+		// Recharge indicator toggle handler.
+		html.find(".recharge-indicator").click(async (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			const el = event.currentTarget;
+			const itemId = el.dataset.itemId;
+			const item = this.actor.items.get(itemId);
+			if (!item?.system?.recharge) return;
+
+			const currentCharged = Boolean(item.system.recharge.charged);
+			await item.update({ "system.recharge.charged": !currentCharged });
+		});
+
 		// Item and spell "roll" handlers. Really just pops their chat card into chat, allowing for rolling from there.
 		html.find(".item-name, .spell").click(async (event) => {
 			event.preventDefault();

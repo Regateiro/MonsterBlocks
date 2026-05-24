@@ -238,14 +238,14 @@
 }
 .monsterblock .item-attackRoll:hover,
 .monsterblock .item-damageRoll:hover,
-.monsterblock .ability:hover, 
-.monsterblock .saving-throw:hover, 
-.monsterblock .skill:hover, 
-.monsterblock .item-name:hover, 
-.monsterblock .spell:hover, 
-.monsterblock a.inline-roll:hover, 
-.monsterblock [data-roll-formula]:hover, 
-.monsterblock .window-content a:hover, 
+.monsterblock .ability:hover,
+.monsterblock .saving-throw:hover,
+.monsterblock .skill:hover,
+.monsterblock .item-name:hover,
+.monsterblock .spell:hover,
+.monsterblock a.inline-roll:hover,
+.monsterblock [data-roll-formula]:hover,
+.monsterblock .window-content a:hover,
 .monsterblock .tweak-menu ul label:hover,
 .monsterblock .menu .menu-toggle:hover {
 	text-shadow: 0px 0px .05em var(--roll-hover-color);
@@ -653,11 +653,11 @@
 	text-shadow: none;
 	color: var(--main-text-color);
 }
-.monsterblock .at-will-spells 
+.monsterblock .at-will-spells
 li:not(:first-of-type):nth-last-of-type(2):after {
 	content: var(--list-seperator) ' ' var(--list-conjuntion) ' ';
 }
-.monsterblock .at-will-spells 
+.monsterblock .at-will-spells
 li:nth-last-of-type(2):after {
 	content: ' ' var(--list-conjuntion) '  ';
 }
@@ -727,6 +727,24 @@ li:nth-last-of-type(2):after {
 .monsterblock .lair-actions {
 	margin: 0;
 }
+.monsterblock .recharge-icon-wrapper {
+	display: inline-flex;
+	align-items: center;
+	margin-right: 0.3ch;
+}
+.monsterblock .recharge-indicator {
+	cursor: pointer;
+	transition: color 0.2s ease;
+}
+.monsterblock .recharge-indicator.charged {
+	color: #4caf50;
+}
+.monsterblock .recharge-indicator.uncharged {
+	color: #e53935;
+}
+.monsterblock .recharge-indicator:hover {
+	opacity: 0.7;
+}
 .monsterblock .legendary-description {
 	margin-top: 1em;
 	margin-bottom: 1em;
@@ -741,9 +759,9 @@ li:nth-last-of-type(2):after {
 .monsterblock .hit-label {
 	font-style: italic;
 }
-.monsterblock .inline-children 
+.monsterblock .inline-children
 .description p:first-of-type,
-.monsterblock .inline-children 
+.monsterblock .inline-children
 .description div:first-of-type:not(.select-field) {
 	display: inline;
 }
@@ -776,7 +794,7 @@ li:nth-last-of-type(2):after {
 	height: .9em;
 }
 .monsterblock [contenteditable=true]:active,
-.monsterblock [contenteditable=true]:focus, 
+.monsterblock [contenteditable=true]:focus,
 .monsterblock [contenteditable=true]:hover {
 	outline: none;
 	text-decoration: dotted underline;
@@ -951,7 +969,7 @@ li:nth-last-of-type(2):after {
 	text-shadow: 0px 0px 1px var(--roll-hover-color);
 }
 .monsterblock.compact-window .window-header a > i {
-	font-size: 12px; 
+	font-size: 12px;
 }
 .monsterblock.compact-window .window-header .header-button.close {
 	position: initial;

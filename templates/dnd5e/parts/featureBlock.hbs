@@ -6,6 +6,11 @@
 			</a>
 		{{/if}}
 		{{#unless lairactions}}
+			{{~#if item.system.recharge.value~}}
+			<span class="recharge-icon-wrapper">
+				<i class="fa {{#if item.system.recharge.charged}}fas fa-check recharge-indicator charged{{else}}fas fa-times recharge-indicator uncharged{{/if}}" data-item-id="{{item._id}}" data-charged="{{item.system.recharge.charged}}" title="{{localize "MOBLOKS5E.RechargeIndicator"}}"></i>
+			</span>
+			{{~/if~}}
 			<span class="item-name" data-item-id="{{item._id}}">
 				{{~item.name~}} 
 			</span>
