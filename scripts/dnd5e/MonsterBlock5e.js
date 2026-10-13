@@ -1311,6 +1311,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 
 	static formatNumberCommas(number) {
+		if (number == null) return "";
 		return number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");	// https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 	}
 	static averageRoll(formula, mods) {
