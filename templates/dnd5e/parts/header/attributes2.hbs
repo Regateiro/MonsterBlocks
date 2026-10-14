@@ -25,19 +25,22 @@
 
 {{! Damage & Condition Resistances & Immunities}}
 	{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/damage.hbs"
-		damage=system.traits.dv.value
+		damage=damageTraits.dv.values
+		physical=damageTraits.dv.physical
 		label="DND5E.DamVuln" 
 	}}
 	{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/damage.hbs"
-		damage=system.traits.dr.value
+		damage=damageTraits.dr.values
+		physical=damageTraits.dr.physical
 		label="DND5E.DamRes" 
 	}}
 	{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/damage.hbs"
-		damage=system.traits.di.value
+		damage=damageTraits.di.values
+		physical=damageTraits.di.physical
 		label="DND5E.DamImm" 
 	}}
 	{{> "modules/monsterblock/templates/dnd5e/parts/header/attributes/damage.hbs"
-		damage=system.traits.ci.value
+		damage=damageTraits.ci.values
 		label="DND5E.ConImm" 
 	}}
 

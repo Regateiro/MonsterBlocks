@@ -45,6 +45,18 @@ I will see if there is a way to handle the need.
 
 # Changelog
 
+## Unreleased
+
+Added strings to support physical damage bypasses on the monster sheet.
+
+### Added 3 Strings:
+
+```json
+"MOBLOKS5E.BypassSpecial": "Special (Split with Semi-Colon)",
+"MOBLOKS5E.NonBypass": "non-{bypass}",
+"MOBLOKS5E.physical": "physical",
+```
+
 ## Version 2.4.0
 
 Added a number of strings to support Mini Blocks.

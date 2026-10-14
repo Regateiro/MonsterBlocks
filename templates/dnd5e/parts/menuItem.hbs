@@ -29,7 +29,7 @@
 			</label>
 		</li>
 	{{/if}}
-	{{#if (or (eq type "save-toggle") (eq type "damage-type") (eq type "condition-type") (eq type "language-opt"))}}
+	{{#if (or (eq type "save-toggle") (eq type "damage-type") (eq type "damage-bypass") (eq type "condition-type") (eq type "language-opt"))}}
 		<li>
 			<a data-option="{{d}}"
 				data-{{type}}="{{target}}"
@@ -46,6 +46,17 @@
 				<input 
 					type="text" 
 					name="{{target}}"
+					value="{{value}}">
+			</label>
+		</li>
+	{{/if}}
+	{{#if (eq type "bypass-special")}}
+		<li class="custom-trait">
+			<label>
+				<span class="trait-sel-label">{{name}}</span>
+				<input
+					type="text"
+					data-bypass-special="{{target}}"
 					value="{{value}}">
 			</label>
 		</li>

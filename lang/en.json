@@ -32,6 +32,7 @@
         "AtWill": "at will",
         "Average": "Average",
         "BonusActions": "Bonus Actions",
+        "BypassSpecial": "Special (Split with Semi-Colon)",
         "Cantrips": "Cantrips",
         "CasterAtWill": " can cast {spells} at will and",
         "CasterNameLevel": "The {name} is a {level}-level spellcaster.",
@@ -197,6 +198,7 @@
         "NameDescriptionSep": ".",
         "NCharged": "Not charged",
         "nine": "nine",
+        "NonBypass": "non-{bypass}",
         "one": "one",
         "OpenTokenizer": "Open VTTA Tokenizer",
         "OrdinalSuffixes": [
@@ -207,6 +209,7 @@
         ],
         "PassivePerception": "passive Perception {pp}",
         "PerceptionLocator": "perception",
+        "physical": "Physical",
         "physicalDamage": "bludgeoning, piercing, and slashing from nonmagical attacks",
         "ProfBonus": "Proficiency Bonus",
         "ProfileImage": "Profile image",

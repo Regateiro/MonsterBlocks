@@ -79,7 +79,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		this.prepInitiative(data);
 		this.prepSenses(data);
 		this.prepSpellStats();
-		this.replaceNonMagPysicalText(data);
+		this.prepDamageTraits(data);
 
 		//data.flags = duplicate(this.flags);	// Get the flags for this module, and make them available in the data
 		data.flags = {};
@@ -369,7 +369,19 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 	prepDamageTypeMenu(id, label, attrMenu) {
 		let menu = this.addMenu(id, game.i18n.localize(label), attrMenu);
-		this.getTraitChecklist(id, menu, `system.traits.${id}`, "damage-type", CONFIG.DND5E.damageResistanceTypes);
+		// The non-magical nuance of physical damage is handled by the bypasses,
+		// so this entry is simply labelled "physical".
+		const damageTypes = { ...CONFIG.DND5E.damageResistanceTypes };
+		if (Object.prototype.hasOwnProperty.call(damageTypes, "physical")) {
+			damageTypes.physical = game.i18n.localize("MOBLOKS5E.physical");
+		}
+		this.getTraitChecklist(id, menu, `system.traits.${id}`, "damage-type", damageTypes);
+		// Physical bypasses only make sense for resistances and immunities.
+		if (id === "dr" || id === "di") {
+			let bypassMenu = this.addMenu(`${id}-bypasses`, game.i18n.localize("DND5E.DamagePhysicalBypass"), menu);
+			this.getBypassChecklist(id, bypassMenu, `system.traits.${id}`);
+			menu.add(bypassMenu);
+		}
 		return menu;
 	}
 	prepConditionTypeMenu(id, label, attrMenu) {
@@ -378,16 +390,146 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		return menu;
 	}
 	/**
-	 * Re-localizes the text for non-magical physical damage
-	 * to match the working in the books.
+	 * The physical weapon properties that can bypass damage resistance,
+	 * falling back to a hard-coded list on systems that don't define them.
 	 *
+	 * @readonly
+	 * @static
 	 * @memberof MonsterBlock5e
 	 */
-	replaceNonMagPysicalText(data) {
-		["di", "dr", "dv"].forEach(damageSet => {
-			const selected = data.actor.system.traits[damageSet].value;
-			if (selected?.physical) selected.physical = game.i18n.localize("MOBLOKS5E.physicalDamage");
+	static get physicalWeaponProperties() {
+		return CONFIG.DND5E.physicalWeaponProperties ?? {
+			ada: "DND5E.WeaponPropertiesAda",
+			mgc: "DND5E.WeaponPropertiesMgc",
+			sil: "DND5E.WeaponPropertiesSil"
+		};
+	}
+	/**
+	 * Localizes the label for a physical weapon property, falling back
+	 * to the raw key for non-standard (special) bypasses.
+	 *
+	 * @param {String} key
+	 * @return {String}
+	 * @memberof MonsterBlock5e
+	 */
+	getWeaponPropertyLabel(key) {
+		const props = this.constructor.physicalWeaponProperties;
+		if (!Object.prototype.hasOwnProperty.call(props, key)) return key;
+		return game.i18n.localize(props[key]);
+	}
+	/**
+	 * Prepares the display data for damage vulnerabilities, resistances and immunities.
+	 * Non-physical damage types are listed as-is, while the physical pseudo-type is
+	 * combined with its bypasses into a single localized phrase (e.g. "non-magical physical").
+	 *
+	 * @param {Object} data - The data object returned by this.getData()
+	 * @memberof MonsterBlock5e
+	 */
+	prepDamageTraits(data) {
+		data.damageTraits = {};
+		["dv", "dr", "di", "ci"].forEach(id => {
+			const trait = data.actor.system.traits[id];
+			const values = Array.from(trait?.value ?? []);
+			const bypasses = Array.from(trait?.bypasses ?? []);
+
+			const physicalIndex = values.indexOf("physical");
+			const hasPhysical = physicalIndex > -1;
+			if (hasPhysical) values.splice(physicalIndex, 1);
+
+			let physical = null;
+			if (hasPhysical) {
+				// The non-magical nuance is only added when bypasses are chosen,
+				// otherwise physical damage is simply labelled "physical".
+				const tokens = bypasses.map(b => game.i18n.format("MOBLOKS5E.NonBypass", {
+					bypass: this.getWeaponPropertyLabel(b)
+				}));
+				tokens.push(game.i18n.localize("MOBLOKS5E.physical"));
+				physical = tokens.join(" ");
+			}
+
+			data.damageTraits[id] = { values, physical };
 		});
+	}
+	/**
+	 * Populates a damage menu with the physical bypass options and a
+	 * special (semi-colon separated) bypass text input.
+	 *
+	 * @param {String} id - The trait id ("dr" or "di")
+	 * @param {MenuTree} menu - The parent menu
+	 * @param {String} target - The data path of the trait
+	 * @memberof MonsterBlock5e
+	 */
+	getBypassChecklist(id, menu, target) {
+		Object.entries(this.constructor.physicalWeaponProperties).forEach(([d]) => {
+			let flag = this.actor.system.traits[id].bypasses?.has(d);
+			menu.add(new MenuItem("damage-bypass", {
+				d,
+				name: this.getWeaponPropertyLabel(d),
+				flag,
+				target: target + ".bypasses",
+				icon: flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>'
+			}, (m) => {
+				m.flag = this.actor.system.traits[id].bypasses?.has(d);
+				m.icon = m.flag ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>';
+			}));
+		});
+		menu.add(new MenuItem("bypass-special", {
+			d: "special",
+			name: game.i18n.localize("MOBLOKS5E.BypassSpecial"),
+			target: target,
+			icon: "",
+			value: this.getBypassSpecialText(id)
+		}, (m) => {
+			m.value = this.getBypassSpecialText(id);
+		}));
+	}
+	/**
+	 * Collects the non-standard (special) physical bypasses for a trait.
+	 *
+	 * @param {String} id - The trait id ("dr" or "di")
+	 * @return {String} The special bypasses joined by "; "
+	 * @memberof MonsterBlock5e
+	 */
+	getBypassSpecialText(id) {
+		const props = this.constructor.physicalWeaponProperties;
+		return Array.from(this.actor.system.traits[id].bypasses ?? [])
+			.filter(b => !Object.prototype.hasOwnProperty.call(props, b))
+			.join("; ");
+	}
+	/**
+	 * Updates a checkbox-style menu item in the DOM, syncing both its state
+	 * and the icon shown next to its label.
+	 *
+	 * @param {HTMLElement} node - The menu item element.
+	 * @param {Boolean} state - The new checked state.
+	 * @memberof MonsterBlock5e
+	 */
+	_setMenuToggleState(node, state) {
+		node.dataset.flag = state;
+		const icon = node.querySelector(".menu-item-icon");
+		if (icon) icon.innerHTML = state ? '<i class="fas fa-check"></i>' : '<i class="far fa-circle"></i>';
+	}
+	/**
+	 * Keeps the physical pseudo-type and its bypasses linked in the DOM.
+	 * Selecting a bypass also selects the physical damage type, while
+	 * deselecting physical clears all of its bypasses (including specials).
+	 *
+	 * @param {JQuery} html - The rendered sheet.
+	 * @param {HTMLElement} el - The toggle that was just clicked.
+	 * @param {Boolean} state - The new state of the clicked toggle.
+	 * @memberof MonsterBlock5e
+	 */
+	_syncPhysicalBypasses(html, el, state) {
+		if (el.dataset.damageType) {
+			if (el.dataset.option !== "physical" || state) return;
+			const trait = el.dataset.damageType;
+			html.find(`[data-damage-bypass="${trait}.bypasses"]`).each((i, node) => this._setMenuToggleState(node, false));
+			html.find(`[data-bypass-special="${trait}"]`).val("");
+		}
+		else if (el.dataset.damageBypass && state) {
+			const trait = el.dataset.damageBypass.replace(/\.bypasses$/, "");
+			html.find(`[data-damage-type="${trait}"][data-option="physical"]`).each((i, node) => this._setMenuToggleState(node, true));
+		}
 	}
 	/**
 	 * This method creates MenuItems and populates the target menu for trait lists.
@@ -987,11 +1129,13 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			el.dataset.toggleValue = el.dataset.toggleValue != "true";
 			this._onChangeInput(event);
 		})
-		html.find("[data-save-toggle], [data-damage-type], [data-condition-type], [data-language-opt]").click((event) => {
+		html.find("[data-save-toggle], [data-damage-type], [data-damage-bypass], [data-condition-type], [data-language-opt]").click((event) => {
 			let el = event.currentTarget;
 			let state = (el.dataset.flag == "true");
 			el.dataset.flag = !state;
 			let updateData;
+
+			this._syncPhysicalBypasses(html, el, !state);
 
 			if (el.dataset.saveToggle) {
 				updateData = { [el.dataset.saveToggle]: !state ? 1 : 0 };
@@ -1000,9 +1144,13 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 			this._onSubmit(event, { updateData });
 		});
-		html.find(".custom-trait input").blur(this.onCustomTraitChange.bind(this));
-		html.find(".custom-trait input").keydown((event) => {
+		html.find(".custom-trait input").not("[data-bypass-special]").blur(this.onCustomTraitChange.bind(this));
+		html.find(".custom-trait input").not("[data-bypass-special]").keydown((event) => {
 			if (event.key == "Enter") this.onCustomTraitChange(event);
+		});
+		html.find("[data-bypass-special]").blur(this.onBypassSpecialChange.bind(this));
+		html.find("[data-bypass-special]").keydown((event) => {
+			if (event.key == "Enter") this.onBypassSpecialChange(event);
 		});
 
 
@@ -1142,8 +1290,24 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		this._onSubmit(event, { updateData: { [target]: value } })
 	}
+	onBypassSpecialChange(event) {
+		const input = event.currentTarget;
+		// A special bypass only applies to physical damage, so entering one
+		// should also select the physical type.
+		if (input.value.trim()) {
+			const trait = input.dataset.bypassSpecial;
+			$(this.form).find(`[data-damage-type="${trait}"][data-option="physical"]`)
+				.each((i, node) => this._setMenuToggleState(node, true));
+		}
+		this._onSubmit(event, { updateData: this.getTogglesData($(this.form)) })
+	}
 	getTogglesData(html) {
 		let data = {};
+
+		const traitReducer = (acc, n) => {
+			if (n.dataset.flag == "true") acc.push(n.dataset.option);
+			return acc;
+		}
 
 		["dv", "dr", "di"].forEach(dg => {
 			let damageTypes = html.find(`[data-damage-type="system.traits.${dg}"]`);
@@ -1154,12 +1318,19 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 				if (state) value.push(dt.dataset.option);
 			}
 			data[key] = value;
+
+			// Physical bypasses only apply to resistances and immunities.
+			if (dg === "dr" || dg === "di") {
+				let bypasses = [...html.find(`[data-damage-bypass="system.traits.${dg}.bypasses"]`)]
+					.reduce(traitReducer, []);
+				const special = html.find(`[data-bypass-special="system.traits.${dg}"]`);
+				if (special.length) {
+					bypasses.push(...special.val().split(";").map(s => s.trim()).filter(s => s));
+				}
+				data[`system.traits.${dg}.bypasses`] = bypasses;
+			}
 		});
 
-		const traitReducer = (acc, n) => {
-			if (n.dataset.flag == "true") acc.push(n.dataset.option);
-			return acc;
-		}
 		data["system.traits.languages.value"] =
 		[...html.find(`[data-language-opt]`)].reduce(traitReducer, []);
 
