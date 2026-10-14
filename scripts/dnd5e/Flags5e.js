@@ -23,7 +23,9 @@ export default class Flags5e extends Flags {
 			"show-not-prof"            : { type: Boolean, default: false },
 			"show-resources"           : { type: Boolean, default: true  },
 			"show-skill-save"          : { type: Boolean, default: true  },
-			"show-bio"                 : { type: Boolean, default: false, hidden: true  }
+			"show-bio"                 : { type: Boolean, default: false, hidden: true  },
+			"spell-save-dc"            : { type: Number , default: null , hidden: true  },
+			"spell-attack-bonus"       : { type: Number , default: null , hidden: true  }
 		});
 	}	
 }

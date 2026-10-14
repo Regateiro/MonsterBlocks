@@ -1,5 +1,5 @@
 import { MenuItem, MenuTree } from "../MenuTree.js";
-import { debug, ContentEditableAdapter, getTranslationArray, castType } from "../utilities.js";
+import { debug, ContentEditableAdapter, getTranslationArray, castType, isSet } from "../utilities.js";
 import { inputExpression } from "../handler.js";
 import ItemPrep from "./ItemPrep.js";
 import Flags from "./Flags5e.js";
@@ -78,6 +78,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		this.prepMovement(data);
 		this.prepInitiative(data);
 		this.prepSenses(data);
+		this.prepSpellStats();
 		this.replaceNonMagPysicalText(data);
 
 		//data.flags = duplicate(this.flags);	// Get the flags for this module, and make them available in the data
@@ -145,7 +146,7 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 		const form = this.form;
 		const formData = new FormDataExtended(this.form, { editors: this.editors });
 
-		const fields = form.querySelectorAll("[data-field-key]");
+		const fields = form.querySelectorAll("[data-field-key]:not(.overridable-stat)");
 		for (let field of fields) {
 			let key = field.dataset.fieldKey;
 			let type = field.dataset.dtype || "String";
@@ -618,6 +619,100 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	}
 
 	/**
+	 * The actor-level bonus keys that back each editable spellcasting override.
+	 *
+	 * When a spell stat override is set, the module writes to these persisted
+	 * dnd5e fields so that the effective value (and any rolls using it) match
+	 * the pinned number.
+	 *
+	 * @type {Object<string, string[]>}
+	 * @readonly
+	 * @static
+	 * @memberof MonsterBlock5e
+	 */
+	static get spellStatBonuses() {
+		return {
+			"flags.monsterblock.spell-save-dc"     : ["system.bonuses.spell.dc"],
+			"flags.monsterblock.spell-attack-bonus": [
+				"system.bonuses.msak.attack",
+				"system.bonuses.rsak.attack"
+			]
+		};
+	}
+
+	/**
+	 * Computes the `system.bonuses.*` values that pin a spell stat override to
+	 * its manually entered number.
+	 *
+	 * dnd5e derives its spell stats from `system.bonuses.*`, so a pinned value
+	 * is stored as the bonus needed to reach it, rather than as the number
+	 * itself. This keeps the override valid across later changes to the casting
+	 * ability, proficiency, or caster level. The returned object is a partial
+	 * `system` update that can be merged into the same `actor.update()` that
+	 * stores the override, avoiding a second re-render.
+	 *
+	 * @param {string} key - An override key (a key of `spellStatBonuses`).
+	 * @param {number|string} override - The entered value; blank clears the pin.
+	 * @returns {Object<string, string>} A partial `system` update.
+	 * @memberof MonsterBlock5e
+	 */
+	spellStatBonusUpdate(key, override) {
+		const system = this.actor.system;
+		const bonusKeys = this.constructor.spellStatBonuses[key] ?? [];
+
+		// Clearing the override resets the fields it pinned.
+		const updates = {};
+		for (const bonusKey of bonusKeys) updates[bonusKey] = "";
+
+		if (!isSet(override)) return updates;
+
+		const value = Number(override);
+		if (!Number.isFinite(value)) return updates;
+
+		// dnd5e resolves an unset (or invalid) spellcasting ability as
+		// Intelligence when determining spell attacks.
+		const spellcasting = system.attributes.spellcasting || "int";
+		const abilityMod = system.abilities[spellcasting]?.mod ?? 0;
+
+		if (key === "flags.monsterblock.spell-save-dc") {
+			updates["system.bonuses.spell.dc"] = String(value - (8 + abilityMod + system.attributes.prof));
+		}
+		else {
+			const needed = String(value - (abilityMod + system.attributes.prof));
+			for (const bonusKey of bonusKeys) updates[bonusKey] = needed;
+		}
+
+		return updates;
+	}
+
+	/**
+	 * Pins the actor's spell save DC and spell attack bonus to the
+	 * values manually set on the sheet, if any.
+	 *
+	 * The values themselves live in hidden actor flags. dnd5e calculates
+	 * its spell stats from `system.bonuses.*`, so to make a pinned value
+	 * stick across changes to the casting ability, proficiency, or level
+	 * the needed bonus is (re)computed here rather than stored as a delta.
+	 *
+	 * @memberof MonsterBlock5e
+	 */
+	prepSpellStats() {
+		if (!this.actor.isOwner || this.actor.compendium) return;
+
+		const updates = {};
+
+		for (const key of Object.keys(this.constructor.spellStatBonuses)) {
+			if (!isSet(this.flags[key])) continue;
+
+			for (const [bonusKey, needed] of Object.entries(this.spellStatBonusUpdate(key, this.flags[key]))) {
+				if (String(getProperty(this.actor, bonusKey) ?? "") !== needed) updates[bonusKey] = needed;
+			}
+		}
+
+		if (Object.keys(updates).length) this.actor.update(updates);
+	}
+
+	/**
 	 * @typedef senseData
 	 * A set of data about a sense
 	 * used to generate the text to display on the sheet.
@@ -1080,7 +1175,10 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 	_onUnfocusEditable(event) {
 		if (event.currentTarget.innerText == this.lastValue) return;
 		this._onChangeInput(event);
-		this.lastValue = undefined;
+		// Keep lastValue in sync with the value actually stored, otherwise the
+		// focusout fired when the sheet re-renders would treat the field as
+		// changed again and re-submit in a loop.
+		this.lastValue = event.currentTarget.innerText;
 	}
 	/**
 	 * This method is used as an event handler when an input is changed, updated, or submitted.
@@ -1105,7 +1203,10 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 
 		switch (dtype) {
 			case "Number":
-				if (value != "") value = this.handleNumberChange(entity, key, input, event);
+				// An emptied contenteditable can collapse to whitespace rather
+				// than an empty string, so treat whitespace-only as cleared.
+				if (value.trim() != "") value = this.handleNumberChange(entity, key, input, event);
+				else value = "";
 				break;
 			case "Roll": {
 				try {
@@ -1127,7 +1228,17 @@ export default class MonsterBlock5e extends dnd5e.applications.actor.ActorSheet5
 			}]).then(()=> { super._onChangeInput(event); });
 			return;
 		} else {
-			this.actor.update({[key]: value}).then(()=> { super._onChangeInput(event); });
+			const update = { [key]: value };
+
+			// Pin or clear the dnd5e bonus in the *same* update that stores the
+			// override. Doing it here (rather than letting prepSpellStats() do it
+			// on the next getData) means editing a spell stat only causes a
+			// single re-render, just like every other field.
+			if (this.constructor.spellStatBonuses[key]) {
+				Object.assign(update, this.spellStatBonusUpdate(key, value));
+			}
+
+			this.actor.update(update).then(()=> { super._onChangeInput(event); });
 		}
 	}
 

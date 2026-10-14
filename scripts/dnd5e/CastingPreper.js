@@ -1,5 +1,5 @@
 import Helpers from "./Helpers5e.js";
-import { debug, getTranslationArray } from "../utilities.js";
+import { debug, getTranslationArray, isSet } from "../utilities.js";
 import ItemPreper from "./ItemPreper.js";
 import * as Templates from "./templates.js";
 
@@ -441,8 +441,40 @@ export default class CastingPreper extends ItemPreper {
 	}
 
 	/**
+	 * The spell save DC to display for this caster.
+	 *
+	 * Uses the manually pinned override stored in the actor's flags
+	 * if one is set, otherwise the actor's calculated spell save DC.
+	 *
+	 * @type {number|string}
+	 * @readonly
+	 * @memberof CastingPreper
+	 */
+	get saveDC() {
+		const override = this.sheet.flags["spell-save-dc"];
+		return isSet(override) ? override : this.sheet.actor.system?.attributes?.spelldc;
+	}
+
+	/**
+	 * The spell attack bonus to display for this caster.
+	 *
+	 * Uses the manually pinned override stored in the actor's flags
+	 * if one is set, otherwise the calculated spell attack bonus.
+	 *
+	 * @type {number}
+	 * @readonly
+	 * @memberof CastingPreper
+	 */
+	get spellAttackBonus() {
+		const override = this.sheet.flags["spell-attack-bonus"];
+		return isSet(override) ? override : this.tohit;
+	}
+
+	/**
 	 * Generate the text describing key stats for the caster
 	 * including spell save DC and spell attack bonus.
+	 *
+	 * Both values can be edited inline to override the calculated value.
 	 *
 	 * @type {string}
 	 * @readonly
@@ -450,8 +482,20 @@ export default class CastingPreper extends ItemPreper {
 	 */
 	get casterStatsText() {
 		return game.i18n.format("MOBLOKS5E.CastingStats", {
-			savedc: this.sheet.actor.system?.attributes?.spelldc,
-			bonus: `${this.tohit > -1 ? "+" : ""}${this.tohit}`
+			savedc: Templates.editable({
+				key: "flags.monsterblock.spell-save-dc",
+				className: "overridable-stat",
+				dtype: "Number",
+				value: this.saveDC ?? "",
+				enabled: this.editing
+			}),
+			bonus: `+${Templates.editable({
+				key: "flags.monsterblock.spell-attack-bonus",
+				className: "overridable-stat",
+				dtype: "Number",
+				value: this.spellAttackBonus,
+				enabled: this.editing
+			})}`
 		})
 	}
 

@@ -42,6 +42,19 @@ export function getGridSize(size) {
 	}
 }
 
+/**
+ * Whether a value represents a set override.
+ *
+ * Unlike a simple truthiness check, this treats `0` as set while
+ * `null`, `undefined`, and the empty string are considered unset.
+ *
+ * @param {any} value - The value to test
+ * @return {boolean}
+ */
+export function isSet(value) {
+	return value !== null && value !== undefined && value !== "";
+}
+
 export class ContentEditableAdapter extends InputAdapter {
 	get value() {
 		return this.element.innerText;
